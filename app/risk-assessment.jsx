@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 const STORAGE_KEY = "mediation-risk-assessment";
 
@@ -139,27 +139,30 @@ export default function RiskAssessment() {
   const totalIndicators = DOMAINS.reduce((s, d) => s + d.indicators.length, 0);
 
   // Calculate risk score
-  const domainScores = DOMAINS.map((domain) => {
-    let score = 0;
-    let maxScore = 0;
-    domain.indicators.forEach((ind) => {
-      maxScore += ind.severity * domain.weight;
-      if (responses[ind.id] === "yes") score += ind.severity * domain.weight;
-      else if (responses[ind.id] === "sometimes") score += (ind.severity * domain.weight) * 0.5;
+  const { domainScores, totalScore, totalMaxScore, overallPct, riskLevel, riskColor, riskLabel, yesCount, sometimesCount } = useMemo(() => {
+    const ds = DOMAINS.map((domain) => {
+      let score = 0, maxScore = 0;
+      domain.indicators.forEach((ind) => {
+        maxScore += ind.severity * domain.weight;
+        if (responses[ind.id] === "yes") score += ind.severity * domain.weight;
+        else if (responses[ind.id] === "sometimes") score += (ind.severity * domain.weight) * 0.5;
+      });
+      return { ...domain, score, maxScore, pct: maxScore > 0 ? Math.round((score / maxScore) * 100) : 0 };
     });
-    return { ...domain, score, maxScore, pct: maxScore > 0 ? Math.round((score / maxScore) * 100) : 0 };
-  });
+    const ts = ds.reduce((s, d) => s + d.score, 0);
+    const tms = ds.reduce((s, d) => s + d.maxScore, 0);
+    const op = tms > 0 ? Math.round((ts / tms) * 100) : 0;
+    const rl = op >= 60 ? "critical" : op >= 35 ? "high" : op >= 15 ? "moderate" : "low";
+    const vals = Object.values(responses);
+    return {
+      domainScores: ds, totalScore: ts, totalMaxScore: tms, overallPct: op, riskLevel: rl,
+      riskColor: { low: "#16a34a", moderate: "#ca8a04", high: "#dc2626", critical: "#7f1d1d" }[rl],
+      riskLabel: { low: "Low Risk", moderate: "Moderate Risk", high: "High Risk", critical: "Critical Risk" }[rl],
+      yesCount: vals.filter((v) => v === "yes").length,
+      sometimesCount: vals.filter((v) => v === "sometimes").length,
+    };
+  }, [responses]);
 
-  const totalScore = domainScores.reduce((s, d) => s + d.score, 0);
-  const totalMaxScore = domainScores.reduce((s, d) => s + d.maxScore, 0);
-  const overallPct = totalMaxScore > 0 ? Math.round((totalScore / totalMaxScore) * 100) : 0;
-
-  const riskLevel = overallPct >= 60 ? "critical" : overallPct >= 35 ? "high" : overallPct >= 15 ? "moderate" : "low";
-  const riskColor = { low: "#16a34a", moderate: "#ca8a04", high: "#dc2626", critical: "#7f1d1d" }[riskLevel];
-  const riskLabel = { low: "Low Risk", moderate: "Moderate Risk", high: "High Risk", critical: "Critical Risk" }[riskLevel];
-
-  const yesCount = Object.values(responses).filter((v) => v === "yes").length;
-  const sometimesCount = Object.values(responses).filter((v) => v === "sometimes").length;
 
   const exportAssessment = () => {
     const lines = [

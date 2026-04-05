@@ -30,7 +30,7 @@ Every resource in this repository is grounded in these standards, with the appli
 
 **Try the interactive tools now** — no installation required:
 
-**[Launch Access to Mediation](https://dougdevitre.github.io/mediation/)** — 11 interactive tools for mediators and parties, 25 practice scenarios, and 20 reference guides — all working directly in your browser.
+**[Launch Access to Mediation](https://dougdevitre.github.io/mediation/)** — 20 interactive tools for mediators and parties, 25 practice scenarios, and 20 reference guides — all working directly in your browser.
 
 ---
 
@@ -41,7 +41,7 @@ Every resource in this repository is grounded in these standards, with the appli
 | **Reference Guides** | 20 | Standards-based guides for every phase of mediation practice |
 | **Practice Templates** | 14 | Customizable Markdown templates (+ 2 Word .docx versions) |
 | **Practice Scenarios** | 25 | "What do I do when..." real-world situation guidance |
-| **Interactive Tools** | 21 | 2 dashboards + 12 mediator tools + 7 party tools |
+| **Interactive Tools** | 20 | 2 dashboards + 12 mediator tools + 6 party tools |
 | **Workflow Diagrams** | 6 | Mermaid decision-flow diagrams for key processes |
 | **Jurisdiction Modules** | 5 | State-specific statutes, reporting, and qualifications |
 | **CLE Presentation** | 1 | 10-slide PowerPoint deck ready for conferences |
@@ -60,7 +60,7 @@ All tools feature **localStorage persistence** (data survives page refresh), **f
 | **Mediator Dashboard** | `app/mediator-dashboard.jsx` | Practice hub with quick actions (new case, log session, find clause, run audit), recent cases list, 4 workflow phases (intake, active mediation, agreement/closure, practice management) each linking to relevant tools, templates, references, and party-sharing suggestions |
 | **Party Welcome** | `app/party-welcome.jsx` | "What brings you here?" guided onboarding with 4 paths (new to mediation, need a parenting plan, dividing finances, already have an agreement), each with step-by-step checklists linking to the right tools in the right order |
 
-### For Mediators (6 tools)
+### For Mediators (12 tools)
 
 | Tool | File | Key Features |
 |------|------|-------------|
@@ -231,7 +231,7 @@ access-to-mediation/
 │
 ├── scenarios/                        # 20 "What do I do when..." practice scenarios
 │
-├── app/                              # 16 interactive React components + print CSS
+├── app/                              # 20 interactive React components + utils + print CSS
 │   ├── mediator-dashboard.jsx        # Dashboard: mediator practice hub
 │   ├── party-welcome.jsx             # Dashboard: guided party onboarding
 │   ├── parenting-plan-builder.jsx    # Mediator: 50+ provisions builder
