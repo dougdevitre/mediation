@@ -41,7 +41,7 @@ Every resource in this repository is grounded in these standards, with the appli
 | **Reference Guides** | 20 | Standards-based guides for every phase of mediation practice |
 | **Practice Templates** | 14 | Customizable Markdown templates (+ 2 Word .docx versions) |
 | **Practice Scenarios** | 25 | "What do I do when..." real-world situation guidance |
-| **Interactive Tools** | 16 | 2 dashboards + 9 mediator tools + 5 party tools |
+| **Interactive Tools** | 21 | 2 dashboards + 12 mediator tools + 7 party tools |
 | **Workflow Diagrams** | 6 | Mermaid decision-flow diagrams for key processes |
 | **Jurisdiction Modules** | 5 | State-specific statutes, reporting, and qualifications |
 | **CLE Presentation** | 1 | 10-slide PowerPoint deck ready for conferences |
@@ -73,8 +73,20 @@ All tools feature **localStorage persistence** (data survives page refresh), **f
 | **Agreement Generator** | `app/agreement-generator.jsx` | Build complete draft agreements from selected clauses with auto-filled party names, customizable variables, preview, and download |
 | **Risk Assessment** | `app/risk-assessment.jsx` | Scored DV/safety screening across 6 domains (30+ indicators), weighted risk calculation, process modification recommendations, confidential export |
 | **Case Analytics** | `app/case-analytics.jsx` | Practice-wide metrics: agreement rates, case types, referral sources, revenue, DV screening compliance, children served, time-filtered reports |
+| **Ethical Decision Engine** | `app/decision-engine.jsx` | Interactive decision trees for 6 common ethical dilemmas — answer questions, get standards-based recommendations with citations, document and export decisions |
+| **Conflict Check Database** | `app/conflict-check.jsx` | Track past clients, auto-detect conflicts when opening new cases, document conflict checks with downloadable reports |
+| **Training Simulator** | `app/training-simulator.jsx` | Interactive scenario-based training with 12 multiple-choice situations, immediate feedback with standards citations, score tracking |
 
-### For Parties (5 tools)
+### For Parties (7 tools)
+
+| Tool | File | Key Features |
+|------|------|-------------|
+| **Mediation Readiness** | `app/mediation-prep.jsx` | 7-step guided preparation: what to expect, issue identification, priority ranking (must-have/important/flexible), children's needs reflection, personalized document checklist, questions for the mediator, downloadable summary |
+| **Financial Disclosure** | `app/financial-disclosure.jsx` | Income (7 sources), expenses (7 categories / 40+ line items), assets (11 categories), debts (9 categories), real-time totals, expense breakdown percentages, net worth, downloadable report |
+| **Schedule Visualizer** | `app/schedule-visualizer.jsx` | See custody schedules on a real calendar — 6 preset patterns (alternating weeks, 2-2-3, 5-2, etc.) plus custom builder, time-split percentages, month navigation, downloadable schedule |
+| **Cost Estimator** | `app/cost-estimator.jsx` | Estimate mediation cost based on issues, complexity factors, hourly rate, and fee split — shows session count, hour estimate, and cost range per party |
+| **Compliance Tracker** | `app/compliance-tracker.jsx` | Track whether agreement terms are being followed post-mediation — categorized items, due dates, recurring obligations, overdue alerts, compliance percentage, downloadable report |
+| **Child Support Estimator** | `app/child-support-calc.jsx` | State-specific guideline calculations based on both parents' incomes, number of children, parenting time split, healthcare, and childcare costs |
 
 | Tool | File | Key Features |
 |------|------|-------------|
