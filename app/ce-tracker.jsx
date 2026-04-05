@@ -103,8 +103,11 @@ export default function CETracker() {
     const errs = {};
     if (!form.title.trim()) errs.title = "Title is required";
     const hours = parseFloat(form.hours);
-    if (!form.hours || isNaN(hours) || hours <= 0) errs.hours = "Enter valid hours (greater than 0)";
-    if (hours > 40) errs.hours = "Hours per training should not exceed 40";
+    if (!form.hours || isNaN(hours) || hours <= 0) {
+      errs.hours = "Enter valid hours (greater than 0)";
+    } else if (hours > 40) {
+      errs.hours = "Hours per training should not exceed 40";
+    }
     if (form.date) {
       const d = new Date(form.date);
       if (d > new Date()) errs.date = "Date cannot be in the future";
@@ -142,6 +145,14 @@ export default function CETracker() {
   };
 
   const removeTraining = (id) => setTrainings(trainings.filter((t) => t.id !== id));
+
+  const clearAll = () => {
+    setTrainings([]);
+    setShowForm(false);
+    setEditingId(null);
+    setForm({ title: "", provider: "", date: "", hours: "", topics: [] });
+    setErrors({});
+  };
 
   const toggleTopic = (topicId) => {
     const topics = form.topics.includes(topicId)
@@ -195,9 +206,14 @@ export default function CETracker() {
         <h3 style={{ margin: 0, fontSize: 16, color: "#0f172a" }}>Training Log ({trainings.length} entries)</h3>
         <div style={{ display: "flex", gap: 8 }}>
           {trainings.length > 0 && (
-            <button onClick={handleExport} style={{ padding: "6px 14px", borderRadius: 6, border: "1px solid #cbd5e1", background: "#fff", cursor: "pointer", fontSize: 13, color: "#475569" }} aria-label="Download training log as text file">
-              Download Log
-            </button>
+            <>
+              <button onClick={clearAll} style={{ padding: "6px 14px", borderRadius: 6, border: "1px solid #cbd5e1", background: "#fff", cursor: "pointer", fontSize: 13, color: "#64748b" }} aria-label="Clear all training entries">
+                Clear All
+              </button>
+              <button onClick={handleExport} style={{ padding: "6px 14px", borderRadius: 6, border: "1px solid #cbd5e1", background: "#fff", cursor: "pointer", fontSize: 13, color: "#475569" }} aria-label="Download training log as text file">
+                Download Log
+              </button>
+            </>
           )}
           <button onClick={() => (showForm ? cancelForm() : setShowForm(true))} style={{ padding: "6px 14px", borderRadius: 6, border: "none", background: "#2563eb", color: "#fff", cursor: "pointer", fontSize: 13 }} aria-expanded={showForm}>
             {showForm ? "Cancel" : "+ Add Training"}

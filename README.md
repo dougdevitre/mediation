@@ -38,15 +38,15 @@ Every resource in this repository is grounded in these standards, with the appli
 | Resource | Count | Description |
 |----------|------:|-------------|
 | **Reference Guides** | 19 | Standards-based guides for every phase of mediation practice |
-| **Practice Templates** | 12 | Customizable documents in Markdown and Word format |
+| **Practice Templates** | 14+2 | 14 Markdown templates + 2 Word format (.docx) |
 | **Practice Scenarios** | 20 | "What do I do when..." real-world situation guidance |
-| **Interactive Tools** | 3 | Parenting Plan Builder, Compliance Dashboard, CE Tracker |
+| **Interactive Tools** | 5 | 3 for mediators + 2 party-facing preparation tools |
 | **Workflow Diagrams** | 6 | Mermaid decision-flow diagrams for key processes |
 | **Jurisdiction Modules** | 5 | State-specific statutes, reporting, and qualifications |
 | **CLE Presentation** | 1 | 10-slide PowerPoint deck ready for conferences |
 | **Case Management Schema** | 1 | Airtable/CSV schema for practice management |
 
-### Interactive Tools
+### Interactive Tools — For Mediators
 
 - **Parenting Plan Builder** — Select from 50+ provisions across 8 categories, add notes, and export a formatted plan. Covers residential schedules, holidays, decision-making, communication, transitions, travel, child-specific provisions, and review schedules.
 
@@ -54,11 +54,18 @@ Every resource in this repository is grounded in these standards, with the appli
 
 - **Continuing Education Tracker** — Log training hours, tag topics, and track coverage against the 7 required training areas in the 2025 standards. See gap alerts for missing required topics.
 
+### Interactive Tools — For Parties (Save Time & Money)
+
+- **Mediation Readiness Tool** — Guides parties through preparation step by step: what to expect, issue identification, priority ranking, children's needs reflection, document gathering checklist, and questions for the mediator. Parties arrive prepared, which means fewer sessions and lower costs.
+
+- **Financial Disclosure Worksheet** — Walks parties through income, expenses, assets, and debts with real-time totals and a downloadable summary. Incomplete financial disclosure is the #1 reason mediation sessions run long — this tool solves that.
+
 ---
 
 ## Who Is This For?
 
 - **Family mediators** (private practice and court-connected) — daily practice support
+- **Parties preparing for mediation** — preparation tools that save time and money
 - **Mediation training programs** — structured teaching resource with real scenarios
 - **Court ADR administrators** — program compliance framework and quality benchmarks
 - **Legal aid organizations** — resource for pro bono and volunteer mediators
@@ -135,9 +142,9 @@ access-to-mediation/
 │   ├── workflow-diagrams.md          # 6 Mermaid decision-flow diagrams
 │   └── related-guidelines.md        # Cross-references to other standards
 │
-├── templates/                        # 10 ready-to-customize Markdown templates
+├── templates/                        # 14 ready-to-customize Markdown templates
 ├── scenarios/                        # 20 "What do I do when..." practice scenarios
-├── app/                              # 3 interactive React components (source)
+├── app/                              # 5 interactive React components (3 mediator + 2 party)
 │
 ├── docs/                             # GitHub Pages site + Word/PowerPoint deliverables
 │   ├── index.html                    # Full interactive app (live demo)

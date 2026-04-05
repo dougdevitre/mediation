@@ -53,6 +53,8 @@ Ensure transparent, fair fee practices that do not undermine impartiality or cre
 
 ---
 
-## Template
+## Related Resources
 
 → Use `templates/fee-disclosure.md` for a fee disclosure statement.
+→ See `references/10-barriers-modifications.md` for addressing financial barriers to mediation participation.
+→ See `app/financial-disclosure.jsx` for a party-facing financial worksheet that helps parties organize finances before mediation.
