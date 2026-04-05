@@ -26,6 +26,11 @@
 18. [Settlement reached under apparent duress](#18-settlement-reached-under-apparent-duress)
 19. [Technology failure during online session](#19-technology-failure-during-online-session)
 20. [Party uses mediation to delay court proceedings](#20-party-uses-mediation-to-delay-court-proceedings)
+21. [Party cannot afford to continue mediation](#21-party-cannot-afford-to-continue-mediation)
+22. [Party wants to bring a new partner to mediation](#22-party-wants-to-bring-a-new-partner-to-mediation)
+23. [Mediator learns a party lied about income](#23-mediator-learns-a-party-lied-about-income)
+24. [Child maltreatment allegation arises mid-mediation](#24-child-maltreatment-allegation-arises-mid-mediation)
+25. [One party has a cognitive disability](#25-one-party-has-a-cognitive-disability)
 
 ---
 
@@ -375,3 +380,94 @@
 3. Set reasonable timelines and expectations for progress.
 4. If bad faith is apparent and persistent, the mediator may terminate the mediation.
 5. Inform both parties of their right to pursue other resolution processes.
+
+---
+
+## 21. Party Cannot Afford to Continue Mediation
+
+**Situation**: Midway through the process, one party reports they can no longer afford mediation fees. The other party is frustrated by the potential delay.
+
+**Standards**: 2025-XIII (Fees), 2025-IV (Barriers), 2005-VIII (Fees)
+
+**Protocol**:
+1. Discuss the situation privately with each party (caucus) to understand the financial picture.
+2. Review your fee disclosure — were sliding scale options discussed at intake?
+3. Explore options: reduced fee, payment plan, referral to court-connected free mediation, community mediation center, or legal aid mediation program.
+4. Do not allow fee arrangements to compromise impartiality — if one party pays more, this must not influence the process.
+5. If no accommodation is possible and the party truly cannot continue, provide referrals and suspend rather than terminate if progress has been made.
+6. Document the situation in your notes (confidential) and update the fee disclosure if terms change.
+
+→ references/14-fees.md, references/10-barriers-modifications.md
+
+---
+
+## 22. Party Wants to Bring a New Partner to Mediation
+
+**Situation**: One parent asks to bring their new romantic partner to a mediation session. The other parent objects strongly.
+
+**Standards**: 2025-I (Self-Determination), 2025-VII (Impartiality)
+
+**Protocol**:
+1. Review the Agreement to Mediate — does it address additional participants?
+2. Discuss with each party separately: why does one want the partner present? Why does the other object?
+3. Explain that mediation is for the parties (and their attorneys/support persons), and the mediator facilitates the parties' decisions about who attends.
+4. If the new partner's presence would undermine the other party's ability to participate meaningfully, the mediator may decline.
+5. Consider alternatives: the new partner can wait outside and be consulted during breaks, or attend a specific portion of the session only.
+6. If both parties agree to the partner's presence, proceed. If not, the mediator should use professional judgment to protect the process.
+
+→ references/07-session-facilitation.md, references/04-impartiality-conflicts.md
+
+---
+
+## 23. Mediator Learns a Party Lied About Income
+
+**Situation**: During financial disclosure, the mediator becomes aware (from the other party's documents or statements) that one party has significantly understated their income or hidden assets.
+
+**Standards**: 2025-II (Informed Decision-Making), 2025-I (Self-Determination)
+
+**Protocol**:
+1. Do not accuse or confront the party. The mediator is not an investigator.
+2. Facilitate full disclosure by asking broad, open-ended questions: "Is there any other income we should account for?"
+3. Remind both parties of the good-faith disclosure obligation in the Agreement to Mediate.
+4. If you have serious reason to believe disclosure is materially incomplete, consider whether the other party can make informed decisions — if not, informed consent is compromised.
+5. Recommend that both parties have independent financial review (CPA, forensic accountant, or attorney).
+6. If a party refuses to provide accurate disclosure after multiple opportunities, consider whether mediation should continue — self-determination requires informed consent.
+
+→ references/12-agreement-drafting.md, references/07-session-facilitation.md
+
+---
+
+## 24. Child Maltreatment Allegation Arises Mid-Mediation
+
+**Situation**: During a parenting plan discussion, one parent alleges that the other parent's new partner has physically abused one of the children. The accused parent denies it.
+
+**Standards**: 2025-VI (Child Maltreatment), 2025-V (Domestic Abuse)
+
+**Protocol**:
+1. Take the allegation seriously. Do not evaluate whether it is "true" — that is for CPS/law enforcement.
+2. If you are a mandatory reporter in your jurisdiction (many mediators are, especially if also licensed as attorneys, therapists, or social workers), you must report to the appropriate agency.
+3. Inform both parties that you have mandatory reporting obligations and will fulfill them regardless of who made the allegation.
+4. Suspend mediation to allow for investigation and to assess whether meaningful participation can continue.
+5. Provide referrals: CPS, child advocacy center, children's attorney/guardian ad litem, counseling.
+6. Document what was said (not your conclusions) in your confidential notes.
+7. Do not share one party's statements with the other party beyond what is necessary.
+
+→ references/03-child-maltreatment.md, references/13-suspension-termination.md
+
+---
+
+## 25. One Party Has a Cognitive Disability
+
+**Situation**: During intake, you learn that one party has a cognitive disability or traumatic brain injury that may affect their ability to understand proposals, remember agreements, or participate fully.
+
+**Standards**: 2025-IV (Barriers & Process Modification), 2025-I (Self-Determination)
+
+**Protocol**:
+1. Do not assume incapacity. Many people with cognitive disabilities can participate meaningfully with appropriate accommodations.
+2. Assess what accommodations are needed: simpler language, shorter sessions, written summaries of each session, a support person present, visual aids, frequent check-ins on understanding.
+3. Ensure the party has the opportunity to consult with their attorney, advocate, or support person at every stage.
+4. Use teach-back techniques: ask the party to explain proposals back in their own words.
+5. If the party cannot participate meaningfully even with accommodations, consider whether mediation is appropriate. Do not proceed if self-determination cannot be protected.
+6. Consult with the party's support network (with their permission) about optimal participation strategies.
+
+→ references/10-barriers-modifications.md, references/01-intake-screening.md

@@ -92,3 +92,27 @@ TR-002,Mediator Name,2026-03-01,ODR Best Practices,ACR,3.0,"technology_odr,data_
 audit_id,mediator_name,date,total_items,yes_count,partial_count,no_count,score_percent,gaps_identified,corrective_actions
 AUDIT-001,Mediator Name,2026-04-01,42,38,3,1,90,"missing_tech_consent_form","Create tech consent template by April 15"
 ```
+
+---
+
+## Template Usage Guide
+
+Each table corresponds to one or more practice templates. Use the templates alongside the schema for consistent documentation:
+
+| Table | Templates | Notes |
+|---|---|---|
+| Cases | `templates/intake-questionnaire.md`, `templates/agreement-to-mediate.md` | Complete at case opening |
+| Cases (DV) | `templates/domestic-abuse-screening-checklist.md`, `templates/safety-plan.md` | Complete before first joint session |
+| Sessions | `templates/session-notes.md` | Complete after each session |
+| Cases (Closure) | `templates/mediation-summary.md`, `templates/mediation-settlement-agreement.md`, `templates/post-mediation-checklist.md`, `templates/termination-notice.md` | Use appropriate template based on outcome |
+| Training Log | `templates/mediator-training-log.md` | Ongoing; corresponds to CE Tracker app |
+| Compliance Audits | `templates/mediator-training-log.md` (self-audit section) | Quarterly; corresponds to Compliance Dashboard app |
+
+### Additional Templates (Not Directly Mapped to Tables)
+
+| Template | When to Use |
+|---|---|
+| `templates/conflict-of-interest-disclosure.md` | When conflicts are identified (Cases table `conflict_check_completed` field) |
+| `templates/technology-consent.md` | When using ODR (Cases table `technology_consent_obtained` field) |
+| `templates/fee-disclosure.md` | At intake, before signing Agreement to Mediate |
+| `templates/parenting-plan-worksheet.md` | During parenting plan development sessions |
