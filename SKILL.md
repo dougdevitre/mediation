@@ -187,7 +187,7 @@ Abuse disclosed in joint session, financial disclosure refusal, child refusing a
 
 ## Interactive Tools (React)
 
-→ See the `app/` directory for 21 interactive React components:
+→ See the `app/` directory for 20 interactive React components:
 
 ### Dashboards
 | Tool | File | Description |

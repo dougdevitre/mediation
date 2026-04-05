@@ -411,7 +411,7 @@ export default function SessionTimer() {
                 </div>
                 <div style={{ display: "flex", gap: 4, flexShrink: 0 }}>
                   <button onClick={() => openManualForm(s)} style={{ background: "none", border: "none", color: "#64748b", cursor: "pointer", fontSize: 13, padding: "2px 6px" }} title="Edit">Edit</button>
-                  <button onClick={() => deleteSession(s.id)} style={{ background: "none", border: "none", color: "#94a3b8", cursor: "pointer", fontSize: 16, padding: "2px 6px" }} title="Delete">x</button>
+                  <button onClick={() => deleteSession(s.id)} style={{ background: "none", border: "none", color: "#94a3b8", cursor: "pointer", fontSize: 16, padding: "2px 6px" }} title="Delete" aria-label="Delete session">x</button>
                 </div>
               </div>
             ))}

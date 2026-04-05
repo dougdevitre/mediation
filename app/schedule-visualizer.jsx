@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 const STORAGE_KEY = "mediation-schedule-viz";
 const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -68,17 +68,23 @@ export default function ScheduleVisualizer() {
     return pattern[idx];
   };
 
-  const daysInMonth = getDaysInMonth(year, month);
-  const firstDay = getFirstDayOfMonth(year, month);
-  const calendarDays = [];
-  for (let i = 0; i < firstDay; i++) calendarDays.push(null);
-  for (let d = 1; d <= daysInMonth; d++) calendarDays.push(d);
-
-  const countA = calendarDays.filter((d) => d && getParentForDate(`${year}-${String(month + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`) === 0).length;
-  const countB = calendarDays.filter((d) => d && getParentForDate(`${year}-${String(month + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`) === 1).length;
-  const totalDays = countA + countB;
-  const pctA = totalDays > 0 ? Math.round((countA / totalDays) * 100) : 0;
-  const pctB = totalDays > 0 ? Math.round((countB / totalDays) * 100) : 0;
+  const { calendarDays, countA, countB, pctA, pctB } = useMemo(() => {
+    const dim = getDaysInMonth(year, month);
+    const fd = getFirstDayOfMonth(year, month);
+    const days = [];
+    for (let i = 0; i < fd; i++) days.push(null);
+    for (let d = 1; d <= dim; d++) days.push(d);
+    let a = 0, b = 0;
+    days.forEach((d) => {
+      if (!d) return;
+      const dateStr = `${year}-${String(month + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
+      const p = getParentForDate(dateStr);
+      if (p === 0) a++;
+      else if (p === 1) b++;
+    });
+    const total = a + b;
+    return { calendarDays: days, countA: a, countB: b, pctA: total > 0 ? Math.round((a / total) * 100) : 0, pctB: total > 0 ? Math.round((b / total) * 100) : 0 };
+  }, [year, month, pattern, cycle, startDate]);
 
   const prevMonth = () => { if (month === 0) { setMonth(11); setYear(year - 1); } else setMonth(month - 1); };
   const nextMonth = () => { if (month === 11) { setMonth(0); setYear(year + 1); } else setMonth(month + 1); };
