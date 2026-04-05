@@ -42,7 +42,7 @@ Every resource in this repository is grounded in these standards, with the appli
 | **Practice Templates** | 14 | Customizable Markdown templates (+ 2 Word .docx versions) |
 | **Practice Scenarios** | 25 | "What do I do when..." real-world situation guidance |
 | **Interactive Tools** | 20 | 2 dashboards + 12 mediator tools + 6 party tools |
-| **Workflow Diagrams** | 6 | Mermaid decision-flow diagrams for key processes |
+| **Workflow Diagrams** | 16 | Mermaid decision-flow diagrams for every major feature |
 | **Jurisdiction Modules** | 5 | State-specific statutes, reporting, and qualifications |
 | **CLE Presentation** | 1 | 10-slide PowerPoint deck ready for conferences |
 | **Case Management Schema** | 1 | Airtable/CSV schema for practice management |
@@ -183,6 +183,38 @@ Every resource is mapped to the applicable standard with the correct obligation 
 | Fees | XIII | VIII | 14 | fee-disclosure |
 | Advertising | XIV | VII | 16 | — |
 | Advancement of Practice | — | IX | 17 | — |
+
+---
+
+## Workflow Diagrams
+
+16 Mermaid decision-flow diagrams in `references/workflow-diagrams.md`, covering every major feature:
+
+### Core Mediation Process
+| # | Diagram | What It Shows |
+|---|---------|-------------|
+| 1 | Intake & Screening Flow | Referral → individual sessions → screening → agreement to mediate |
+| 2 | Domestic Abuse Screening | 5 abuse types → indicators → safety decision tree |
+| 3 | Child Maltreatment Response | Concern → training check → reporting → continuation decision |
+| 4 | Conflict of Interest Decision | Prior relationships → disclosure → waiver or withdrawal |
+| 5 | Suspension & Termination | Safety/impasse/bad faith → suspend vs. terminate decision |
+| 6 | Full Mediation Process | Pre-mediation → during → post-mediation (3-phase overview) |
+
+### Tool-Specific Workflows
+| # | Diagram | What It Shows |
+|---|---------|-------------|
+| 7 | Party Preparation | 7-step readiness path from notice to prepared |
+| 8 | Mediator Case Lifecycle | 4 phases with all 20 tools mapped to each phase |
+| 9 | Risk Assessment Scoring | 6 domains → weighted score → 4 risk levels with actions |
+| 10 | Agreement Generation | Setup → clause selection → auto-fill → preview/download |
+| 11 | Ethical Decision Engine | Dilemma → decision tree → recommendation with obligation level |
+| 12 | Conflict Check Process | Name search → match types (direct/related/attorney) → resolution |
+| 13 | Child Support Calculation | Income shares vs. percentage model comparison |
+| 14 | Training Simulator | Scenario → response → graded feedback → score |
+| 15 | Practice Analytics | Data collection → metrics → analysis → reports |
+| 16 | Complete Tool Ecosystem | All 20 tools with data flow connections between party and mediator tools |
+
+All diagrams use [Mermaid](https://mermaid.js.org/) syntax and render in GitHub, VS Code, Obsidian, and any Mermaid-compatible viewer.
 
 ---
 
