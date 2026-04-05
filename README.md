@@ -41,7 +41,7 @@ Every resource in this repository is grounded in these standards, with the appli
 | **Reference Guides** | 20 | Standards-based guides for every phase of mediation practice |
 | **Practice Templates** | 14 | Customizable Markdown templates (+ 2 Word .docx versions) |
 | **Practice Scenarios** | 25 | "What do I do when..." real-world situation guidance |
-| **Interactive Tools** | 11 | 6 for mediators + 5 party-facing preparation tools |
+| **Interactive Tools** | 13 | 2 dashboards + 6 mediator tools + 5 party tools |
 | **Workflow Diagrams** | 6 | Mermaid decision-flow diagrams for key processes |
 | **Jurisdiction Modules** | 5 | State-specific statutes, reporting, and qualifications |
 | **CLE Presentation** | 1 | 10-slide PowerPoint deck ready for conferences |
@@ -51,7 +51,14 @@ Every resource in this repository is grounded in these standards, with the appli
 
 ## Interactive Tools
 
-All tools feature **localStorage persistence** (data survives page refresh), **file download/export**, **form validation**, and **ARIA accessibility attributes**.
+All tools feature **localStorage persistence** (data survives page refresh), **file download/export**, **form validation**, and **ARIA accessibility attributes**. Print-friendly CSS included for professional output.
+
+### Dashboards — Start Here
+
+| Tool | File | Key Features |
+|------|------|-------------|
+| **Mediator Dashboard** | `app/mediator-dashboard.jsx` | Practice hub with quick actions (new case, log session, find clause, run audit), recent cases list, 4 workflow phases (intake, active mediation, agreement/closure, practice management) each linking to relevant tools, templates, references, and party-sharing suggestions |
+| **Party Welcome** | `app/party-welcome.jsx` | "What brings you here?" guided onboarding with 4 paths (new to mediation, need a parenting plan, dividing finances, already have an agreement), each with step-by-step checklists linking to the right tools in the right order |
 
 ### For Mediators (6 tools)
 
@@ -209,7 +216,9 @@ access-to-mediation/
 │
 ├── scenarios/                        # 20 "What do I do when..." practice scenarios
 │
-├── app/                              # 11 interactive React components
+├── app/                              # 13 interactive React components + print CSS
+│   ├── mediator-dashboard.jsx        # Dashboard: mediator practice hub
+│   ├── party-welcome.jsx             # Dashboard: guided party onboarding
 │   ├── parenting-plan-builder.jsx    # Mediator: 50+ provisions builder
 │   ├── compliance-dashboard.jsx      # Mediator: ethics self-audit
 │   ├── ce-tracker.jsx                # Mediator: training hour tracker
@@ -220,7 +229,8 @@ access-to-mediation/
 │   ├── financial-disclosure.jsx      # Party: income/expenses/assets/debts
 │   ├── schedule-visualizer.jsx       # Party: custody calendar visualizer
 │   ├── cost-estimator.jsx            # Party: mediation cost estimator
-│   └── compliance-tracker.jsx        # Party: post-mediation agreement tracker
+│   ├── compliance-tracker.jsx        # Party: post-mediation agreement tracker
+│   └── print-styles.css              # Print-friendly stylesheet
 │
 ├── docs/                             # GitHub Pages site + Word/PowerPoint
 │   ├── index.html                    # Full interactive app (live demo)
