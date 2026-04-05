@@ -89,3 +89,12 @@ Reassess if barriers worsen or new ones emerge
 - Barrier assessment is **ongoing** — new barriers may emerge at any point
 - **Modifications must be effective** — implementing modifications that don't actually address the barrier is worse than not mediating
 - **Document your assessment and modifications** in your confidential case notes
+
+---
+
+## Related Resources
+
+→ See `references/02-domestic-abuse-screening.md` for domestic abuse as a barrier to participation.
+→ See `references/06-technology-odr.md` for technology accommodations and ODR accessibility.
+→ See `references/07-session-facilitation.md` for adapting facilitation techniques to barriers.
+→ See `references/14-fees.md` for addressing financial barriers to mediation.

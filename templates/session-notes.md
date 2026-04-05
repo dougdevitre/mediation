@@ -1,6 +1,6 @@
 # Mediation Session Notes
 
-> **Confidential Mediator Work Product** — Do not share with parties or the court unless required by law or agreement.
+> **Per 2025 Standards I–XII & 2005 Standard VI** — Confidential Mediator Work Product — Do not share with parties or the court unless required by law or agreement.
 
 ---
 

@@ -79,3 +79,13 @@ The mediator may hold separate sessions with individual parties. Before doing so
 - Domestic abuse indicators emerge
 - The mediator needs to assess whether mediation should continue
 - The discussion becomes unproductive or circular
+
+---
+
+## Related Resources
+
+→ See `references/02-domestic-abuse-screening.md` for safety assessment during sessions.
+→ See `references/08-voice-of-child.md` for including children's perspectives.
+→ See `references/10-barriers-modifications.md` for managing participation barriers.
+→ See `references/12-agreement-drafting.md` for transitioning from facilitation to agreement.
+→ See `templates/session-notes.md` for documenting session observations.

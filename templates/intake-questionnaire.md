@@ -1,6 +1,6 @@
 # Intake Questionnaire — Family Mediation
 
-> **Instructions for Mediator**: This form is for your use during individual pre-mediation sessions. Complete one per party. Do NOT share one party's responses with the other party. Adapt questions to your jurisdiction and practice.
+> **Per 2025 Standards III–IV & 2005 Standard VI**: This form is for your use during individual pre-mediation sessions. Complete one per party. Do NOT share one party's responses with the other party. Adapt questions to your jurisdiction and practice.
 
 ---
 

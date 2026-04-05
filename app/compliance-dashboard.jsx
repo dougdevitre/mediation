@@ -302,8 +302,8 @@ export default function ComplianceDashboard() {
         {noGaps.length > 0 && (
           <>
             <h3 style={{ fontSize: 16, color: "#dc2626", marginTop: 20, marginBottom: 8 }}>Non-Compliant — Immediate Action Required</h3>
-            {noGaps.map((g, i) => (
-              <div key={`no-${i}`} style={{ padding: 12, marginBottom: 8, background: "#fef2f2", borderRadius: 8, borderLeft: "4px solid #dc2626" }}>
+            {noGaps.map((g) => (
+              <div key={`no-${g.section}-${g.item.slice(0, 30)}`} style={{ padding: 12, marginBottom: 8, background: "#fef2f2", borderRadius: 8, borderLeft: "4px solid #dc2626" }}>
                 <div style={{ fontSize: 13, fontWeight: 600, color: "#0f172a" }}>{g.item}</div>
                 <div style={{ fontSize: 12, color: "#64748b", marginTop: 2 }}>{g.section} · {g.standard} · {g.level}</div>
               </div>
@@ -313,8 +313,8 @@ export default function ComplianceDashboard() {
         {partialGaps.length > 0 && (
           <>
             <h3 style={{ fontSize: 16, color: "#ca8a04", marginTop: 20, marginBottom: 8 }}>Partially Compliant — Improvement Needed</h3>
-            {partialGaps.map((g, i) => (
-              <div key={`partial-${i}`} style={{ padding: 12, marginBottom: 8, background: "#fffbeb", borderRadius: 8, borderLeft: "4px solid #ca8a04" }}>
+            {partialGaps.map((g) => (
+              <div key={`partial-${g.section}-${g.item.slice(0, 30)}`} style={{ padding: 12, marginBottom: 8, background: "#fffbeb", borderRadius: 8, borderLeft: "4px solid #ca8a04" }}>
                 <div style={{ fontSize: 13, fontWeight: 600, color: "#0f172a" }}>{g.item}</div>
                 <div style={{ fontSize: 12, color: "#64748b", marginTop: 2 }}>{g.section} · {g.standard} · {g.level}</div>
               </div>

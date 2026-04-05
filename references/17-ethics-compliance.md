@@ -125,3 +125,11 @@ For any unchecked item, create a corrective action plan with timeline.
 ## Record Keeping
 
 Document your self-audit results and corrective actions. Retain for at least 3 years. This documentation demonstrates good-faith commitment to ethical practice.
+
+---
+
+## Related Resources
+
+→ See `app/compliance-dashboard.jsx` for an interactive self-audit tool with scoring and gap analysis.
+→ See `templates/mediator-training-log.md` for documenting ongoing training that supports compliance.
+→ See `references/15-qualifications-training.md` for training requirements referenced in the audit.

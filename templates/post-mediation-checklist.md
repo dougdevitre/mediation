@@ -1,6 +1,6 @@
 # Post-Mediation Checklist
 
-> **Purpose**: Ensure all required steps are completed after mediation concludes — whether by agreement, suspension, or termination.
+> **Per 2025 Standards VIII, XII, XIII & 2005 Standards V, VIII**: Ensure all required steps are completed after mediation concludes — whether by agreement, suspension, or termination.
 
 ---
 

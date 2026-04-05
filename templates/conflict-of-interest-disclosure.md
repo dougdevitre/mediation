@@ -1,6 +1,6 @@
 # Conflict-of-Interest Disclosure
 
-> Use this form when a potential or actual conflict of interest has been identified and the mediator believes impartiality can be maintained. All parties must sign an informed waiver to proceed.
+> **Per 2025 Standard VII & 2005 Standards II/III**: Use this form when a potential or actual conflict of interest has been identified and the mediator believes impartiality can be maintained. All parties must sign an informed waiver to proceed.
 
 ---
 

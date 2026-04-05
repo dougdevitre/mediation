@@ -1,6 +1,6 @@
 # Mediation Summary
 
-> **Court-Neutral Template**: This summary documents the outcome of mediation. It does not assign blame, characterize parties, or make recommendations. Customize to your jurisdiction's requirements.
+> **Per 2025 Standard XII & 2005 Standard VI**: This summary documents the outcome of mediation. It does not assign blame, characterize parties, or make recommendations. Customize to your jurisdiction's requirements.
 
 ---
 

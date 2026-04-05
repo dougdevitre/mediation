@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Free, open-source practice tools for family mediators. Interactive Parenting Plan Builder, Compliance Dashboard, CE Tracker, and 20 practice scenarios grounded in 2025 AFCC/ABA and 2005 ABA/AAA/ACR Model Standards.">
+<meta name="description" content="Free, open-source practice tools for family mediators and parties. Interactive Parenting Plan Builder, Compliance Dashboard, CE Tracker, Mediation Readiness Tool, Financial Disclosure Worksheet, and 20 practice scenarios grounded in 2025 AFCC/ABA and 2005 ABA/AAA/ACR Model Standards.">
 <meta property="og:title" content="Access to Mediation - Open Source Family Mediation Practice Tools">
-<meta property="og:description" content="Free interactive tools for family mediators: Parenting Plan Builder, Compliance Dashboard, CE Tracker, and 20 practice scenarios.">
+<meta property="og:description" content="Free interactive tools for family mediators and parties: Parenting Plan Builder, Compliance Dashboard, CE Tracker, Mediation Readiness, Financial Disclosure, and 20 practice scenarios.">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Access to Mediation">
@@ -186,6 +186,8 @@ footer a{color:#93bbfc;text-decoration:none}
   <button onclick="showTab('ce')" id="tab-ce">CE Tracker</button>
   <button onclick="showTab('scenarios')" id="tab-scenarios">Scenarios</button>
   <button onclick="showTab('guides')" id="tab-guides">Reference Guides</button>
+  <button onclick="showTab('prep')" id="tab-prep">Mediation Prep</button>
+  <button onclick="showTab('financial')" id="tab-financial">Financial</button>
 </nav>
 
 <div class="hero" id="hero-section">
@@ -202,9 +204,9 @@ footer a{color:#93bbfc;text-decoration:none}
 <div class="section active" id="sec-home">
   <div class="stats">
     <div class="stat-card"><div class="num">19</div><div class="lbl">Reference Guides</div></div>
-    <div class="stat-card"><div class="num">12</div><div class="lbl">Practice Templates</div></div>
+    <div class="stat-card"><div class="num">14</div><div class="lbl">Practice Templates</div></div>
     <div class="stat-card"><div class="num">20</div><div class="lbl">Practice Scenarios</div></div>
-    <div class="stat-card"><div class="num">3</div><div class="lbl">Interactive Tools</div></div>
+    <div class="stat-card"><div class="num">5</div><div class="lbl">Interactive Tools</div></div>
     <div class="stat-card"><div class="num">5</div><div class="lbl">State Jurisdictions</div></div>
     <div class="stat-card"><div class="num">6</div><div class="lbl">Workflow Diagrams</div></div>
   </div>
@@ -213,6 +215,11 @@ footer a{color:#93bbfc;text-decoration:none}
     <div class="card" style="cursor:pointer" onclick="showTab('planner')"><h3>Parenting Plan Builder</h3><p>Select from 50+ provisions across 8 categories, add notes, and export a formatted plan. Saves your progress automatically.</p></div>
     <div class="card" style="cursor:pointer" onclick="showTab('compliance')"><h3>Compliance Dashboard</h3><p>Self-audit your practice against 46 compliance items across 10 standards areas. Get scores, gap analysis, and corrective actions.</p></div>
     <div class="card" style="cursor:pointer" onclick="showTab('ce')"><h3>CE Training Tracker</h3><p>Log training hours, tag topics, and track coverage against the 7 required training areas in the 2025 standards.</p></div>
+  </div>
+  <h2 class="sec-title">For Parties &mdash; Save Time &amp; Money</h2>
+  <div class="cards">
+    <div class="card" style="cursor:pointer" onclick="showTab('prep')"><h3>Mediation Readiness</h3><p>Step-by-step preparation tool: identify issues, set priorities, reflect on children's needs, gather documents, and write questions for your mediator.</p></div>
+    <div class="card" style="cursor:pointer" onclick="showTab('financial')"><h3>Financial Disclosure</h3><p>Organize income, expenses, assets, and debts before mediation. Incomplete financial info is the #1 reason sessions run long.</p></div>
   </div>
   <h2 class="sec-title">What Else Is Inside</h2>
   <div class="cards">
@@ -246,6 +253,12 @@ footer a{color:#93bbfc;text-decoration:none}
 
 <!-- REFERENCE GUIDES -->
 <div class="section" id="sec-guides"></div>
+
+<!-- MEDIATION PREP (Party-Facing) -->
+<div class="section" id="sec-prep"></div>
+
+<!-- FINANCIAL DISCLOSURE (Party-Facing) -->
+<div class="section" id="sec-financial"></div>
 </main>
 
 <footer role="contentinfo">
@@ -636,6 +649,38 @@ function renderGuides(){
   el.innerHTML = h;
 }
 
+// ==================== MEDIATION PREP (Party-Facing) ====================
+function renderPrep(){
+  const el = document.getElementById("sec-prep");
+  let h = `<div class="tool-header"><h2>Prepare for Your Mediation</h2></div>`;
+  h += `<p style="font-size:.87rem;color:#475569;margin-bottom:16px">This tool helps parties prepare for mediation sessions. Arriving prepared saves time and money. For the full interactive version with localStorage persistence and downloadable summaries, see <code>app/mediation-prep.jsx</code>.</p>`;
+  h += `<div style="display:grid;gap:12px">`;
+  h += `<div style="background:#f8fafc;border-radius:8px;padding:16px;border:1px solid #e2e8f0"><h3 style="margin:0 0 8px;font-size:1rem;color:#0f172a">Step 1: What to Expect</h3><p style="font-size:.85rem;color:#334155">Mediation is a voluntary process where a neutral mediator helps you communicate and reach your own agreements. The mediator doesn't take sides or give legal advice.</p></div>`;
+  h += `<div style="background:#f8fafc;border-radius:8px;padding:16px;border:1px solid #e2e8f0"><h3 style="margin:0 0 8px;font-size:1rem;color:#0f172a">Step 2: Identify Your Issues</h3><p style="font-size:.85rem;color:#334155">Common issues: parenting plan, child support, spousal support, property division, debt allocation, retirement accounts, insurance, tax considerations, relocation, communication.</p></div>`;
+  h += `<div style="background:#f8fafc;border-radius:8px;padding:16px;border:1px solid #e2e8f0"><h3 style="margin:0 0 8px;font-size:1rem;color:#0f172a">Step 3: Set Priorities</h3><p style="font-size:.85rem;color:#334155">For each issue, decide: is it a must-have, important, or something you're flexible on? Knowing where you can compromise helps negotiation.</p></div>`;
+  h += `<div style="background:#f8fafc;border-radius:8px;padding:16px;border:1px solid #e2e8f0"><h3 style="margin:0 0 8px;font-size:1rem;color:#0f172a">Step 4: Think About Your Children</h3><p style="font-size:.85rem;color:#334155">Reflect on: school arrangements, activities, medical needs, daily routines, important relationships, safety concerns, how children handle transitions.</p></div>`;
+  h += `<div style="background:#f8fafc;border-radius:8px;padding:16px;border:1px solid #e2e8f0"><h3 style="margin:0 0 8px;font-size:1rem;color:#0f172a">Step 5: Gather Documents</h3><p style="font-size:.85rem;color:#334155">Bring: pay stubs, tax returns, bank statements, retirement statements, property docs, debt statements, insurance policies, existing court orders, children's records.</p></div>`;
+  h += `<div style="background:#f8fafc;border-radius:8px;padding:16px;border:1px solid #e2e8f0"><h3 style="margin:0 0 8px;font-size:1rem;color:#0f172a">Step 6: Write Your Questions</h3><p style="font-size:.85rem;color:#334155">Write down anything you want to ask your mediator. No question is too small. Examples: How long will this take? Can I bring my attorney? What if we can't agree?</p></div>`;
+  h += `</div>`;
+  h += `<div class="disclaimer" style="margin-top:16px">For the full interactive preparation tool with checklists, priority ranking, and downloadable summaries, use the React component at <code>app/mediation-prep.jsx</code>.</div>`;
+  el.innerHTML = h;
+}
+
+// ==================== FINANCIAL DISCLOSURE (Party-Facing) ====================
+function renderFinancial(){
+  const el = document.getElementById("sec-financial");
+  let h = `<div class="tool-header"><h2>Financial Disclosure Worksheet</h2></div>`;
+  h += `<p style="font-size:.87rem;color:#475569;margin-bottom:16px">Organize your finances before mediation. Incomplete financial disclosure is the #1 reason mediation sessions run long. For the full interactive version with calculations, see <code>app/financial-disclosure.jsx</code>.</p>`;
+  h += `<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">`;
+  h += `<div style="background:#f0fdf4;border-radius:8px;padding:16px;border:1px solid #bbf7d0"><h3 style="margin:0 0 8px;font-size:1rem;color:#166534">Monthly Income</h3><ul style="font-size:.85rem;color:#334155;padding-left:16px;margin:0"><li>Employment income</li><li>Self-employment</li><li>Bonuses/commissions</li><li>Investment/rental</li><li>Retirement/pension</li><li>Other income</li></ul></div>`;
+  h += `<div style="background:#fef2f2;border-radius:8px;padding:16px;border:1px solid #fecaca"><h3 style="margin:0 0 8px;font-size:1rem;color:#991b1b">Monthly Expenses</h3><ul style="font-size:.85rem;color:#334155;padding-left:16px;margin:0"><li>Housing &amp; utilities</li><li>Transportation</li><li>Children's expenses</li><li>Health &amp; insurance</li><li>Personal &amp; living</li><li>Debt payments</li><li>Savings</li></ul></div>`;
+  h += `<div style="background:#eff6ff;border-radius:8px;padding:16px;border:1px solid #bfdbfe"><h3 style="margin:0 0 8px;font-size:1rem;color:#1e40af">Assets</h3><ul style="font-size:.85rem;color:#334155;padding-left:16px;margin:0"><li>Real estate</li><li>Bank accounts</li><li>Retirement accounts</li><li>Investments</li><li>Vehicles</li><li>Business interests</li></ul></div>`;
+  h += `<div style="background:#fefce8;border-radius:8px;padding:16px;border:1px solid #fde68a"><h3 style="margin:0 0 8px;font-size:1rem;color:#854d0e">Debts</h3><ul style="font-size:.85rem;color:#334155;padding-left:16px;margin:0"><li>Mortgage</li><li>Auto loans</li><li>Credit cards</li><li>Student loans</li><li>Medical debt</li><li>Tax debt</li></ul></div>`;
+  h += `</div>`;
+  h += `<div class="disclaimer" style="margin-top:16px">For the full interactive worksheet with live calculations, expense breakdowns, and downloadable reports, use the React component at <code>app/financial-disclosure.jsx</code>.</div>`;
+  el.innerHTML = h;
+}
+
 // ==================== INIT ====================
 document.addEventListener("DOMContentLoaded", function(){
   renderPlanner();
@@ -643,6 +688,8 @@ document.addEventListener("DOMContentLoaded", function(){
   renderCE();
   renderScenarios();
   renderGuides();
+  renderPrep();
+  renderFinancial();
 });
 </script>
 </body>

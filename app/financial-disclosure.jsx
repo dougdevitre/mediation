@@ -331,9 +331,8 @@ export default function FinancialDisclosure() {
           <div style={cardStyle}>
             <h3 style={{ margin: "0 0 4px", fontSize: 16, color: "#0f172a" }}>Assets</h3>
             <p style={{ margin: "0 0 12px", fontSize: 13, color: "#64748b" }}>Enter current estimated values. Include both marital and separate property — your mediator can help sort out what's what.</p>
-            {["Real Estate", "Bank Accounts", "Retirement", "Investments", "Personal Property", "Business", "Other"].map((cat) => {
+            {["Real Estate", "Bank Accounts", "Retirement", "Investments", "Personal Property", "Business", "Other"].filter((cat) => ASSET_CATEGORIES.some((a) => a.category === cat)).map((cat) => {
               const items = ASSET_CATEGORIES.filter((a) => a.category === cat);
-              if (items.length === 0) return null;
               return (
                 <div key={cat} style={{ marginBottom: 12 }}>
                   <div style={{ fontSize: 12, fontWeight: 600, color: "#64748b", marginBottom: 4 }}>{cat}</div>
@@ -423,9 +422,8 @@ export default function FinancialDisclosure() {
           {/* Expense breakdown */}
           <div style={cardStyle}>
             <h4 style={{ margin: "0 0 8px", fontSize: 15, color: "#0f172a" }}>Expense Breakdown</h4>
-            {EXPENSE_CATEGORIES.map((cat) => {
+            {EXPENSE_CATEGORIES.filter((cat) => cat.items.reduce((s, i) => s + getNum(i.id), 0) > 0).map((cat) => {
               const catTotal = cat.items.reduce((s, i) => s + getNum(i.id), 0);
-              if (catTotal === 0) return null;
               const pct = totalExpenses > 0 ? Math.round((catTotal / totalExpenses) * 100) : 0;
               return (
                 <div key={cat.name} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "4px 0" }}>

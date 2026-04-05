@@ -44,3 +44,10 @@ Ensure truthful, non-deceptive advertising that does not undermine public confid
 - Using misleading titles (e.g., "Certified" when no recognized certification body is involved)
 - Implying specialization without corresponding training
 - Testimonials that promise specific results
+
+---
+
+## Related Resources
+
+→ See `references/17-ethics-compliance.md` for the quarterly ethics self-audit including advertising compliance.
+→ See `references/15-qualifications-training.md` for ensuring advertised qualifications are accurate and current.
