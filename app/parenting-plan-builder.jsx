@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+const STORAGE_KEY = "mediation-parenting-plan";
 
 const CATEGORIES = [
   {
@@ -93,11 +95,48 @@ const CATEGORIES = [
   },
 ];
 
+const RECOMMENDED_CATEGORIES = ["Residential Schedule", "Decision-Making", "Communication"];
+
+function loadFromStorage() {
+  try {
+    const data = localStorage.getItem(STORAGE_KEY);
+    if (!data) return null;
+    const parsed = JSON.parse(data);
+    return { selected: new Set(parsed.selected || []), notes: parsed.notes || {} };
+  } catch {
+    return null;
+  }
+}
+
+function saveToStorage(selected, notes) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ selected: [...selected], notes }));
+  } catch {
+    // storage full or unavailable
+  }
+}
+
+function downloadFile(content, filename) {
+  const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
 export default function ParentingPlanBuilder() {
-  const [selected, setSelected] = useState(new Set());
-  const [notes, setNotes] = useState({});
+  const stored = loadFromStorage();
+  const [selected, setSelected] = useState(stored?.selected || new Set());
+  const [notes, setNotes] = useState(stored?.notes || {});
   const [expandedCat, setExpandedCat] = useState(new Set(["Residential Schedule"]));
   const [view, setView] = useState("builder");
+  const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    saveToStorage(selected, notes);
+  }, [selected, notes]);
 
   const toggle = (id) => {
     const next = new Set(selected);
@@ -113,31 +152,60 @@ export default function ParentingPlanBuilder() {
 
   const updateNote = (id, val) => setNotes({ ...notes, [id]: val });
 
+  const clearAll = () => {
+    setSelected(new Set());
+    setNotes({});
+  };
+
   const getSummary = () => {
     return CATEGORIES.map((cat) => {
       const items = cat.provisions.filter((p) => selected.has(p.id));
       if (!items.length) return null;
-      return { category: cat.name, items: items.map((p) => ({ label: p.label, note: notes[p.id] || "" })) };
+      return { category: cat.name, items: items.map((p) => ({ label: p.label, detail: p.detail, note: notes[p.id] || "" })) };
     }).filter(Boolean);
   };
+
+  const missingRecommended = RECOMMENDED_CATEGORIES.filter(
+    (catName) => {
+      const cat = CATEGORIES.find((c) => c.name === catName);
+      return cat && !cat.provisions.some((p) => selected.has(p.id));
+    }
+  );
 
   const exportText = () => {
     const summary = getSummary();
     let text = "PARENTING PLAN — SELECTED PROVISIONS\n";
-    text += "=" .repeat(50) + "\n\n";
+    text += "=".repeat(50) + "\n\n";
     text += `Generated: ${new Date().toLocaleDateString()}\n`;
     text += `Total provisions selected: ${selected.size}\n\n`;
     summary.forEach((s) => {
       text += `\n## ${s.category}\n${"—".repeat(40)}\n`;
       s.items.forEach((item) => {
-        text += `✓ ${item.label}\n`;
-        if (item.note) text += `  Notes: ${item.note}\n`;
+        text += `[x] ${item.label}\n`;
+        text += `    ${item.detail}\n`;
+        if (item.note) text += `    Notes: ${item.note}\n`;
       });
     });
+    if (missingRecommended.length > 0) {
+      text += `\n\nNOTE: The following recommended categories have no provisions selected:\n`;
+      missingRecommended.forEach((c) => (text += `  - ${c}\n`));
+    }
     text += "\n\nDISCLAIMER: This is a working document generated for mediation purposes.\n";
     text += "It does not constitute a legal agreement. Have any final plan reviewed by\n";
     text += "independent legal counsel before signing.\n";
+    text += "\nBased on 2025 AFCC/ABA Model Standards for Family and Divorce Mediation.\n";
     return text;
+  };
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(exportText());
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleDownload = () => {
+    const date = new Date().toISOString().slice(0, 10);
+    downloadFile(exportText(), `parenting-plan-${date}.txt`);
   };
 
   if (view === "summary") {
@@ -146,9 +214,14 @@ export default function ParentingPlanBuilder() {
       <div style={{ fontFamily: "system-ui, sans-serif", maxWidth: 700, margin: "0 auto", padding: 16 }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
           <h2 style={{ margin: 0, fontSize: 20, color: "#1e293b" }}>Plan Summary — {selected.size} Provisions</h2>
-          <div style={{ display: "flex", gap: 8 }}>
-            <button onClick={() => setView("builder")} style={{ padding: "6px 14px", borderRadius: 6, border: "1px solid #cbd5e1", background: "#fff", cursor: "pointer", fontSize: 13 }}>← Back</button>
-            <button onClick={() => { navigator.clipboard.writeText(exportText()); }} style={{ padding: "6px 14px", borderRadius: 6, border: "none", background: "#2563eb", color: "#fff", cursor: "pointer", fontSize: 13 }}>Copy to Clipboard</button>
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+            <button onClick={() => setView("builder")} style={{ padding: "6px 14px", borderRadius: 6, border: "1px solid #cbd5e1", background: "#fff", cursor: "pointer", fontSize: 13 }}>Back</button>
+            <button onClick={handleCopy} style={{ padding: "6px 14px", borderRadius: 6, border: "none", background: "#2563eb", color: "#fff", cursor: "pointer", fontSize: 13 }} aria-label="Copy plan to clipboard">
+              {copied ? "Copied" : "Copy"}
+            </button>
+            <button onClick={handleDownload} style={{ padding: "6px 14px", borderRadius: 6, border: "none", background: "#16a34a", color: "#fff", cursor: "pointer", fontSize: 13 }} aria-label="Download plan as text file">
+              Download
+            </button>
           </div>
         </div>
         {summary.length === 0 && <p style={{ color: "#64748b" }}>No provisions selected yet. Go back and select provisions to include in the plan.</p>}
@@ -158,11 +231,23 @@ export default function ParentingPlanBuilder() {
             {s.items.map((item) => (
               <div key={item.label} style={{ marginBottom: 8, paddingLeft: 12, borderLeft: "3px solid #3b82f6" }}>
                 <div style={{ fontWeight: 600, fontSize: 14, color: "#1e293b" }}>{item.label}</div>
+                <div style={{ fontSize: 12, color: "#94a3b8", marginTop: 1 }}>{item.detail}</div>
                 {item.note && <div style={{ fontSize: 13, color: "#475569", marginTop: 2 }}>{item.note}</div>}
               </div>
             ))}
           </div>
         ))}
+        {missingRecommended.length > 0 && (
+          <div style={{ padding: 12, background: "#fef3c7", borderRadius: 8, borderLeft: "4px solid #f59e0b", marginBottom: 16 }} role="status">
+            <div style={{ fontSize: 13, fontWeight: 600, color: "#92400e", marginBottom: 4 }}>Recommended categories with no provisions selected:</div>
+            {missingRecommended.map((c) => (
+              <div key={c} style={{ fontSize: 13, color: "#92400e" }}>- {c}</div>
+            ))}
+          </div>
+        )}
+        <div style={{ padding: 12, background: "#fef3c7", borderRadius: 8, fontSize: 12, color: "#92400e" }}>
+          This is a mediation working tool, not a legal document. Any final parenting plan should be reviewed by each party's independent attorney.
+        </div>
       </div>
     );
   }
@@ -174,39 +259,62 @@ export default function ParentingPlanBuilder() {
         <p style={{ margin: 0, fontSize: 13, color: "#64748b" }}>Select provisions to include. Add notes for each. Based on 2025 AFCC/ABA Model Standards.</p>
       </div>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12, padding: "8px 12px", background: "#eff6ff", borderRadius: 8 }}>
-        <span style={{ fontSize: 14, fontWeight: 600, color: "#1e40af" }}>{selected.size} provisions selected</span>
-        <button onClick={() => setView("summary")} disabled={selected.size === 0} style={{ padding: "6px 14px", borderRadius: 6, border: "none", background: selected.size > 0 ? "#2563eb" : "#94a3b8", color: "#fff", cursor: selected.size > 0 ? "pointer" : "default", fontSize: 13 }}>
-          View Summary →
-        </button>
-      </div>
-      {CATEGORIES.map((cat) => (
-        <div key={cat.name} style={{ marginBottom: 8, border: "1px solid #e2e8f0", borderRadius: 8, overflow: "hidden" }}>
-          <button onClick={() => toggleCat(cat.name)} style={{ width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 14px", background: "#f8fafc", border: "none", cursor: "pointer", fontSize: 15, fontWeight: 600, color: "#0f172a" }}>
-            <span>{cat.name}</span>
-            <span style={{ fontSize: 12, color: "#64748b" }}>
-              {cat.provisions.filter((p) => selected.has(p.id)).length}/{cat.provisions.length} · {expandedCat.has(cat.name) ? "▲" : "▼"}
-            </span>
-          </button>
-          {expandedCat.has(cat.name) && (
-            <div style={{ padding: "8px 14px" }}>
-              {cat.provisions.map((p) => (
-                <div key={p.id} style={{ padding: "8px 0", borderBottom: "1px solid #f1f5f9" }}>
-                  <label style={{ display: "flex", alignItems: "flex-start", gap: 8, cursor: "pointer" }}>
-                    <input type="checkbox" checked={selected.has(p.id)} onChange={() => toggle(p.id)} style={{ marginTop: 3, accentColor: "#2563eb" }} />
-                    <div>
-                      <div style={{ fontSize: 14, fontWeight: 500, color: "#1e293b" }}>{p.label}</div>
-                      <div style={{ fontSize: 12, color: "#64748b" }}>{p.detail}</div>
-                    </div>
-                  </label>
-                  {selected.has(p.id) && (
-                    <textarea value={notes[p.id] || ""} onChange={(e) => updateNote(p.id, e.target.value)} placeholder="Add notes for this provision..." style={{ width: "100%", marginTop: 6, padding: 8, border: "1px solid #cbd5e1", borderRadius: 6, fontSize: 13, resize: "vertical", minHeight: 50, fontFamily: "inherit", boxSizing: "border-box" }} />
-                  )}
-                </div>
-              ))}
-            </div>
+        <div>
+          <span style={{ fontSize: 14, fontWeight: 600, color: "#1e40af" }}>{selected.size} provisions selected</span>
+          {selected.size > 0 && (
+            <button onClick={clearAll} style={{ marginLeft: 8, padding: "2px 8px", borderRadius: 4, border: "1px solid #cbd5e1", background: "#fff", cursor: "pointer", fontSize: 11, color: "#64748b" }} aria-label="Clear all selections">
+              Clear all
+            </button>
           )}
         </div>
-      ))}
+        <button onClick={() => setView("summary")} disabled={selected.size === 0} style={{ padding: "6px 14px", borderRadius: 6, border: "none", background: selected.size > 0 ? "#2563eb" : "#94a3b8", color: "#fff", cursor: selected.size > 0 ? "pointer" : "default", fontSize: 13 }} aria-label={`View summary of ${selected.size} selected provisions`}>
+          View Summary
+        </button>
+      </div>
+
+      {missingRecommended.length > 0 && selected.size > 0 && (
+        <div style={{ padding: 8, marginBottom: 12, background: "#fffbeb", borderRadius: 8, borderLeft: "3px solid #f59e0b", fontSize: 12, color: "#92400e" }} role="status">
+          Consider adding provisions from: {missingRecommended.join(", ")}
+        </div>
+      )}
+
+      {CATEGORIES.map((cat) => {
+        const selectedInCat = cat.provisions.filter((p) => selected.has(p.id)).length;
+        return (
+          <div key={cat.name} style={{ marginBottom: 8, border: "1px solid #e2e8f0", borderRadius: 8, overflow: "hidden" }}>
+            <button onClick={() => toggleCat(cat.name)} aria-expanded={expandedCat.has(cat.name)} style={{ width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 14px", background: "#f8fafc", border: "none", cursor: "pointer", fontSize: 15, fontWeight: 600, color: "#0f172a" }}>
+              <span>{cat.name}</span>
+              <span style={{ fontSize: 12, color: "#64748b" }}>
+                {selectedInCat}/{cat.provisions.length} {expandedCat.has(cat.name) ? "[-]" : "[+]"}
+              </span>
+            </button>
+            {expandedCat.has(cat.name) && (
+              <div style={{ padding: "8px 14px" }}>
+                {cat.provisions.map((p) => (
+                  <div key={p.id} style={{ padding: "8px 0", borderBottom: "1px solid #f1f5f9" }}>
+                    <label htmlFor={`provision-${p.id}`} style={{ display: "flex", alignItems: "flex-start", gap: 8, cursor: "pointer" }}>
+                      <input id={`provision-${p.id}`} type="checkbox" checked={selected.has(p.id)} onChange={() => toggle(p.id)} style={{ marginTop: 3, accentColor: "#2563eb" }} />
+                      <div>
+                        <div style={{ fontSize: 14, fontWeight: 500, color: "#1e293b" }}>{p.label}</div>
+                        <div style={{ fontSize: 12, color: "#64748b" }}>{p.detail}</div>
+                      </div>
+                    </label>
+                    {selected.has(p.id) && (
+                      <textarea
+                        value={notes[p.id] || ""}
+                        onChange={(e) => updateNote(p.id, e.target.value)}
+                        placeholder="Add notes for this provision..."
+                        aria-label={`Notes for ${p.label}`}
+                        style={{ width: "100%", marginTop: 6, padding: 8, border: "1px solid #cbd5e1", borderRadius: 6, fontSize: 13, resize: "vertical", minHeight: 50, fontFamily: "inherit", boxSizing: "border-box" }}
+                      />
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        );
+      })}
       <div style={{ marginTop: 16, padding: 12, background: "#fef3c7", borderRadius: 8, fontSize: 12, color: "#92400e" }}>
         This is a mediation working tool, not a legal document. Any final parenting plan should be reviewed by each party's independent attorney.
       </div>
