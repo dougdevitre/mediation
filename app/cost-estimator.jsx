@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 const STORAGE_KEY = "mediation-cost-est";
 
@@ -55,23 +55,27 @@ export default function CostEstimator() {
   const rate = parseFloat(hourlyRate) || 0;
   const sessLen = parseFloat(sessionLength) || 1.5;
 
-  const baseSessions = ISSUE_COMPLEXITY.filter((i) => issues.has(i.id)).reduce((s, i) => s + i.sessions, 0);
-  const intakeSessions = issues.size > 0 ? 1 : 0;
-  const totalBase = baseSessions + intakeSessions;
+  const { baseSessions, intakeSessions, totalBase, multiplier, adjustedSessions, totalHours, totalCost, perPartyCost, lowEst, highEst, lowPerParty, highPerParty } = useMemo(() => {
+    const baseSessions = ISSUE_COMPLEXITY.filter((i) => issues.has(i.id)).reduce((s, i) => s + i.sessions, 0);
+    const intakeSessions = issues.size > 0 ? 1 : 0;
+    const totalBase = baseSessions + intakeSessions;
 
-  const multiplier = COMPLEXITY_FACTORS.filter((f) => factors.has(f.id)).reduce((m, f) => m * f.multiplier, 1);
-  const adjustedSessions = Math.ceil(totalBase * multiplier * 2) / 2;
+    const multiplier = COMPLEXITY_FACTORS.filter((f) => factors.has(f.id)).reduce((m, f) => m * f.multiplier, 1);
+    const adjustedSessions = Math.ceil(totalBase * multiplier * 2) / 2;
 
-  const totalHours = adjustedSessions * sessLen;
-  const totalCost = totalHours * rate;
-  const perPartyCost = splitMethod === "equal" ? totalCost / 2 : totalCost;
+    const totalHours = adjustedSessions * sessLen;
+    const totalCost = totalHours * rate;
+    const perPartyCost = splitMethod === "equal" ? totalCost / 2 : totalCost;
+
+    const lowEst = Math.round(totalCost * 0.75);
+    const highEst = Math.round(totalCost * 1.35);
+    const lowPerParty = splitMethod === "equal" ? Math.round(lowEst / 2) : lowEst;
+    const highPerParty = splitMethod === "equal" ? Math.round(highEst / 2) : highEst;
+
+    return { baseSessions, intakeSessions, totalBase, multiplier, adjustedSessions, totalHours, totalCost, perPartyCost, lowEst, highEst, lowPerParty, highPerParty };
+  }, [issues, factors, rate, sessLen, splitMethod]);
 
   const fmt = (n) => "$" + n.toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-
-  const lowEst = Math.round(totalCost * 0.75);
-  const highEst = Math.round(totalCost * 1.35);
-  const lowPerParty = splitMethod === "equal" ? Math.round(lowEst / 2) : lowEst;
-  const highPerParty = splitMethod === "equal" ? Math.round(highEst / 2) : highEst;
 
   const exportEstimate = () => {
     const lines = [

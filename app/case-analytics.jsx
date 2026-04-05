@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 const STORAGE_KEY = "mediation-case-analytics";
 
@@ -47,34 +47,40 @@ export default function CaseAnalytics() {
   const clearAll = () => { setCases([]); setShowForm(false); };
 
   // Filtering
-  const now = new Date();
-  const filtered = cases.filter((c) => {
-    if (dateFilter === "all") return true;
-    if (!c.dateClosed) return dateFilter === "active";
-    const closed = new Date(c.dateClosed);
-    if (dateFilter === "ytd") return closed.getFullYear() === now.getFullYear();
-    if (dateFilter === "12m") return (now - closed) < 365 * 24 * 60 * 60 * 1000;
-    if (dateFilter === "active") return !c.dateClosed;
-    return true;
-  });
+  const filtered = useMemo(() => {
+    const now = new Date();
+    return cases.filter((c) => {
+      if (dateFilter === "all") return true;
+      if (!c.dateClosed) return dateFilter === "active";
+      const closed = new Date(c.dateClosed);
+      if (dateFilter === "ytd") return closed.getFullYear() === now.getFullYear();
+      if (dateFilter === "12m") return (now - closed) < 365 * 24 * 60 * 60 * 1000;
+      if (dateFilter === "active") return !c.dateClosed;
+      return true;
+    });
+  }, [cases, dateFilter]);
 
   // Analytics
-  const totalCases = filtered.length;
-  const totalSessions = filtered.reduce((s, c) => s + c.sessions, 0);
-  const totalHours = filtered.reduce((s, c) => s + c.hours, 0);
-  const totalFees = filtered.reduce((s, c) => s + c.fees, 0);
-  const avgSessions = totalCases > 0 ? (totalSessions / totalCases).toFixed(1) : "0";
-  const avgHours = totalCases > 0 ? (totalHours / totalCases).toFixed(1) : "0";
-  const dvScreenedPct = totalCases > 0 ? Math.round((filtered.filter((c) => c.dvScreened).length / totalCases) * 100) : 0;
+  const { totalCases, totalSessions, totalHours, totalFees, avgSessions, avgHours, dvScreenedPct, outcomeBreakdown, typeBreakdown, referralBreakdown, agreementRate, fullAgreementRate, childrenServed } = useMemo(() => {
+    const totalCases = filtered.length;
+    const totalSessions = filtered.reduce((s, c) => s + c.sessions, 0);
+    const totalHours = filtered.reduce((s, c) => s + c.hours, 0);
+    const totalFees = filtered.reduce((s, c) => s + c.fees, 0);
+    const avgSessions = totalCases > 0 ? (totalSessions / totalCases).toFixed(1) : "0";
+    const avgHours = totalCases > 0 ? (totalHours / totalCases).toFixed(1) : "0";
+    const dvScreenedPct = totalCases > 0 ? Math.round((filtered.filter((c) => c.dvScreened).length / totalCases) * 100) : 0;
 
-  const outcomeBreakdown = OUTCOMES.map((o) => ({ label: o, count: filtered.filter((c) => c.outcome === o).length })).filter((o) => o.count > 0);
-  const typeBreakdown = CASE_TYPES.map((t) => ({ label: t, count: filtered.filter((c) => c.type === t).length })).filter((t) => t.count > 0);
-  const referralBreakdown = REFERRAL_SOURCES.map((r) => ({ label: r, count: filtered.filter((c) => c.referral === r).length })).filter((r) => r.count > 0);
+    const outcomeBreakdown = OUTCOMES.map((o) => ({ label: o, count: filtered.filter((c) => c.outcome === o).length })).filter((o) => o.count > 0);
+    const typeBreakdown = CASE_TYPES.map((t) => ({ label: t, count: filtered.filter((c) => c.type === t).length })).filter((t) => t.count > 0);
+    const referralBreakdown = REFERRAL_SOURCES.map((r) => ({ label: r, count: filtered.filter((c) => c.referral === r).length })).filter((r) => r.count > 0);
 
-  const agreementRate = totalCases > 0 ? Math.round((filtered.filter((c) => c.outcome === "Full Agreement" || c.outcome === "Partial Agreement").length / totalCases) * 100) : 0;
-  const fullAgreementRate = totalCases > 0 ? Math.round((filtered.filter((c) => c.outcome === "Full Agreement").length / totalCases) * 100) : 0;
+    const agreementRate = totalCases > 0 ? Math.round((filtered.filter((c) => c.outcome === "Full Agreement" || c.outcome === "Partial Agreement").length / totalCases) * 100) : 0;
+    const fullAgreementRate = totalCases > 0 ? Math.round((filtered.filter((c) => c.outcome === "Full Agreement").length / totalCases) * 100) : 0;
 
-  const childrenServed = filtered.reduce((s, c) => s + c.children, 0);
+    const childrenServed = filtered.reduce((s, c) => s + c.children, 0);
+
+    return { totalCases, totalSessions, totalHours, totalFees, avgSessions, avgHours, dvScreenedPct, outcomeBreakdown, typeBreakdown, referralBreakdown, agreementRate, fullAgreementRate, childrenServed };
+  }, [filtered]);
 
   const fmt = (n) => "$" + n.toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
 

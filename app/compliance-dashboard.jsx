@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 const STORAGE_KEY = "mediation-compliance-audit";
 
@@ -163,13 +163,16 @@ export default function ComplianceDashboard() {
 
   const getResponse = (sectionIdx, itemIdx) => responses[`${sectionIdx}-${itemIdx}`];
 
-  const totalItems = AUDIT_SECTIONS.reduce((sum, s) => sum + s.items.length, 0);
-  const answeredItems = Object.keys(responses).length;
-  const yesItems = Object.values(responses).filter((v) => v === "yes").length;
-  const noItems = Object.values(responses).filter((v) => v === "no").length;
-  const partialItems = Object.values(responses).filter((v) => v === "partial").length;
-  const score = answeredItems > 0 ? Math.round((yesItems / answeredItems) * 100) : 0;
-  const progressPct = Math.round((answeredItems / totalItems) * 100);
+  const { totalItems, answeredItems, yesItems, noItems, partialItems, score, progressPct } = useMemo(() => {
+    const totalItems = AUDIT_SECTIONS.reduce((sum, s) => sum + s.items.length, 0);
+    const answeredItems = Object.keys(responses).length;
+    const yesItems = Object.values(responses).filter((v) => v === "yes").length;
+    const noItems = Object.values(responses).filter((v) => v === "no").length;
+    const partialItems = Object.values(responses).filter((v) => v === "partial").length;
+    const score = answeredItems > 0 ? Math.round((yesItems / answeredItems) * 100) : 0;
+    const progressPct = Math.round((answeredItems / totalItems) * 100);
+    return { totalItems, answeredItems, yesItems, noItems, partialItems, score, progressPct };
+  }, [responses]);
 
   const getSectionScore = (sectionIdx) => {
     const section = AUDIT_SECTIONS[sectionIdx];

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 const STORAGE_KEY = "mediation-training-sim";
 
@@ -187,16 +187,19 @@ export default function TrainingSimulator() {
     setAnswers((prev) => ({ ...prev, [scenarioId]: optionIndex }));
   };
 
-  const completedCount = Object.keys(answers).length;
-  const correctCount = Object.entries(answers).filter(([sid, idx]) => {
-    const s = SCENARIOS.find((sc) => sc.id === Number(sid));
-    return s && s.options[idx]?.grade === "correct";
-  }).length;
-  const partialCount = Object.entries(answers).filter(([sid, idx]) => {
-    const s = SCENARIOS.find((sc) => sc.id === Number(sid));
-    return s && s.options[idx]?.grade === "partial";
-  }).length;
-  const score = completedCount > 0 ? Math.round(((correctCount + partialCount * 0.5) / completedCount) * 100) : 0;
+  const { completedCount, correctCount, partialCount, score } = useMemo(() => {
+    const completedCount = Object.keys(answers).length;
+    const correctCount = Object.entries(answers).filter(([sid, idx]) => {
+      const s = SCENARIOS.find((sc) => sc.id === Number(sid));
+      return s && s.options[idx]?.grade === "correct";
+    }).length;
+    const partialCount = Object.entries(answers).filter(([sid, idx]) => {
+      const s = SCENARIOS.find((sc) => sc.id === Number(sid));
+      return s && s.options[idx]?.grade === "partial";
+    }).length;
+    const score = completedCount > 0 ? Math.round(((correctCount + partialCount * 0.5) / completedCount) * 100) : 0;
+    return { completedCount, correctCount, partialCount, score };
+  }, [answers]);
 
   const filtered = filterCategory === "All" ? SCENARIOS : SCENARIOS.filter((s) => s.category === filterCategory);
 
