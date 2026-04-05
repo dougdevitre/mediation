@@ -187,7 +187,7 @@ Abuse disclosed in joint session, financial disclosure refusal, child refusing a
 
 ## Interactive Tools (React)
 
-→ See the `app/` directory for 16 interactive React components:
+→ See the `app/` directory for 21 interactive React components:
 
 ### Dashboards
 | Tool | File | Description |
@@ -207,6 +207,9 @@ Abuse disclosed in joint session, financial disclosure refusal, child refusing a
 | Agreement Generator | `app/agreement-generator.jsx` | Assemble complete draft agreements from clauses with auto-filled variables |
 | Risk Assessment | `app/risk-assessment.jsx` | Scored DV/safety screening with 30+ indicators, risk levels, and process recommendations |
 | Case Analytics | `app/case-analytics.jsx` | Practice metrics: agreement rates, case types, revenue, DV compliance, filtered reports |
+| Ethical Decision Engine | `app/decision-engine.jsx` | Interactive decision trees for ethical dilemmas with standards-based recommendations |
+| Conflict Check Database | `app/conflict-check.jsx` | Track past clients, auto-detect conflicts on new cases |
+| Training Simulator | `app/training-simulator.jsx` | 12 interactive training scenarios with multiple-choice feedback and scoring |
 
 ### For Parties (Save Time & Money)
 | Tool | File | Description |
@@ -216,6 +219,7 @@ Abuse disclosed in joint session, financial disclosure refusal, child refusing a
 | Schedule Visualizer | `app/schedule-visualizer.jsx` | See custody schedules on a real calendar with time-split percentages |
 | Cost Estimator | `app/cost-estimator.jsx` | Estimate total mediation cost based on issues and complexity |
 | Compliance Tracker | `app/compliance-tracker.jsx` | Track whether agreement terms are being followed post-mediation |
+| Child Support Estimator | `app/child-support-calc.jsx` | State-specific guideline calculations with income shares and percentage models |
 
 ---
 
