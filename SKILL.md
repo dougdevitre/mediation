@@ -89,6 +89,11 @@ Based on the mediator's current task, read the relevant reference file(s):
 | Advertising & marketing compliance | `references/16-advertising.md` |
 | Ethics & compliance self-audit | `references/17-ethics-compliance.md` |
 
+### For Parties
+| Task | Reference File |
+|---|---|
+| Understanding agreement terms | `references/18-agreement-plain-language.md` |
+
 ### Challenging Situations
 | Task | Reference File |
 |---|---|
@@ -182,7 +187,7 @@ Abuse disclosed in joint session, financial disclosure refusal, child refusing a
 
 ## Interactive Tools (React)
 
-→ See the `app/` directory for 5 interactive React components:
+→ See the `app/` directory for 11 interactive React components:
 
 ### For Mediators
 | Tool | File | Description |
@@ -190,12 +195,18 @@ Abuse disclosed in joint session, financial disclosure refusal, child refusing a
 | Parenting Plan Builder | `app/parenting-plan-builder.jsx` | 50+ provisions across 8 categories with notes and export |
 | Compliance Dashboard | `app/compliance-dashboard.jsx` | Self-audit with scoring, gap analysis, and corrective actions |
 | CE Training Tracker | `app/ce-tracker.jsx` | Track hours against 2025 required topics with gap alerts |
+| Agreement Clause Library | `app/clause-library.jsx` | 40+ searchable, copyable clause templates for agreement drafting |
+| Intake Workflow | `app/intake-workflow.jsx` | Step-by-step intake process with compliance tracking and template links |
+| Session Timer & Billing | `app/session-timer.jsx` | Time tracking, per-case billing, and invoice export |
 
 ### For Parties (Save Time & Money)
 | Tool | File | Description |
 |---|---|---|
 | Mediation Readiness | `app/mediation-prep.jsx` | Step-by-step preparation: issues, priorities, children's needs, document checklist, questions |
 | Financial Disclosure | `app/financial-disclosure.jsx` | Income, expenses, assets, and debts worksheet with summary and download |
+| Schedule Visualizer | `app/schedule-visualizer.jsx` | See custody schedules on a real calendar with time-split percentages |
+| Cost Estimator | `app/cost-estimator.jsx` | Estimate total mediation cost based on issues and complexity |
+| Compliance Tracker | `app/compliance-tracker.jsx` | Track whether agreement terms are being followed post-mediation |
 
 ---
 

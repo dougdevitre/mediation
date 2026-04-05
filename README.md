@@ -30,7 +30,7 @@ Every resource in this repository is grounded in these standards, with the appli
 
 **Try the interactive tools now** — no installation required:
 
-**[Launch Access to Mediation](https://dougdevitre.github.io/mediation/)** — Parenting Plan Builder, Compliance Dashboard, CE Tracker, Mediation Readiness, Financial Disclosure, Scenario Search, and Reference Guide browser — all working directly in your browser.
+**[Launch Access to Mediation](https://dougdevitre.github.io/mediation/)** — 11 interactive tools for mediators and parties, 25 practice scenarios, and 20 reference guides — all working directly in your browser.
 
 ---
 
@@ -38,10 +38,10 @@ Every resource in this repository is grounded in these standards, with the appli
 
 | Resource | Count | Description |
 |----------|------:|-------------|
-| **Reference Guides** | 19 | Standards-based guides for every phase of mediation practice |
+| **Reference Guides** | 20 | Standards-based guides for every phase of mediation practice |
 | **Practice Templates** | 14 | Customizable Markdown templates (+ 2 Word .docx versions) |
 | **Practice Scenarios** | 25 | "What do I do when..." real-world situation guidance |
-| **Interactive Tools** | 5 | 3 for mediators + 2 party-facing preparation tools |
+| **Interactive Tools** | 11 | 6 for mediators + 5 party-facing preparation tools |
 | **Workflow Diagrams** | 6 | Mermaid decision-flow diagrams for key processes |
 | **Jurisdiction Modules** | 5 | State-specific statutes, reporting, and qualifications |
 | **CLE Presentation** | 1 | 10-slide PowerPoint deck ready for conferences |
@@ -53,20 +53,26 @@ Every resource in this repository is grounded in these standards, with the appli
 
 All tools feature **localStorage persistence** (data survives page refresh), **file download/export**, **form validation**, and **ARIA accessibility attributes**.
 
-### For Mediators
+### For Mediators (6 tools)
 
 | Tool | File | Key Features |
 |------|------|-------------|
 | **Parenting Plan Builder** | `app/parenting-plan-builder.jsx` | 50+ provisions across 8 categories, per-provision notes, copy-to-clipboard and file download, completeness hints for recommended categories |
 | **Ethics & Compliance Dashboard** | `app/compliance-dashboard.jsx` | 46 audit items across 10 standards areas, progress bar, overall and per-section scoring, separate non-compliant vs. partial gap analysis, downloadable audit report |
 | **CE Training Tracker** | `app/ce-tracker.jsx` | Log and edit training entries, 18 topics mapped to 2025 standards, required vs. optional distinction, gap alerts, downloadable training log |
+| **Agreement Clause Library** | `app/clause-library.jsx` | 40+ searchable pre-written clause templates across 8 categories, copy-to-clipboard, "My Clauses" collection, downloadable clause set for agreement drafting |
+| **Intake Workflow** | `app/intake-workflow.jsx` | 8-step guided intake process (conflict check through case-ready), substep tracking, template links, progress bar, notes per step, exportable checklist |
+| **Session Timer & Billing** | `app/session-timer.jsx` | Start/stop/pause timer, running cost display, session log with case labels, per-case billing summaries, downloadable invoice |
 
-### For Parties (Save Time & Money)
+### For Parties (5 tools)
 
 | Tool | File | Key Features |
 |------|------|-------------|
 | **Mediation Readiness** | `app/mediation-prep.jsx` | 7-step guided preparation: what to expect, issue identification, priority ranking (must-have/important/flexible), children's needs reflection, personalized document checklist, questions for the mediator, downloadable summary |
 | **Financial Disclosure** | `app/financial-disclosure.jsx` | Income (7 sources), expenses (7 categories / 40+ line items), assets (11 categories), debts (9 categories), real-time totals, expense breakdown percentages, net worth, downloadable report |
+| **Schedule Visualizer** | `app/schedule-visualizer.jsx` | See custody schedules on a real calendar — 6 preset patterns (alternating weeks, 2-2-3, 5-2, etc.) plus custom builder, time-split percentages, month navigation, downloadable schedule |
+| **Cost Estimator** | `app/cost-estimator.jsx` | Estimate mediation cost based on issues, complexity factors, hourly rate, and fee split — shows session count, hour estimate, and cost range per party |
+| **Compliance Tracker** | `app/compliance-tracker.jsx` | Track whether agreement terms are being followed post-mediation — categorized items, due dates, recurring obligations, overdue alerts, compliance percentage, downloadable report |
 
 ---
 
@@ -93,6 +99,10 @@ All templates include **standards citations** in the header, consistent formatti
 
 Word format versions: `docs/intake-questionnaire.docx`, `docs/agreement-to-mediate.docx`
 
+### For Parties: Understanding Your Agreement
+
+`references/18-agreement-plain-language.md` — A plain-language guide that explains common mediation agreement terms (residential schedule, legal vs. physical custody, right of first refusal, QDRO, spousal support types, indemnification, etc.) so parties understand what they're signing.
+
 ---
 
 ## Who Is This For?
@@ -111,14 +121,22 @@ Word format versions: `docs/intake-questionnaire.docx`, `docs/agreement-to-media
 
 ## Quick Start
 
+### For Mediators
 1. **Try the live tools** at [dougdevitre.github.io/mediation](https://dougdevitre.github.io/mediation/)
-2. **Browse** `references/` for standards-based guidance on any mediation task
-3. **Copy and customize** templates from `templates/` (Markdown) or `docs/` (Word)
-4. **Read the scenarios** in `scenarios/scenario-library.md` for challenging situations
-5. **Check your jurisdiction** in `jurisdictions/` for state-specific rules
-6. **Run the ethics self-audit** quarterly using the Compliance Dashboard
-7. **Prepare parties** by sharing the Mediation Readiness and Financial Disclosure tools
-8. **Deliver the CLE presentation** at your next conference
+2. **Run the Intake Workflow** to ensure every new case follows the complete screening process
+3. **Draft agreements faster** using the Agreement Clause Library's 40+ pre-written templates
+4. **Track your time** with the Session Timer for accurate billing
+5. **Run the ethics self-audit** quarterly using the Compliance Dashboard
+6. **Browse** `references/` for standards-based guidance on any mediation task
+7. **Check your jurisdiction** in `jurisdictions/` for state-specific rules
+
+### For Parties
+1. **Prepare for mediation** using the Mediation Readiness tool (saves sessions and money)
+2. **Organize your finances** with the Financial Disclosure worksheet
+3. **Visualize schedules** with the Schedule Visualizer to see what custody patterns look like
+4. **Estimate costs** with the Cost Estimator before your first session
+5. **Understand your agreement** by reading the Plain-Language Agreement Guide
+6. **Track compliance** after mediation using the Compliance Tracker
 
 ---
 
@@ -173,7 +191,7 @@ access-to-mediation/
 ├── CODE_OF_CONDUCT.md                # Contributor Covenant
 ├── SECURITY.md                       # Security policy
 │
-├── references/                       # 19 standards-based reference guides
+├── references/                       # 20 standards-based reference guides
 │   ├── 01–17                         # One guide per standards area
 │   ├── workflow-diagrams.md          # 6 Mermaid decision-flow diagrams
 │   └── related-guidelines.md         # Cross-references to other standards
@@ -191,12 +209,18 @@ access-to-mediation/
 │
 ├── scenarios/                        # 20 "What do I do when..." practice scenarios
 │
-├── app/                              # 5 interactive React components
+├── app/                              # 11 interactive React components
 │   ├── parenting-plan-builder.jsx    # Mediator: 50+ provisions builder
 │   ├── compliance-dashboard.jsx      # Mediator: ethics self-audit
 │   ├── ce-tracker.jsx                # Mediator: training hour tracker
+│   ├── clause-library.jsx            # Mediator: searchable clause templates
+│   ├── intake-workflow.jsx           # Mediator: guided intake process
+│   ├── session-timer.jsx             # Mediator: time tracking & billing
 │   ├── mediation-prep.jsx            # Party: 7-step preparation wizard
-│   └── financial-disclosure.jsx      # Party: income/expenses/assets/debts
+│   ├── financial-disclosure.jsx      # Party: income/expenses/assets/debts
+│   ├── schedule-visualizer.jsx       # Party: custody calendar visualizer
+│   ├── cost-estimator.jsx            # Party: mediation cost estimator
+│   └── compliance-tracker.jsx        # Party: post-mediation agreement tracker
 │
 ├── docs/                             # GitHub Pages site + Word/PowerPoint
 │   ├── index.html                    # Full interactive app (live demo)
