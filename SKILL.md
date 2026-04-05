@@ -89,19 +89,24 @@ Based on the mediator's current task, read the relevant reference file(s):
 | Advertising & marketing compliance | `references/16-advertising.md` |
 | Ethics & compliance self-audit | `references/17-ethics-compliance.md` |
 
-### Templates (ready-to-use documents)
-| Template | Location |
+### Challenging Situations
+| Task | Reference File |
 |---|---|
-| Intake Questionnaire | `templates/intake-questionnaire.md` |
-| Domestic Abuse Screening Checklist | `templates/domestic-abuse-screening-checklist.md` |
-| Agreement to Mediate | `templates/agreement-to-mediate.md` |
-| Conflict-of-Interest Disclosure | `templates/conflict-of-interest-disclosure.md` |
-| Parenting Plan Worksheet | `templates/parenting-plan-worksheet.md` |
-| Mediation Summary (court-neutral) | `templates/mediation-summary.md` |
-| Termination Notice | `templates/termination-notice.md` |
-| Mediator Training Log | `templates/mediator-training-log.md` |
-| Technology Consent Form | `templates/technology-consent.md` |
-| Fee Disclosure Statement | `templates/fee-disclosure.md` |
+| "What do I do when..." scenarios | `scenarios/scenario-library.md` |
+
+### Templates (ready-to-use documents)
+| Template | Markdown | Word |
+|---|---|---|
+| Intake Questionnaire | `templates/intake-questionnaire.md` | `docs/intake-questionnaire.docx` |
+| Domestic Abuse Screening Checklist | `templates/domestic-abuse-screening-checklist.md` | — |
+| Agreement to Mediate | `templates/agreement-to-mediate.md` | `docs/agreement-to-mediate.docx` |
+| Conflict-of-Interest Disclosure | `templates/conflict-of-interest-disclosure.md` | — |
+| Parenting Plan Worksheet | `templates/parenting-plan-worksheet.md` | — |
+| Mediation Summary (court-neutral) | `templates/mediation-summary.md` | — |
+| Termination Notice | `templates/termination-notice.md` | — |
+| Mediator Training Log | `templates/mediator-training-log.md` | — |
+| Technology Consent Form | `templates/technology-consent.md` | — |
+| Fee Disclosure Statement | `templates/fee-disclosure.md` | — |
 
 ---
 
@@ -198,11 +203,15 @@ Abuse disclosed in joint session, financial disclosure refusal, child refusing a
 
 ## Jurisdiction Modules
 
-→ See the `jurisdictions/` directory:
+→ See the `jurisdictions/` directory for state-specific statutes, confidentiality rules, mandatory reporting, DV provisions, and mediator qualifications:
 
 | State | File |
 |---|---|
+| California | `jurisdictions/california/jurisdiction.md` |
+| Florida | `jurisdictions/florida/jurisdiction.md` |
 | Missouri | `jurisdictions/missouri/jurisdiction.md` |
+| New York | `jurisdictions/new-york/jurisdiction.md` |
+| Texas | `jurisdictions/texas/jurisdiction.md` |
 | Template | `jurisdictions/TEMPLATE.md` |
 
 ---

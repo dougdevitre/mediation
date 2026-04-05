@@ -180,7 +180,13 @@ flowchart LR
     end
     PRE --> DURING --> POST
 
-    style PRE fill:#EFF6FF,stroke:#2563EB
-    style DURING fill:#F0FDF4,stroke:#16A34A
-    style POST fill:#FEF3C7,stroke:#D97706
+    style PRE fill:#EFF6FF,stroke:#2563EB,color:#1e40af
+    style DURING fill:#F0FDF4,stroke:#16A34A,color:#166534
+    style POST fill:#FEF3C7,stroke:#D97706,color:#92400e
+    style A1 fill:#DBEAFE,stroke:#2563EB
+    style A4 fill:#BFDBFE,stroke:#2563EB
+    style B1 fill:#DCFCE7,stroke:#16A34A
+    style B5 fill:#BBF7D0,stroke:#16A34A
+    style C1 fill:#FEF3C7,stroke:#D97706
+    style C3 fill:#FDE68A,stroke:#D97706
 ```
