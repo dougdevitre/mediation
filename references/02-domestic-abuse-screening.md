@@ -162,3 +162,12 @@ Per Standard V(C), a mediator **shall not** mediate family cases without **speci
 - Court-based victim advocacy programs
 
 > **Note**: Providing resources is an act of safety support, not a determination of abuse. The mediator does not determine whether abuse has occurred — the mediator assesses whether meaningful participation in mediation is possible.
+
+---
+
+## Related Resources
+
+→ See `templates/safety-plan.md` for documenting safety measures in DV/high-conflict cases.
+→ See `references/09-parenting-plans.md` for parallel parenting provisions in DV cases.
+→ See `references/06-technology-odr.md` for technology safety considerations when conducting ODR with DV parties.
+→ See `references/13-suspension-termination.md` for guidance on when to suspend or terminate mediation due to safety concerns.

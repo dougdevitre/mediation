@@ -38,7 +38,7 @@ Every resource in this repository is grounded in these standards, with the appli
 | Resource | Count | Description |
 |----------|------:|-------------|
 | **Reference Guides** | 19 | Standards-based guides for every phase of mediation practice |
-| **Practice Templates** | 16 | Customizable documents in Markdown and Word format |
+| **Practice Templates** | 14+2 | 14 Markdown templates + 2 Word format (.docx) |
 | **Practice Scenarios** | 20 | "What do I do when..." real-world situation guidance |
 | **Interactive Tools** | 5 | 3 for mediators + 2 party-facing preparation tools |
 | **Workflow Diagrams** | 6 | Mermaid decision-flow diagrams for key processes |

@@ -105,6 +105,9 @@ Per Standard V(D), when domestic abuse is present:
 
 ---
 
-## Template
+## Related Resources
 
 → Use `templates/parenting-plan-worksheet.md` for a structured worksheet.
+→ See `references/02-domestic-abuse-screening.md` for DV-specific parenting plan considerations.
+→ See `references/08-voice-of-child.md` for including children's perspectives in plan development.
+→ See `app/parenting-plan-builder.jsx` for an interactive plan builder with 50+ provisions.

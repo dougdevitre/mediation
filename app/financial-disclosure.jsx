@@ -135,12 +135,15 @@ function saveToStorage(state) {
 }
 
 function parseMoney(val) {
-  const n = parseFloat((val || "").replace(/[^0-9.-]/g, ""));
-  return isNaN(n) ? 0 : n;
+  const cleaned = (val || "").replace(/[^0-9.]/g, "");
+  const parts = cleaned.split(".");
+  const normalized = parts.length > 2 ? parts[0] + "." + parts.slice(1).join("") : cleaned;
+  const n = parseFloat(normalized);
+  return isNaN(n) ? 0 : Math.max(0, n);
 }
 
 function fmt(n) {
-  return "$" + n.toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+  return "$" + n.toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 2 });
 }
 
 function downloadFile(content, filename) {
@@ -313,7 +316,7 @@ export default function FinancialDisclosure() {
           })}
           <div style={{ display: "flex", justifyContent: "space-between", padding: 12, background: monthlyBalance >= 0 ? "#f0fdf4" : "#fef2f2", borderRadius: 8, marginBottom: 16, fontWeight: 700 }}>
             <span style={{ color: "#0f172a" }}>Monthly Balance (Income - Expenses)</span>
-            <span style={{ color: monthlyBalance >= 0 ? "#16a34a" : "#dc2626" }}>{fmt(monthlyBalance)}</span>
+            <span style={{ color: monthlyBalance >= 0 ? "#16a34a" : "#dc2626" }}>{fmt(monthlyBalance)} {monthlyBalance >= 0 ? "(surplus)" : "(deficit)"}</span>
           </div>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <button onClick={() => setSection(0)} style={btnSecondary}>Back</button>
@@ -409,11 +412,11 @@ export default function FinancialDisclosure() {
             </div>
             <div style={{ padding: 16, background: monthlyBalance >= 0 ? "#f0fdf4" : "#fef2f2", borderRadius: 8, border: "1px solid " + (monthlyBalance >= 0 ? "#bbf7d0" : "#fecaca") }}>
               <div style={{ fontSize: 22, fontWeight: 700, color: monthlyBalance >= 0 ? "#16a34a" : "#dc2626" }}>{fmt(monthlyBalance)}</div>
-              <div style={{ fontSize: 12, color: monthlyBalance >= 0 ? "#166534" : "#991b1b" }}>Monthly Balance</div>
+              <div style={{ fontSize: 12, color: monthlyBalance >= 0 ? "#166534" : "#991b1b" }}>Monthly Balance {monthlyBalance >= 0 ? "(surplus)" : "(deficit)"}</div>
             </div>
             <div style={{ padding: 16, background: netWorth >= 0 ? "#eff6ff" : "#fef2f2", borderRadius: 8, border: "1px solid " + (netWorth >= 0 ? "#bfdbfe" : "#fecaca") }}>
               <div style={{ fontSize: 22, fontWeight: 700, color: netWorth >= 0 ? "#1d4ed8" : "#dc2626" }}>{fmt(netWorth)}</div>
-              <div style={{ fontSize: 12, color: netWorth >= 0 ? "#1e40af" : "#991b1b" }}>Net Worth (Assets - Debts)</div>
+              <div style={{ fontSize: 12, color: netWorth >= 0 ? "#1e40af" : "#991b1b" }}>Net Worth {netWorth >= 0 ? "(positive)" : "(negative)"}</div>
             </div>
           </div>
 

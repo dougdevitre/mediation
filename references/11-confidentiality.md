@@ -80,3 +80,11 @@ Common variations:
 - Mandatory reporting exceptions are universal but vary in scope
 - Some states distinguish between court-connected and private mediation confidentiality
 - Some states require written confidentiality agreements; others imply confidentiality by statute
+
+---
+
+## Related Resources
+
+→ See `references/03-child-maltreatment.md` for mandatory reporting obligations that override confidentiality.
+→ See `references/06-technology-odr.md` for data security and digital confidentiality requirements.
+→ See `jurisdictions/` for state-specific confidentiality statutes and privilege rules.
