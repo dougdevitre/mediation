@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 const STORAGE_KEY = "mediation-cs-calc";
 
@@ -52,62 +52,66 @@ export default function ChildSupportCalc() {
   const hc = parseFloat(healthcare) || 0;
   const cc = parseFloat(childcare) || 0;
 
-  const combined = iA + iB;
-  const shareA = combined > 0 ? iA / combined : 0.5;
-  const shareB = combined > 0 ? iB / combined : 0.5;
-  const timeshareA = oA / 365;
-  const timeshareB = oB / 365;
-
-  // Basic income shares calculation
-  const basePctMap = { 1: 0.17, 2: 0.25, 3: 0.29, 4: 0.31, 5: 0.34 };
-  const basePct = basePctMap[Math.min(nChildren, 5)] || 0.17;
-  const basicObligation = combined * basePct;
-  const adjustedObligation = basicObligation + hc + cc;
-
-  let obligorName, obligeeName, monthlySupport, annualSupport;
-
   const stateInfo = STATES.find((s) => s.id === state);
 
-  if (state === "tx") {
-    // Texas percentage model
-    const pct = TX_PERCENTAGES[Math.min(nChildren, 5)] || 0.20;
-    // Obligor is the parent with fewer overnights
-    if (oA < oB) {
-      obligorName = parentAName;
-      obligeeName = parentBName;
-      monthlySupport = (iA * pct);
+  const { combined, shareA, shareB, timeshareA, timeshareB, basicObligation, adjustedObligation, obligorName, obligeeName, monthlySupport, annualSupport } = useMemo(() => {
+    const combined = iA + iB;
+    const shareA = combined > 0 ? iA / combined : 0.5;
+    const shareB = combined > 0 ? iB / combined : 0.5;
+    const timeshareA = oA / 365;
+    const timeshareB = oB / 365;
+
+    // Basic income shares calculation
+    const basePctMap = { 1: 0.17, 2: 0.25, 3: 0.29, 4: 0.31, 5: 0.34 };
+    const basePct = basePctMap[Math.min(nChildren, 5)] || 0.17;
+    const basicObligation = combined * basePct;
+    const adjustedObligation = basicObligation + hc + cc;
+
+    let obligorName, obligeeName, monthlySupport, annualSupport;
+
+    if (state === "tx") {
+      // Texas percentage model
+      const pct = TX_PERCENTAGES[Math.min(nChildren, 5)] || 0.20;
+      // Obligor is the parent with fewer overnights
+      if (oA < oB) {
+        obligorName = parentAName;
+        obligeeName = parentBName;
+        monthlySupport = (iA * pct);
+      } else {
+        obligorName = parentBName;
+        obligeeName = parentAName;
+        monthlySupport = (iB * pct);
+      }
+      annualSupport = monthlySupport * 12;
     } else {
-      obligorName = parentBName;
-      obligeeName = parentAName;
-      monthlySupport = (iB * pct);
+      // Income shares model
+      const obligationA = adjustedObligation * shareA;
+      const obligationB = adjustedObligation * shareB;
+      // Adjust for parenting time
+      const adjustmentFactor = Math.abs(timeshareA - 0.5) * 2;
+      if (shareA > shareB && timeshareA < 0.5) {
+        obligorName = parentAName;
+        obligeeName = parentBName;
+        monthlySupport = (obligationA - (basicObligation * timeshareA)) * (1 + adjustmentFactor * 0.2);
+      } else if (shareB > shareA && timeshareB < 0.5) {
+        obligorName = parentBName;
+        obligeeName = parentAName;
+        monthlySupport = (obligationB - (basicObligation * timeshareB)) * (1 + adjustmentFactor * 0.2);
+      } else if (oA < oB) {
+        obligorName = parentAName;
+        obligeeName = parentBName;
+        monthlySupport = Math.abs(obligationA - (basicObligation * timeshareA));
+      } else {
+        obligorName = parentBName;
+        obligeeName = parentAName;
+        monthlySupport = Math.abs(obligationB - (basicObligation * timeshareB));
+      }
+      monthlySupport = Math.max(0, monthlySupport);
+      annualSupport = monthlySupport * 12;
     }
-    annualSupport = monthlySupport * 12;
-  } else {
-    // Income shares model
-    const obligationA = adjustedObligation * shareA;
-    const obligationB = adjustedObligation * shareB;
-    // Adjust for parenting time
-    const adjustmentFactor = Math.abs(timeshareA - 0.5) * 2;
-    if (shareA > shareB && timeshareA < 0.5) {
-      obligorName = parentAName;
-      obligeeName = parentBName;
-      monthlySupport = (obligationA - (basicObligation * timeshareA)) * (1 + adjustmentFactor * 0.2);
-    } else if (shareB > shareA && timeshareB < 0.5) {
-      obligorName = parentBName;
-      obligeeName = parentAName;
-      monthlySupport = (obligationB - (basicObligation * timeshareB)) * (1 + adjustmentFactor * 0.2);
-    } else if (oA < oB) {
-      obligorName = parentAName;
-      obligeeName = parentBName;
-      monthlySupport = Math.abs(obligationA - (basicObligation * timeshareA));
-    } else {
-      obligorName = parentBName;
-      obligeeName = parentAName;
-      monthlySupport = Math.abs(obligationB - (basicObligation * timeshareB));
-    }
-    monthlySupport = Math.max(0, monthlySupport);
-    annualSupport = monthlySupport * 12;
-  }
+
+    return { combined, shareA, shareB, timeshareA, timeshareB, basicObligation, adjustedObligation, obligorName, obligeeName, monthlySupport, annualSupport };
+  }, [state, iA, iB, nChildren, oA, oB, hc, cc, parentAName, parentBName]);
 
   const exportCalc = () => {
     const lines = [

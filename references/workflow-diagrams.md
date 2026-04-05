@@ -190,3 +190,391 @@ flowchart LR
     style C1 fill:#FEF3C7,stroke:#D97706
     style C3 fill:#FDE68A,stroke:#D97706
 ```
+
+---
+
+## 7. Party Preparation Workflow
+
+```mermaid
+flowchart TD
+    A[Party Receives Mediation Notice] --> B{First Time?}
+    B -->|Yes| C[Party Welcome Tool]
+    B -->|No| D[Choose Path]
+    C --> D
+    D --> E[Mediation Readiness Tool]
+    E --> F[Step 1: Learn What to Expect]
+    F --> G[Step 2: Identify Issues]
+    G --> H[Step 3: Set Priorities]
+    H --> I{Children Involved?}
+    I -->|Yes| J[Step 4: Children's Needs]
+    J --> K[Step 5: Financial Disclosure]
+    I -->|No| K
+    K --> L[Step 6: Gather Documents]
+    L --> M[Step 7: Write Questions]
+    M --> N[Download Preparation Summary]
+    N --> O[Arrive Prepared for Session]
+
+    style A fill:#1E3A5F,stroke:#1E3A5F,color:#fff
+    style C fill:#0D9488,stroke:#0D9488,color:#fff
+    style K fill:#2563EB,stroke:#1D4ED8,color:#fff
+    style O fill:#10B981,stroke:#059669,color:#fff
+```
+
+---
+
+## 8. Mediator Case Lifecycle
+
+```mermaid
+flowchart TD
+    subgraph INTAKE[Phase 1: Intake]
+        I1[Conflict Check] --> I2[Individual Sessions]
+        I2 --> I3[DV Screening]
+        I3 --> I4[Risk Assessment]
+        I4 --> I5{Safe to Proceed?}
+        I5 -->|Yes| I6[Fee Disclosure]
+        I5 -->|Modified| I7[Safety Plan]
+        I7 --> I6
+        I5 -->|No| I8[Terminate & Refer]
+        I6 --> I9[Agreement to Mediate]
+    end
+
+    subgraph SESSION[Phase 2: Active Mediation]
+        S1[Session Timer Start] --> S2[Facilitation]
+        S2 --> S3[Parenting Plan Builder]
+        S2 --> S4[Schedule Visualizer]
+        S2 --> S5[Financial Disclosure Review]
+        S3 --> S6[Session Notes]
+        S4 --> S6
+        S5 --> S6
+        S6 --> S7[Session Timer Stop]
+    end
+
+    subgraph AGREEMENT[Phase 3: Agreement]
+        A1[Clause Library] --> A2[Agreement Generator]
+        A2 --> A3[Draft Review]
+        A3 --> A4[Attorney Review]
+        A4 --> A5[Final Agreement]
+    end
+
+    subgraph CLOSE[Phase 4: Closure]
+        C1[Post-Mediation Checklist] --> C2[Case Analytics Log]
+        C2 --> C3[Compliance Tracker Setup]
+    end
+
+    INTAKE --> SESSION --> AGREEMENT --> CLOSE
+
+    style INTAKE fill:#EFF6FF,stroke:#2563EB
+    style SESSION fill:#F0FDF4,stroke:#16A34A
+    style AGREEMENT fill:#FEF3C7,stroke:#D97706
+    style CLOSE fill:#FAF5FF,stroke:#7C3AED
+    style I8 fill:#EF4444,stroke:#DC2626,color:#fff
+```
+
+---
+
+## 9. Risk Assessment Scoring Flow
+
+```mermaid
+flowchart TD
+    A[Begin Individual Screening] --> B[Physical Violence Domain]
+    B --> C[Coercive Control Domain]
+    C --> D[Economic Abuse Domain]
+    D --> E[Psychological Abuse Domain]
+    E --> F[Child Safety Domain]
+    F --> G[Escalation Risk Factors]
+    G --> H[Calculate Weighted Score]
+    H --> I{Overall Risk Level}
+    I -->|0-14%| J[LOW: Standard Joint Mediation]
+    I -->|15-34%| K[MODERATE: Shuttle/Separate Sessions]
+    I -->|35-59%| L[HIGH: Caucus-Only + Safety Plan]
+    I -->|60%+| M[CRITICAL: Do Not Mediate]
+    J --> N[Proceed]
+    K --> O[Create Safety Plan]
+    O --> N
+    L --> P[Detailed Safety Protocol]
+    P --> Q{Party Consents?}
+    Q -->|Yes| N
+    Q -->|No| R[Refer Out]
+    M --> R
+
+    style J fill:#10B981,stroke:#059669,color:#fff
+    style K fill:#F59E0B,stroke:#D97706
+    style L fill:#EF4444,stroke:#DC2626,color:#fff
+    style M fill:#7F1D1D,stroke:#450A0A,color:#fff
+```
+
+---
+
+## 10. Agreement Generation Flow
+
+```mermaid
+flowchart LR
+    subgraph SETUP[Step 1: Case Setup]
+        A1[Party Names] --> A2[State/Jurisdiction]
+        A2 --> A3[Children Info]
+        A3 --> A4[Select Sections]
+    end
+
+    subgraph CLAUSES[Step 2: Select Clauses]
+        B1[Residential Schedule] --> B2[Holidays]
+        B2 --> B3[Decision-Making]
+        B3 --> B4[Communication]
+        B4 --> B5[Financial Terms]
+        B5 --> B6[Safety Provisions]
+        B6 --> B7[Custom Language]
+    end
+
+    subgraph OUTPUT[Step 3: Generate]
+        C1[Auto-Fill Variables] --> C2[Preview Draft]
+        C2 --> C3{Review}
+        C3 -->|Edit| C4[Back to Clauses]
+        C3 -->|Accept| C5[Download/Copy]
+        C5 --> C6[Attorney Review]
+    end
+
+    SETUP --> CLAUSES --> OUTPUT
+
+    style SETUP fill:#EFF6FF,stroke:#2563EB
+    style CLAUSES fill:#F0FDF4,stroke:#16A34A
+    style OUTPUT fill:#FEF3C7,stroke:#D97706
+```
+
+---
+
+## 11. Ethical Decision Engine Flow
+
+```mermaid
+flowchart TD
+    A[Ethical Dilemma Arises] --> B{Identify Category}
+    B --> C[Safety / DV]
+    B --> D[Mandatory Reporting]
+    B --> E[Conflict of Interest]
+    B --> F[Power Imbalance]
+    B --> G[Process Decision]
+
+    C --> H[Walk Decision Tree]
+    D --> H
+    E --> H
+    F --> H
+    G --> H
+
+    H --> I[Answer Yes/No Questions]
+    I --> J[Reach Recommendation]
+    J --> K{Obligation Level}
+    K -->|SHALL/Required| L[Must Follow]
+    K -->|SHOULD/Recommended| M[Strongly Encouraged]
+    K -->|MAY/Permitted| N[Professional Discretion]
+
+    L --> O[Document Decision]
+    M --> O
+    N --> O
+    O --> P[Standard Citation + References]
+    P --> Q[Download Decision Record]
+
+    style A fill:#1E3A5F,stroke:#1E3A5F,color:#fff
+    style L fill:#EF4444,stroke:#DC2626,color:#fff
+    style M fill:#F59E0B,stroke:#D97706
+    style N fill:#10B981,stroke:#059669,color:#fff
+```
+
+---
+
+## 12. Conflict Check Process
+
+```mermaid
+flowchart TD
+    A[New Case Inquiry] --> B[Enter Party Names]
+    B --> C[Enter Attorneys/Related Parties]
+    C --> D[Search Client Database]
+    D --> E{Match Found?}
+    E -->|Exact Match| F[CONFLICT DETECTED]
+    E -->|Partial Match| G[POSSIBLE MATCH - Review]
+    E -->|No Match| H[CLEAR - No Conflicts]
+
+    F --> I[Identify Conflict Type]
+    I --> J[Direct: Same Party]
+    I --> K[Related: Other Capacity]
+    I --> L[Attorney: Prior Case]
+
+    J --> M{Can Proceed?}
+    K --> M
+    L --> M
+    M -->|With Disclosure + Waiver| N[Disclose & Get Written Consent]
+    M -->|No| O[Decline Case]
+
+    G --> P[Manual Review Required]
+    P --> M
+
+    H --> Q[Document Check]
+    N --> Q
+    O --> Q
+    Q --> R[Download Conflict Check Report]
+
+    style F fill:#EF4444,stroke:#DC2626,color:#fff
+    style G fill:#F59E0B,stroke:#D97706
+    style H fill:#10B981,stroke:#059669,color:#fff
+```
+
+---
+
+## 13. Child Support Calculation Flow
+
+```mermaid
+flowchart TD
+    A[Select State Model] --> B{Model Type}
+    B -->|Income Shares| C[Enter Both Parents' Income]
+    B -->|Percentage| D[Enter Obligor Income]
+
+    C --> E[Enter Number of Children]
+    D --> E
+    E --> F[Enter Parenting Time Split]
+    F --> G[Enter Healthcare/Childcare Costs]
+
+    G --> H{Income Shares Model}
+    G --> I{Percentage Model}
+
+    H --> J[Calculate Combined Income]
+    J --> K[Apply Base Percentage by Children]
+    K --> L[Add Healthcare + Childcare]
+    L --> M[Allocate by Income Share]
+    M --> N[Adjust for Parenting Time]
+
+    I --> O[Apply State Percentage]
+    O --> P[1 child: 20% / 2: 25% / 3: 30%]
+
+    N --> Q[Monthly Support Amount]
+    P --> Q
+    Q --> R[Identify Obligor/Obligee]
+    R --> S[Display Estimate + Disclaimers]
+    S --> T[Download Report]
+
+    style A fill:#1E3A5F,stroke:#1E3A5F,color:#fff
+    style Q fill:#2563EB,stroke:#1D4ED8,color:#fff
+    style T fill:#10B981,stroke:#059669,color:#fff
+```
+
+---
+
+## 14. Training Simulator Flow
+
+```mermaid
+flowchart TD
+    A[Select Scenario Category] --> B[Read Situation Description]
+    B --> C[Choose from 4 Response Options]
+    C --> D{Evaluate Response}
+    D -->|Correct| E[Green: Full Credit]
+    D -->|Partial| F[Yellow: Half Credit]
+    D -->|Incorrect| G[Red: No Credit]
+
+    E --> H[Show Standards Citation]
+    F --> H
+    G --> H
+
+    H --> I[Show What NOT To Do]
+    I --> J[Update Running Score]
+    J --> K{More Scenarios?}
+    K -->|Yes| A
+    K -->|No| L[Final Score Summary]
+    L --> M[Review Missed Items]
+
+    style E fill:#10B981,stroke:#059669,color:#fff
+    style F fill:#F59E0B,stroke:#D97706
+    style G fill:#EF4444,stroke:#DC2626,color:#fff
+    style L fill:#2563EB,stroke:#1D4ED8,color:#fff
+```
+
+---
+
+## 15. Practice Analytics Flow
+
+```mermaid
+flowchart LR
+    subgraph INPUT[Data Collection]
+        A1[Log Cases] --> A2[Track Sessions]
+        A2 --> A3[Record Outcomes]
+        A3 --> A4[Note DV Screening]
+    end
+
+    subgraph METRICS[Computed Metrics]
+        B1[Agreement Rate]
+        B2[Avg Sessions/Case]
+        B3[Revenue]
+        B4[DV Screening Compliance]
+        B5[Children Served]
+    end
+
+    subgraph ANALYSIS[Breakdowns]
+        C1[By Outcome]
+        C2[By Case Type]
+        C3[By Referral Source]
+        C4[By Time Period]
+    end
+
+    subgraph OUTPUT[Reports]
+        D1[Filtered Dashboard]
+        D2[Downloadable Report]
+        D3[Practice Trends]
+    end
+
+    INPUT --> METRICS --> ANALYSIS --> OUTPUT
+
+    style INPUT fill:#EFF6FF,stroke:#2563EB
+    style METRICS fill:#F0FDF4,stroke:#16A34A
+    style ANALYSIS fill:#FEF3C7,stroke:#D97706
+    style OUTPUT fill:#FAF5FF,stroke:#7C3AED
+```
+
+---
+
+## 16. Complete Tool Ecosystem
+
+```mermaid
+flowchart TB
+    subgraph PARTY[Party Tools]
+        P1[Party Welcome]
+        P2[Mediation Readiness]
+        P3[Financial Disclosure]
+        P4[Schedule Visualizer]
+        P5[Cost Estimator]
+        P6[Child Support Calc]
+        P7[Compliance Tracker]
+    end
+
+    subgraph MEDIATOR[Mediator Tools]
+        M1[Mediator Dashboard]
+        M2[Intake Workflow]
+        M3[Risk Assessment]
+        M4[Conflict Check]
+        M5[Session Timer]
+        M6[Parenting Plan Builder]
+        M7[Clause Library]
+        M8[Agreement Generator]
+        M9[Compliance Dashboard]
+        M10[CE Tracker]
+        M11[Decision Engine]
+        M12[Training Simulator]
+        M13[Case Analytics]
+    end
+
+    P1 --> P2
+    P2 --> P3
+    P3 --> P4
+    P4 --> P5
+
+    M1 --> M2
+    M2 --> M3
+    M3 --> M5
+    M5 --> M6
+    M6 --> M7
+    M7 --> M8
+
+    P3 -.->|Financial data| M5
+    P4 -.->|Schedule choice| M6
+    M8 -.->|Agreement terms| P7
+    M3 -.->|Risk level| M2
+
+    style PARTY fill:#EFF6FF,stroke:#2563EB
+    style MEDIATOR fill:#F0FDF4,stroke:#16A34A
+    style P1 fill:#0D9488,stroke:#0D9488,color:#fff
+    style M1 fill:#1E3A5F,stroke:#1E3A5F,color:#fff
+```
