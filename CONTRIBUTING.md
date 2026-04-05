@@ -38,12 +38,13 @@ All contributions must:
 
 ## Priority Contribution Areas
 
-1. **State-specific jurisdiction guides** — how model standards interact with state mediation statutes
-2. **Translations** — making templates available in Spanish, French, Mandarin, and other languages
-3. **Additional templates** — financial disclosure worksheets, child interview protocols, co-mediation agreements
-4. **Research citations** — linking guidance to evidence-based practice research
-5. **Accessibility** — plain language versions, visual guides, screen reader compatibility
-6. **Technology tools** — scripts for generating documents, tracking training hours, compliance dashboards
+1. **State-specific jurisdiction guides** — how model standards interact with state mediation statutes (use `jurisdictions/TEMPLATE.md`)
+2. **Interactive tools and applications** — React components for mediators and parties, including new tools, party preparation features, and enhancements to existing apps in `app/`
+3. **Translations** — making templates available in Spanish, French, Mandarin, and other languages
+4. **Additional templates** — child interview protocols, co-mediation agreements, and other practice documents
+5. **Practice scenarios** — real-world "What do I do when..." situations with standards-based guidance
+6. **Research citations** — linking guidance to evidence-based practice research
+7. **Accessibility** — plain language versions, visual guides, screen reader compatibility, WCAG 2.1 AA compliance
 
 ---
 

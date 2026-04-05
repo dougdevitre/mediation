@@ -1,6 +1,14 @@
 # Parenting Plan Worksheet
 
-> **Instructions**: Use this worksheet during mediation to help parents work through parenting plan components. This is a working document — not a final agreement. All terms are subject to independent attorney review.
+> **Per 2025 Standards I, V(D), X**: Use this worksheet during mediation to help parents work through parenting plan components. This is a working document — not a final agreement. All terms are subject to independent attorney review.
+
+---
+
+## Case Information
+
+- **Case Number**: _______________
+- **Date**: _______________
+- **Mediator**: _______________
 
 ---
 

@@ -1,6 +1,6 @@
 # Domestic Abuse Screening Checklist
 
-> **Instructions**: Complete this checklist during individual, confidential pre-mediation sessions with EACH party. Do NOT complete in joint session. Do NOT share responses with the other party. Use open-ended questions — this checklist is your internal framework, not a questionnaire to read to the party.
+> **Per 2025 Standard V (Domestic Abuse)**: Complete this checklist during individual, confidential pre-mediation sessions with EACH party. Do NOT complete in joint session. Do NOT share responses with the other party. Use open-ended questions — this checklist is your internal framework, not a questionnaire to read to the party.
 
 ---
 

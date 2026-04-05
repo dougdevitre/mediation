@@ -90,3 +90,12 @@ When helping parents develop parenting plans, ensure the plan:
 - In domestic abuse cases: limits opportunities for manipulation or continued abuse
 
 → See `references/09-parenting-plans.md` for detailed parenting plan guidance.
+
+---
+
+## Related Resources
+
+→ See `references/09-parenting-plans.md` for incorporating children's needs into parenting plans.
+→ See `references/02-domestic-abuse-screening.md` for safety considerations when children are exposed to DV.
+→ See `references/15-qualifications-training.md` for required training in child-inclusive mediation.
+→ See `references/13-suspension-termination.md` for when to end mediation due to child safety concerns.

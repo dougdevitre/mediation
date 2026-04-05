@@ -161,9 +161,9 @@ Every output from this skill must reflect these non-negotiable principles drawn 
 
 ## Scenarios — "What Do I Do When..."
 
-→ See `scenarios/scenario-library.md` for 20 standards-based practice scenarios:
+→ See `scenarios/scenario-library.md` for 25 standards-based practice scenarios:
 
-Abuse disclosed in joint session, financial disclosure refusal, child refusing a parent, attorney domination, intoxicated party, child maltreatment allegations, premature agreement, threats during session, mid-case conflict of interest, recording requests, outcome pressure, cultural/religious conflicts, mental health impairment, subpoenas, child as decision-maker, unbalanced representation, relocation, duress, technology failure, and bad-faith delay.
+Abuse disclosed in joint session, financial disclosure refusal, child refusing a parent, attorney domination, intoxicated party, child maltreatment allegations, premature agreement, threats during session, mid-case conflict of interest, recording requests, outcome pressure, cultural/religious conflicts, mental health impairment, subpoenas, child as decision-maker, unbalanced representation, relocation, duress, technology failure, bad-faith delay, affordability barriers, new partner at mediation, hidden income discovery, mid-case maltreatment allegation, and cognitive disability accommodation.
 
 ---
 

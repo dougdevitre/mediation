@@ -191,8 +191,8 @@ export default function MediationPrep() {
 
       {/* Step indicator */}
       <div style={{ display: "flex", gap: 4, marginBottom: 20, flexWrap: "wrap" }}>
-        {STEPS.map((s, i) => {
-          if (s.id === "children" && !hasChildIssues) return null;
+        {STEPS.filter((s) => !(s.id === "children" && !hasChildIssues)).map((s) => {
+          const i = STEPS.indexOf(s);
           return (
             <button key={s.id} onClick={() => setStep(i)} aria-current={step === i ? "step" : undefined} style={{
               padding: "4px 12px", borderRadius: 12, fontSize: 12, cursor: "pointer",
@@ -341,9 +341,8 @@ export default function MediationPrep() {
             <h3 style={{ margin: "0 0 4px", fontSize: 16, color: "#0f172a" }}>Documents to Gather</h3>
             <p style={{ margin: "0 0 12px", fontSize: 13, color: "#64748b" }}>Based on your issues, here's what to bring. Check off items as you gather them. Missing documents are the #1 reason sessions run long.</p>
             {relevantDocs.length === 0 && <p style={{ color: "#94a3b8", fontSize: 14 }}>Go back and select your issues to see relevant documents.</p>}
-            {["Legal", "Income", "Assets", "Debts", "Insurance", "Business", "Budget", "Children"].map((cat) => {
+            {["Legal", "Income", "Assets", "Debts", "Insurance", "Business", "Budget", "Children"].filter((cat) => relevantDocs.some((d) => d.category === cat)).map((cat) => {
               const docs = relevantDocs.filter((d) => d.category === cat);
-              if (docs.length === 0) return null;
               return (
                 <div key={cat} style={{ marginBottom: 12 }}>
                   <div style={{ fontSize: 13, fontWeight: 600, color: "#475569", marginBottom: 4 }}>{cat}</div>

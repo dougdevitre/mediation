@@ -1,6 +1,6 @@
 # Mediation Termination Notice
 
-> **Court-Neutral**: This notice does not assign blame, characterize either party, or make recommendations about the outcome of the underlying dispute.
+> **Per 2025 Standard XII & 2005 Standard I**: This notice does not assign blame, characterize either party, or make recommendations about the outcome of the underlying dispute.
 
 ---
 
