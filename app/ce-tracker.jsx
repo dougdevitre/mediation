@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const REQUIRED_TOPICS = [
   { id: "dv_dynamics", label: "Domestic abuse dynamics & coercive control", required: true, standard: "2025-V(C)" },
@@ -22,13 +22,29 @@ const REQUIRED_TOPICS = [
 ];
 
 export default function CETracker() {
-  const [trainings, setTrainings] = useState([]);
+  const [trainings, setTrainings] = useState(() => {
+    try { const saved = localStorage.getItem("ce-trainings"); return saved ? JSON.parse(saved) : []; } catch { return []; }
+  });
   const [showForm, setShowForm] = useState(false);
   const [form, setForm] = useState({ title: "", provider: "", date: "", hours: "", topics: [] });
+  const [formError, setFormError] = useState("");
+
+  useEffect(() => {
+    try { localStorage.setItem("ce-trainings", JSON.stringify(trainings)); } catch {}
+  }, [trainings]);
 
   const addTraining = () => {
-    if (!form.title || !form.hours) return;
-    setTrainings([...trainings, { ...form, id: Date.now(), hours: parseFloat(form.hours) }]);
+    if (!form.title || !form.hours) {
+      setFormError("Title and hours are required.");
+      return;
+    }
+    const hours = parseFloat(form.hours);
+    if (isNaN(hours) || hours <= 0) {
+      setFormError("Hours must be a positive number.");
+      return;
+    }
+    setFormError("");
+    setTrainings([...trainings, { ...form, id: Date.now(), hours }]);
     setForm({ title: "", provider: "", date: "", hours: "", topics: [] });
     setShowForm(false);
   };
@@ -95,7 +111,7 @@ export default function CETracker() {
           <div style={{ fontSize: 13, fontWeight: 600, color: "#0f172a", marginBottom: 6 }}>Topics covered:</div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 4, marginBottom: 12 }}>
             {REQUIRED_TOPICS.map((t) => (
-              <button key={t.id} onClick={() => toggleTopic(t.id)} style={{
+              <button key={t.id} onClick={() => toggleTopic(t.id)} aria-pressed={form.topics.includes(t.id)} style={{
                 padding: "3px 10px", borderRadius: 12, fontSize: 11, cursor: "pointer",
                 border: form.topics.includes(t.id) ? "1px solid #2563eb" : "1px solid #cbd5e1",
                 background: form.topics.includes(t.id) ? "#dbeafe" : "#fff",
@@ -106,6 +122,7 @@ export default function CETracker() {
               </button>
             ))}
           </div>
+          {formError && <div role="alert" style={{ marginBottom: 8, padding: "6px 10px", background: "#fef2f2", border: "1px solid #fecaca", borderRadius: 6, fontSize: 12, color: "#991b1b" }}>{formError}</div>}
           <button onClick={addTraining} disabled={!form.title || !form.hours} style={{ padding: "8px 20px", borderRadius: 6, border: "none", background: form.title && form.hours ? "#16a34a" : "#94a3b8", color: "#fff", cursor: form.title && form.hours ? "pointer" : "default", fontSize: 13 }}>
             Save Training
           </button>

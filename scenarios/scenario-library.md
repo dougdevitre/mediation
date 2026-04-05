@@ -78,7 +78,7 @@
 
 **Situation**: During discussions about the parenting plan, one parent reports that the child refuses to visit the other parent.
 
-**Standards**: 2025-X (Voice of the Child), 2025-V (Domestic Abuse), 2025-VI (Child Maltreatment)
+**Standards**: 2025-X (Voice of the Child), 2025-V (Domestic Abuse), 2025-VI (Child Maltreatment) (→ references/03, references/08)
 
 **Protocol**:
 1. Explore the context without assigning blame: "Can you help me understand what the child has expressed?"
@@ -91,7 +91,7 @@
 **What NOT to do**:
 - Do not determine whether the child is being "alienated" or "coached" — that is a clinical/legal determination
 - Do not force the parents to agree on a schedule the child has clearly rejected
-- Do not interview the child yourself unless you have specific child-inclusive mediation training
+- Do not interview the child yourself unless you have specific child-inclusive mediation training (→ references/15 for training requirements)
 
 ---
 

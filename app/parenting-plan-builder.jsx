@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const CATEGORIES = [
   {
@@ -94,10 +94,22 @@ const CATEGORIES = [
 ];
 
 export default function ParentingPlanBuilder() {
-  const [selected, setSelected] = useState(new Set());
-  const [notes, setNotes] = useState({});
+  const [selected, setSelected] = useState(() => {
+    try { const saved = localStorage.getItem("ppb-selected"); return saved ? new Set(JSON.parse(saved)) : new Set(); } catch { return new Set(); }
+  });
+  const [notes, setNotes] = useState(() => {
+    try { const saved = localStorage.getItem("ppb-notes"); return saved ? JSON.parse(saved) : {}; } catch { return {}; }
+  });
   const [expandedCat, setExpandedCat] = useState(new Set(["Residential Schedule"]));
   const [view, setView] = useState("builder");
+  const [copyStatus, setCopyStatus] = useState("");
+
+  useEffect(() => {
+    try { localStorage.setItem("ppb-selected", JSON.stringify([...selected])); } catch {}
+  }, [selected]);
+  useEffect(() => {
+    try { localStorage.setItem("ppb-notes", JSON.stringify(notes)); } catch {}
+  }, [notes]);
 
   const toggle = (id) => {
     const next = new Set(selected);
@@ -124,7 +136,7 @@ export default function ParentingPlanBuilder() {
   const exportText = () => {
     const summary = getSummary();
     let text = "PARENTING PLAN — SELECTED PROVISIONS\n";
-    text += "=" .repeat(50) + "\n\n";
+    text += "=".repeat(50) + "\n\n";
     text += `Generated: ${new Date().toLocaleDateString()}\n`;
     text += `Total provisions selected: ${selected.size}\n\n`;
     summary.forEach((s) => {
@@ -148,7 +160,7 @@ export default function ParentingPlanBuilder() {
           <h2 style={{ margin: 0, fontSize: 20, color: "#1e293b" }}>Plan Summary — {selected.size} Provisions</h2>
           <div style={{ display: "flex", gap: 8 }}>
             <button onClick={() => setView("builder")} style={{ padding: "6px 14px", borderRadius: 6, border: "1px solid #cbd5e1", background: "#fff", cursor: "pointer", fontSize: 13 }}>← Back</button>
-            <button onClick={() => { navigator.clipboard.writeText(exportText()); }} style={{ padding: "6px 14px", borderRadius: 6, border: "none", background: "#2563eb", color: "#fff", cursor: "pointer", fontSize: 13 }}>Copy to Clipboard</button>
+            <button onClick={() => { navigator.clipboard.writeText(exportText()).then(() => { setCopyStatus("Copied!"); setTimeout(() => setCopyStatus(""), 2000); }).catch(() => { setCopyStatus("Copy failed"); setTimeout(() => setCopyStatus(""), 2000); }); }} style={{ padding: "6px 14px", borderRadius: 6, border: "none", background: "#2563eb", color: "#fff", cursor: "pointer", fontSize: 13 }} aria-label="Copy plan to clipboard">{copyStatus || "Copy to Clipboard"}</button>
           </div>
         </div>
         {summary.length === 0 && <p style={{ color: "#64748b" }}>No provisions selected yet. Go back and select provisions to include in the plan.</p>}
@@ -191,8 +203,8 @@ export default function ParentingPlanBuilder() {
             <div style={{ padding: "8px 14px" }}>
               {cat.provisions.map((p) => (
                 <div key={p.id} style={{ padding: "8px 0", borderBottom: "1px solid #f1f5f9" }}>
-                  <label style={{ display: "flex", alignItems: "flex-start", gap: 8, cursor: "pointer" }}>
-                    <input type="checkbox" checked={selected.has(p.id)} onChange={() => toggle(p.id)} style={{ marginTop: 3, accentColor: "#2563eb" }} />
+                  <label htmlFor={`provision-${p.id}`} style={{ display: "flex", alignItems: "flex-start", gap: 8, cursor: "pointer" }}>
+                    <input id={`provision-${p.id}`} type="checkbox" checked={selected.has(p.id)} onChange={() => toggle(p.id)} style={{ marginTop: 3, accentColor: "#2563eb" }} />
                     <div>
                       <div style={{ fontSize: 14, fontWeight: 500, color: "#1e293b" }}>{p.label}</div>
                       <div style={{ fontSize: 12, color: "#64748b" }}>{p.detail}</div>

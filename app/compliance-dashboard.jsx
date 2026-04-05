@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const AUDIT_SECTIONS = [
   {
@@ -120,8 +120,14 @@ const AUDIT_SECTIONS = [
 ];
 
 export default function ComplianceDashboard() {
-  const [responses, setResponses] = useState({});
+  const [responses, setResponses] = useState(() => {
+    try { const saved = localStorage.getItem("cd-responses"); return saved ? JSON.parse(saved) : {}; } catch { return {}; }
+  });
   const [showResults, setShowResults] = useState(false);
+
+  useEffect(() => {
+    try { localStorage.setItem("cd-responses", JSON.stringify(responses)); } catch {}
+  }, [responses]);
 
   const setResponse = (sectionIdx, itemIdx, value) => {
     const key = `${sectionIdx}-${itemIdx}`;
@@ -238,11 +244,12 @@ export default function ComplianceDashboard() {
                   <div style={{ fontSize: 14, color: "#1e293b", marginBottom: 6 }}>{item}</div>
                   <div style={{ display: "flex", gap: 6 }}>
                     {[["yes", "Yes", "#16a34a"], ["partial", "Partial", "#ca8a04"], ["no", "No", "#dc2626"]].map(([val, label, color]) => (
-                      <button key={val} onClick={() => setResponse(sIdx, iIdx, val)} style={{
+                      <button key={val} onClick={() => setResponse(sIdx, iIdx, val)} aria-pressed={r === val} style={{
                         padding: "4px 12px", borderRadius: 4, fontSize: 12, cursor: "pointer",
                         border: r === val ? `2px solid ${color}` : "1px solid #cbd5e1",
                         background: r === val ? `${color}15` : "#fff",
                         color: r === val ? color : "#64748b", fontWeight: r === val ? 600 : 400,
+                        outline: "none",
                       }}>{label}</button>
                     ))}
                   </div>
