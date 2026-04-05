@@ -187,7 +187,13 @@ Abuse disclosed in joint session, financial disclosure refusal, child refusing a
 
 ## Interactive Tools (React)
 
-→ See the `app/` directory for 11 interactive React components:
+→ See the `app/` directory for 13 interactive React components:
+
+### Dashboards
+| Tool | File | Description |
+|---|---|---|
+| Mediator Dashboard | `app/mediator-dashboard.jsx` | Practice hub — quick actions, case management, phase-based workflow routing to tools, templates, and references |
+| Party Welcome | `app/party-welcome.jsx` | Guided onboarding — "What brings you here?" router with 4 paths and step-by-step checklists |
 
 ### For Mediators
 | Tool | File | Description |

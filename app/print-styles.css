@@ -1,0 +1,177 @@
+/**
+ * Print-Friendly Styles for Access to Mediation
+ *
+ * Include this stylesheet in any page that renders mediation tools.
+ * When printing (Ctrl+P / Cmd+P), it hides navigation, buttons, and
+ * interactive elements while preserving content in a clean format.
+ *
+ * Usage: <link rel="stylesheet" href="print-styles.css" media="print">
+ * Or import in your React app: import './print-styles.css';
+ */
+
+@media print {
+  /* Hide interactive elements */
+  button,
+  input[type="checkbox"],
+  input[type="text"],
+  input[type="number"],
+  input[type="date"],
+  select,
+  textarea,
+  nav,
+  .topnav,
+  .hero,
+  footer,
+  [role="progressbar"],
+  [aria-label="Search clauses"],
+  .skip-link {
+    display: none !important;
+  }
+
+  /* Show content cleanly */
+  body {
+    font-family: "Times New Roman", Georgia, serif;
+    font-size: 12pt;
+    line-height: 1.5;
+    color: #000;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Reset container widths for full-page print */
+  div[style*="max-width"] {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 10px !important;
+  }
+
+  /* Headers */
+  h1, h2, h3, h4 {
+    color: #000 !important;
+    page-break-after: avoid;
+    margin-top: 16pt;
+  }
+
+  h2 { font-size: 16pt; border-bottom: 1pt solid #000; padding-bottom: 4pt; }
+  h3 { font-size: 13pt; }
+  h4 { font-size: 12pt; }
+
+  /* Cards and containers — flatten to simple bordered boxes */
+  div[style*="background"] {
+    background: #fff !important;
+    border: 1pt solid #ccc !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+  }
+
+  /* Grid layouts — stack vertically for print */
+  div[style*="grid-template-columns: repeat(3"],
+  div[style*="grid-template-columns: repeat(4"],
+  div[style*="gridTemplateColumns"] {
+    display: block !important;
+  }
+
+  div[style*="grid-template-columns: repeat(3"] > div,
+  div[style*="grid-template-columns: repeat(4"] > div,
+  div[style*="gridTemplateColumns"] > div {
+    display: block !important;
+    margin-bottom: 8pt;
+    width: 100% !important;
+  }
+
+  /* Flex layouts — wrap for print */
+  div[style*="display: flex"] {
+    flex-wrap: wrap !important;
+  }
+
+  /* Summary/stat cards — show inline */
+  div[style*="textAlign: \"center\""],
+  div[style*="text-align: center"] {
+    display: inline-block !important;
+    width: 45% !important;
+    vertical-align: top;
+    margin: 4pt;
+  }
+
+  /* Color text — force black for print */
+  div, span, p, label {
+    color: #000 !important;
+  }
+
+  /* Status indicators — add text labels */
+  div[role="status"]::after {
+    content: attr(aria-label);
+    display: block;
+    font-size: 10pt;
+    color: #333;
+  }
+
+  /* Disclaimers — keep visible with border */
+  div[style*="background: \"#fef3c7\""],
+  div[style*="background: \"#eff6ff\""],
+  .disclaimer {
+    border: 1pt solid #999 !important;
+    background: #f8f8f8 !important;
+    padding: 8pt !important;
+    font-size: 10pt;
+    page-break-inside: avoid;
+  }
+
+  /* Links */
+  a {
+    color: #000 !important;
+    text-decoration: underline;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    color: #555;
+  }
+
+  /* Tables — clean borders */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    page-break-inside: avoid;
+  }
+
+  th, td {
+    border: 1pt solid #000;
+    padding: 4pt 8pt;
+    text-align: left;
+    font-size: 10pt;
+  }
+
+  th {
+    background: #eee !important;
+    font-weight: bold;
+  }
+
+  /* Page breaks */
+  .section { page-break-before: always; }
+  .section:first-child { page-break-before: avoid; }
+
+  /* Add print header */
+  body::before {
+    content: "Access to Mediation — Printed " attr(data-print-date);
+    display: block;
+    text-align: right;
+    font-size: 9pt;
+    color: #666;
+    border-bottom: 1pt solid #ccc;
+    padding-bottom: 4pt;
+    margin-bottom: 12pt;
+  }
+
+  /* Footer */
+  @page {
+    margin: 0.75in;
+    @bottom-center {
+      content: "Page " counter(page) " of " counter(pages);
+      font-size: 9pt;
+    }
+  }
+}
