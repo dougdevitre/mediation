@@ -3,87 +3,647 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Free, open-source practice tools for family mediators. Reference guides, templates, scenarios, and interactive tools grounded in 2025 AFCC/ABA and 2005 ABA/AAA/ACR Model Standards.">
-<meta property="og:title" content="Access to Mediation — Open Source Family Mediation Practice Tools">
-<meta property="og:description" content="Free reference guides, templates, scenarios, and interactive tools for family mediators grounded in the 2025 AFCC/ABA Model Standards.">
+<meta name="description" content="Free, open-source practice tools for family mediators. Interactive Parenting Plan Builder, Compliance Dashboard, CE Tracker, and 20 practice scenarios grounded in 2025 AFCC/ABA and 2005 ABA/AAA/ACR Model Standards.">
+<meta property="og:title" content="Access to Mediation - Open Source Family Mediation Practice Tools">
+<meta property="og:description" content="Free interactive tools for family mediators: Parenting Plan Builder, Compliance Dashboard, CE Tracker, and 20 practice scenarios.">
 <meta property="og:type" content="website">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Access to Mediation">
-<meta name="twitter:description" content="Open-source, standards-compliant practice assistant for family mediators.">
-<title>Access to Mediation — Open Source Family Mediation Practice Tools</title>
+<meta name="twitter:description" content="Open-source, standards-compliant practice tools for family mediators.">
+<title>Access to Mediation - Open Source Family Mediation Practice Tools</title>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Access to Mediation",
+  "description": "Open-source, standards-compliant practice assistant for family mediators",
+  "applicationCategory": "LegalService",
+  "operatingSystem": "Web Browser",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "license": "https://opensource.org/licenses/MIT"
+}
+</script>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: system-ui, -apple-system, sans-serif; color: #1e293b; line-height: 1.6; }
-  .hero { background: linear-gradient(135deg, #1e3a5f 0%, #0d9488 100%); color: white; padding: 80px 20px; text-align: center; }
-  .hero h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 16px; }
-  .hero p { font-size: 1.1rem; max-width: 700px; margin: 0 auto 24px; opacity: 0.9; }
-  .hero a { display: inline-block; padding: 12px 28px; background: white; color: #1e3a5f; border-radius: 8px; text-decoration: none; font-weight: 600; margin: 8px; }
-  .hero a:hover { background: #f0f4f8; }
-  .hero a:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
-  a:focus-visible { outline: 3px solid #2563eb; outline-offset: 2px; }
-  .skip-link { position: absolute; top: -40px; left: 0; background: #1e3a5f; color: #fff; padding: 8px 16px; z-index: 100; font-size: 0.9rem; text-decoration: none; }
-  .skip-link:focus { top: 0; }
-  .container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; }
-  h2 { font-size: 1.8rem; color: #1e3a5f; margin-bottom: 24px; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 40px; }
-  .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; }
-  .card h3 { font-size: 1.1rem; color: #0d9488; margin-bottom: 8px; }
-  .card p { font-size: 0.9rem; color: #475569; }
-  .standards { background: #eff6ff; border-radius: 12px; padding: 32px; margin-bottom: 40px; }
-  .standards h2 { color: #1e40af; }
-  .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; margin: 4px; }
-  .badge-shall { background: #fee2e2; color: #991b1b; }
-  .badge-should { background: #fef9c3; color: #854d0e; }
-  .footer { background: #0f172a; color: #cbd5e1; padding: 40px 20px; text-align: center; font-size: 0.85rem; }
-  .footer a { color: #93bbfc; text-decoration: none; }
-  .stat { text-align: center; }
-  .stat .num { font-size: 2.5rem; font-weight: 700; color: #0d9488; }
-  .stat .label { font-size: 0.85rem; color: #64748b; }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui,-apple-system,sans-serif;color:#1e293b;line-height:1.6;background:#fff}
+.skip-link{position:absolute;top:-50px;left:0;background:#1e3a5f;color:#fff;padding:8px 16px;z-index:1000;text-decoration:none;font-size:.9rem}
+.skip-link:focus{top:0}
+a:focus-visible{outline:3px solid #2563eb;outline-offset:2px}
+
+/* Nav */
+.topnav{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;padding:0 16px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.topnav .brand{font-weight:700;color:#1e3a5f;font-size:1rem;padding:12px 16px 12px 0;white-space:nowrap;border-right:1px solid #e2e8f0;margin-right:8px;flex-shrink:0}
+.topnav button{background:none;border:none;padding:10px 14px;font-size:.85rem;color:#64748b;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;font-family:inherit;transition:color .15s,border-color .15s}
+.topnav button:hover{color:#1e3a5f}
+.topnav button.active{color:#0d9488;border-bottom-color:#0d9488;font-weight:600}
+.topnav button:focus-visible{outline:2px solid #2563eb;outline-offset:-2px;border-radius:4px}
+
+/* Hero */
+.hero{background:linear-gradient(135deg,#1e3a5f 0%,#0d9488 100%);color:#fff;padding:60px 20px;text-align:center}
+.hero h1{font-size:2.4rem;font-weight:700;margin-bottom:12px}
+.hero p{font-size:1.05rem;max-width:680px;margin:0 auto 20px;opacity:.92}
+.hero .btn-row{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.hero .btn-row a{display:inline-block;padding:10px 24px;background:#fff;color:#1e3a5f;border-radius:8px;text-decoration:none;font-weight:600;font-size:.9rem}
+.hero .btn-row a:hover{background:#f0f4f8}
+.hero .btn-row a:focus-visible{outline:3px solid #fff;outline-offset:2px}
+
+/* Section */
+.section{display:none;max-width:900px;margin:0 auto;padding:32px 20px}
+.section.active{display:block}
+h2.sec-title{font-size:1.5rem;color:#1e3a5f;margin-bottom:20px;padding-bottom:8px;border-bottom:2px solid #e2e8f0}
+
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;margin-bottom:32px}
+.stat-card{text-align:center;padding:20px 12px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px}
+.stat-card .num{font-size:2.2rem;font-weight:700;color:#0d9488}
+.stat-card .lbl{font-size:.8rem;color:#64748b;margin-top:2px}
+
+/* Cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:32px}
+.card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:20px}
+.card h3{font-size:1rem;color:#0d9488;margin-bottom:6px}
+.card p{font-size:.875rem;color:#475569}
+
+/* Badges */
+.badge{display:inline-block;padding:3px 10px;border-radius:16px;font-size:.7rem;font-weight:600;margin:3px}
+.badge-shall{background:#fee2e2;color:#991b1b}
+.badge-should{background:#fef9c3;color:#854d0e}
+
+/* Footer */
+footer{background:#0f172a;color:#cbd5e1;padding:32px 20px;text-align:center;font-size:.82rem;margin-top:40px}
+footer a{color:#93bbfc;text-decoration:none}
+
+/* Tool shared */
+.tool-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px}
+.tool-header h2{margin:0;font-size:1.3rem;color:#1e3a5f;border:none;padding:0}
+.btn{padding:7px 16px;border-radius:6px;border:none;font-size:.82rem;cursor:pointer;font-family:inherit;font-weight:500;transition:background .15s}
+.btn-primary{background:#2563eb;color:#fff}.btn-primary:hover{background:#1d4ed8}
+.btn-success{background:#16a34a;color:#fff}.btn-success:hover{background:#15803d}
+.btn-outline{background:#fff;color:#475569;border:1px solid #cbd5e1}.btn-outline:hover{background:#f8fafc}
+.btn-danger{background:#fff;color:#dc2626;border:1px solid #fecaca}.btn-danger:hover{background:#fef2f2}
+.btn:disabled{opacity:.5;cursor:default}
+.btn:focus-visible{outline:2px solid #2563eb;outline-offset:2px}
+.info-bar{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:#eff6ff;border-radius:8px;margin-bottom:16px;flex-wrap:wrap;gap:6px}
+.info-bar span{font-size:.85rem;color:#1e40af;font-weight:600}
+
+/* Accordion */
+.accordion{border:1px solid #e2e8f0;border-radius:8px;margin-bottom:8px;overflow:hidden}
+.acc-header{width:100%;display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:#f8fafc;border:none;cursor:pointer;font-size:.93rem;font-weight:600;color:#0f172a;font-family:inherit;text-align:left}
+.acc-header:hover{background:#f1f5f9}
+.acc-header:focus-visible{outline:2px solid #2563eb;outline-offset:-2px}
+.acc-body{padding:8px 14px}
+.acc-body.hidden{display:none}
+
+/* Provision item */
+.prov{padding:7px 0;border-bottom:1px solid #f1f5f9}
+.prov:last-child{border-bottom:none}
+.prov label{display:flex;align-items:flex-start;gap:8px;cursor:pointer;font-size:.87rem}
+.prov input[type=checkbox]{margin-top:3px;accent-color:#2563eb}
+.prov .detail{font-size:.75rem;color:#64748b}
+.prov textarea{width:100%;margin-top:5px;padding:6px 8px;border:1px solid #cbd5e1;border-radius:6px;font-size:.8rem;resize:vertical;min-height:40px;font-family:inherit;box-sizing:border-box}
+
+/* Compliance */
+.audit-item{padding:8px 0;border-bottom:1px solid #f1f5f9}
+.audit-item:last-child{border-bottom:none}
+.audit-item .q{font-size:.87rem;color:#1e293b;margin-bottom:5px}
+.audit-btns{display:flex;gap:5px}
+.audit-btn{padding:3px 11px;border-radius:4px;font-size:.75rem;cursor:pointer;border:1px solid #cbd5e1;background:#fff;color:#64748b;font-family:inherit;transition:all .15s}
+.audit-btn.sel-yes{border-color:#16a34a;background:#f0fdf4;color:#16a34a;font-weight:600}
+.audit-btn.sel-partial{border-color:#ca8a04;background:#fefce8;color:#ca8a04;font-weight:600}
+.audit-btn.sel-no{border-color:#dc2626;background:#fef2f2;color:#dc2626;font-weight:600}
+.audit-btn:focus-visible{outline:2px solid #2563eb;outline-offset:1px}
+
+/* Score cards */
+.score-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+.score-card{text-align:center;padding:14px;border-radius:8px;border:1px solid #e2e8f0}
+.score-card .val{font-size:1.8rem;font-weight:700}
+.score-card .slbl{font-size:.72rem}
+
+/* CE */
+.ce-form{padding:14px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;margin-bottom:16px}
+.ce-form .row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.ce-form input{padding:7px 8px;border:1px solid #cbd5e1;border-radius:6px;font-size:.82rem;font-family:inherit}
+.ce-form .topics{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px}
+.topic-btn{padding:2px 9px;border-radius:12px;font-size:.7rem;cursor:pointer;border:1px solid #cbd5e1;background:#fff;color:#64748b;font-family:inherit}
+.topic-btn.on{border-color:#2563eb;background:#dbeafe;color:#1e40af}
+.topic-btn.req{font-weight:600}
+.topic-btn:focus-visible{outline:2px solid #2563eb;outline-offset:1px}
+.ce-entry{padding:10px 12px;margin-bottom:6px;background:#fff;border:1px solid #e2e8f0;border-radius:8px;display:flex;justify-content:space-between;align-items:flex-start}
+.ce-entry .tags{display:flex;flex-wrap:wrap;gap:3px;margin-top:4px}
+.ce-entry .tag{font-size:.65rem;padding:1px 6px;border-radius:8px;background:#f1f5f9;color:#64748b}
+.ce-entry .tag.req{background:#dbeafe;color:#1e40af}
+.err-msg{padding:5px 9px;background:#fef2f2;border:1px solid #fecaca;border-radius:6px;font-size:.78rem;color:#991b1b;margin-bottom:8px}
+
+/* Scenario */
+.search-box{width:100%;padding:10px 14px;border:1px solid #cbd5e1;border-radius:8px;font-size:.9rem;margin-bottom:16px;font-family:inherit}
+.search-box:focus{outline:none;border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.15)}
+.scenario{border:1px solid #e2e8f0;border-radius:8px;margin-bottom:8px;overflow:hidden}
+.scenario .s-header{width:100%;display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:#fff;border:none;cursor:pointer;font-family:inherit;text-align:left}
+.scenario .s-header:hover{background:#f8fafc}
+.scenario .s-header:focus-visible{outline:2px solid #2563eb;outline-offset:-2px}
+.scenario .s-title{font-size:.9rem;font-weight:600;color:#0f172a}
+.scenario .s-std{font-size:.72rem;color:#64748b;margin-top:2px}
+.scenario .s-body{padding:12px 14px;border-top:1px solid #e2e8f0;font-size:.85rem;color:#475569;line-height:1.7}
+.scenario .s-body.hidden{display:none}
+
+/* Ref guides */
+.ref-card{padding:14px 16px;border:1px solid #e2e8f0;border-radius:8px;margin-bottom:8px;background:#fff}
+.ref-card:hover{background:#f8fafc}
+.ref-card .r-num{font-size:.7rem;font-weight:600;color:#0d9488;text-transform:uppercase;margin-bottom:2px}
+.ref-card .r-title{font-size:.93rem;font-weight:600;color:#0f172a;margin-bottom:4px}
+.ref-card .r-desc{font-size:.82rem;color:#64748b}
+
+/* Gap alert */
+.gap-alert{padding:12px;margin-bottom:16px;background:#fef2f2;border-radius:8px;border-left:4px solid #dc2626}
+.gap-alert h4{font-size:.87rem;font-weight:600;color:#991b1b;margin-bottom:4px}
+.gap-alert .g-item{font-size:.82rem;color:#7f1d1d;padding:2px 0}
+.gap-item{padding:10px 12px;margin-bottom:6px;border-radius:8px;border-left:4px solid}
+.gap-item.no{background:#fef2f2;border-color:#dc2626}
+.gap-item.partial{background:#fffbeb;border-color:#ca8a04}
+.gap-item .g-text{font-size:.82rem;font-weight:600;color:#0f172a}
+.gap-item .g-meta{font-size:.75rem;color:#64748b;margin-top:2px}
+
+/* Standards table */
+.std-box{background:#eff6ff;border-radius:12px;padding:24px;margin-bottom:32px}
+.std-box h2{color:#1e40af;font-size:1.2rem;margin-bottom:12px;border:none;padding:0}
+
+/* Disclaimer */
+.disclaimer{margin-top:16px;padding:10px;background:#fef3c7;border-radius:8px;font-size:.78rem;color:#92400e}
+
+/* Print */
+@media print{.topnav,.hero,.skip-link{display:none!important}.section{display:block!important;page-break-inside:avoid}footer{display:none}}
+@media(max-width:640px){.hero h1{font-size:1.7rem}.score-grid{grid-template-columns:1fr}.ce-form .row{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
-<div class="hero">
+
+<nav class="topnav" role="navigation" aria-label="Main navigation">
+  <span class="brand">Access to Mediation</span>
+  <button class="active" onclick="showTab('home')" id="tab-home">Home</button>
+  <button onclick="showTab('planner')" id="tab-planner">Parenting Plan</button>
+  <button onclick="showTab('compliance')" id="tab-compliance">Compliance</button>
+  <button onclick="showTab('ce')" id="tab-ce">CE Tracker</button>
+  <button onclick="showTab('scenarios')" id="tab-scenarios">Scenarios</button>
+  <button onclick="showTab('guides')" id="tab-guides">Reference Guides</button>
+</nav>
+
+<div class="hero" id="hero-section">
   <h1>Access to Mediation</h1>
-  <p>An open-source, standards-compliant practice assistant for family mediators. Grounded in the 2025 AFCC/ABA Model Standards and the 2005 ABA/AAA/ACR Model Standards of Conduct.</p>
-  <a href="https://github.com/cotrackpro/access-to-mediation">View on GitHub</a>
-  <a href="https://github.com/cotrackpro/access-to-mediation/archive/refs/heads/main.zip">Download</a>
+  <p>Free, open-source practice tools for family mediators. Grounded in the 2025 AFCC/ABA Model Standards and 2005 ABA/AAA/ACR Model Standards of Conduct.</p>
+  <div class="btn-row">
+    <a href="https://github.com/dougdevitre/mediation">View on GitHub</a>
+    <a href="https://github.com/dougdevitre/mediation/archive/refs/heads/main.zip">Download</a>
+  </div>
 </div>
-<main id="main-content" class="container">
-  <div class="grid" style="margin-bottom: 48px;">
-    <div class="stat"><div class="num">17</div><div class="label">Reference Guides</div></div>
-    <div class="stat"><div class="num">10</div><div class="label">Practice Templates</div></div>
-    <div class="stat"><div class="num">20</div><div class="label">Practice Scenarios</div></div>
-    <div class="stat"><div class="num">3</div><div class="label">Interactive Tools</div></div>
+
+<main id="main-content">
+<!-- HOME -->
+<div class="section active" id="sec-home">
+  <div class="stats">
+    <div class="stat-card"><div class="num">19</div><div class="lbl">Reference Guides</div></div>
+    <div class="stat-card"><div class="num">12</div><div class="lbl">Practice Templates</div></div>
+    <div class="stat-card"><div class="num">20</div><div class="lbl">Practice Scenarios</div></div>
+    <div class="stat-card"><div class="num">3</div><div class="lbl">Interactive Tools</div></div>
+    <div class="stat-card"><div class="num">5</div><div class="lbl">State Jurisdictions</div></div>
+    <div class="stat-card"><div class="num">6</div><div class="lbl">Workflow Diagrams</div></div>
   </div>
-  <h2>What's Inside</h2>
-  <div class="grid">
-    <div class="card"><h3>Reference Guides</h3><p>17 standards-based guides covering every phase of mediation — intake, screening, facilitation, agreement drafting, and practice management.</p></div>
-    <div class="card"><h3>Practice Templates</h3><p>10 customizable templates in Markdown and Word format: intake forms, screening checklists, agreements, parenting plan worksheets, and more.</p></div>
-    <div class="card"><h3>Scenario Library</h3><p>20 "What do I do when..." scenarios with standards-based guidance for challenging situations mediators actually face.</p></div>
-    <div class="card"><h3>Interactive Tools</h3><p>React-based Parenting Plan Builder (50+ provisions), Ethics Compliance Dashboard, and CE Training Tracker.</p></div>
-    <div class="card"><h3>Workflow Diagrams</h3><p>6 Mermaid decision-flow diagrams for intake, DV screening, child maltreatment, conflict checks, termination, and the full mediation process.</p></div>
-    <div class="card"><h3>CLE Presentation</h3><p>10-slide PowerPoint presentation ready to deliver at AFCC, state bar, NASW, or EAPA conferences.</p></div>
+  <h2 class="sec-title">Interactive Practice Tools</h2>
+  <div class="cards">
+    <div class="card" style="cursor:pointer" onclick="showTab('planner')"><h3>Parenting Plan Builder</h3><p>Select from 50+ provisions across 8 categories, add notes, and export a formatted plan. Saves your progress automatically.</p></div>
+    <div class="card" style="cursor:pointer" onclick="showTab('compliance')"><h3>Compliance Dashboard</h3><p>Self-audit your practice against 46 compliance items across 10 standards areas. Get scores, gap analysis, and corrective actions.</p></div>
+    <div class="card" style="cursor:pointer" onclick="showTab('ce')"><h3>CE Training Tracker</h3><p>Log training hours, tag topics, and track coverage against the 7 required training areas in the 2025 standards.</p></div>
   </div>
-  <div class="standards">
+  <h2 class="sec-title">What Else Is Inside</h2>
+  <div class="cards">
+    <div class="card" style="cursor:pointer" onclick="showTab('scenarios')"><h3>Scenario Library</h3><p>20 &ldquo;What do I do when&hellip;&rdquo; scenarios with standards-based protocols for challenging situations.</p></div>
+    <div class="card" style="cursor:pointer" onclick="showTab('guides')"><h3>Reference Guides</h3><p>19 standards-based guides covering every phase of mediation practice from intake through ethics compliance.</p></div>
+    <div class="card"><h3>Practice Templates</h3><p>12 customizable templates in Markdown and Word: intake forms, screening checklists, agreements, fee disclosures, and more.</p></div>
+    <div class="card"><h3>Workflow Diagrams</h3><p>6 Mermaid decision-flow diagrams for intake, DV screening, child maltreatment, conflict checks, termination, and full process overview.</p></div>
+    <div class="card"><h3>CLE Presentation</h3><p>10-slide PowerPoint deck ready to deliver at AFCC, state bar, NASW, or EAPA conferences.</p></div>
+    <div class="card"><h3>5 State Jurisdictions</h3><p>State-specific modules for CA, FL, MO, NY, and TX mapping model standards to local statutes, reporting, and qualifications.</p></div>
+  </div>
+  <div class="std-box">
     <h2>Standards Coverage</h2>
-    <p style="margin-bottom: 16px;">Every resource is mapped to the applicable Model Standard with the correct level of guidance:</p>
-    <span class="badge badge-shall">SHALL — No discretion to depart</span>
-    <span class="badge badge-should">SHOULD — Depart only with strong reason</span>
-    <p style="margin-top: 16px; font-size: 0.9rem;">14 standards from the 2025 AFCC/ABA Family Standards + 9 standards from the 2005 ABA/AAA/ACR General Standards = comprehensive coverage of mediator obligations.</p>
+    <p style="margin-bottom:12px;font-size:.9rem">Every resource is mapped to the applicable Model Standard with the correct obligation level:</p>
+    <span class="badge badge-shall">SHALL &mdash; No discretion to depart</span>
+    <span class="badge badge-should">SHOULD &mdash; Depart only with strong reason</span>
+    <p style="margin-top:12px;font-size:.85rem;color:#475569">14 standards from the 2025 AFCC/ABA Family Standards + 9 from the 2005 ABA/AAA/ACR General Standards = comprehensive coverage.</p>
   </div>
-  <h2>Part of the Access To Initiative</h2>
-  <p style="margin-bottom: 24px; color: #475569;">Free, open-source civic technology tools for justice, education, housing, health, safety, and services.</p>
-  <div class="grid">
-    <div class="card"><h3>Access to Justice</h3><p>Legal system navigation and court preparation tools.</p></div>
-    <div class="card"><h3>Access to Safety</h3><p>Trauma-informed child safety documentation.</p></div>
-    <div class="card"><h3>Access to Education</h3><p>Special needs educational support.</p></div>
-    <div class="card"><h3>Access to Health</h3><p>Public health role-based guidance.</p></div>
-  </div>
+</div>
+
+<!-- PARENTING PLAN BUILDER -->
+<div class="section" id="sec-planner"></div>
+
+<!-- COMPLIANCE DASHBOARD -->
+<div class="section" id="sec-compliance"></div>
+
+<!-- CE TRACKER -->
+<div class="section" id="sec-ce"></div>
+
+<!-- SCENARIOS -->
+<div class="section" id="sec-scenarios"></div>
+
+<!-- REFERENCE GUIDES -->
+<div class="section" id="sec-guides"></div>
 </main>
-<footer class="footer" role="contentinfo">
+
+<footer role="contentinfo">
   <p>Access to Mediation is an open-source project by <a href="https://cotrackpro.com">CoTrackPro</a>. MIT License.</p>
-  <p style="margin-top: 8px;">This project provides educational information, not legal advice. Mediators must comply with applicable state law and professional standards.</p>
+  <p style="margin-top:6px">This project provides educational information, not legal advice. Mediators must comply with applicable state law and professional standards.</p>
 </footer>
+<script>
+// ==================== DATA ====================
+const CATEGORIES = [
+  {name:"Residential Schedule",provisions:[
+    {id:"reg_weekday",label:"Regular weekday schedule",detail:"Which parent has the children on school nights"},
+    {id:"reg_weekend",label:"Regular weekend schedule",detail:"Weekend rotation pattern"},
+    {id:"alternating",label:"Alternating week schedule",detail:"Week-on/week-off arrangement"},
+    {id:"midweek",label:"Midweek overnight",detail:"Non-custodial parent gets a midweek overnight"},
+    {id:"2_2_3",label:"2-2-3 rotation",detail:"Two days, two days, three days alternating"},
+    {id:"5_2",label:"5-2 schedule",detail:"Five days with one parent, two with the other"}
+  ]},
+  {name:"Holidays & Special Days",provisions:[
+    {id:"hol_alternate",label:"Alternating holidays by year",detail:"Even/odd year rotation"},
+    {id:"hol_split",label:"Split holidays",detail:"Morning with one parent, evening with the other"},
+    {id:"hol_fixed",label:"Fixed holiday assignments",detail:"Specific holidays always with a specific parent"},
+    {id:"child_bday",label:"Children's birthdays",detail:"How birthdays are shared"},
+    {id:"parent_bday",label:"Parent birthdays",detail:"Children spend time with the birthday parent"},
+    {id:"mothers_fathers",label:"Mother's/Father's Day",detail:"Child with respective parent"},
+    {id:"school_break",label:"School breaks",detail:"Winter, spring, and summer break divisions"},
+    {id:"religious",label:"Religious observances",detail:"Holiday schedule for religious holidays"}
+  ]},
+  {name:"Decision-Making",provisions:[
+    {id:"joint_major",label:"Joint major decisions",detail:"Both parents decide education, healthcare, religion, activities"},
+    {id:"sole_major",label:"Sole major decisions",detail:"One parent has final say on major decisions"},
+    {id:"split_major",label:"Split decision areas",detail:"Each parent decides specific categories"},
+    {id:"day_to_day",label:"Day-to-day decisions",detail:"Parent with the child decides routine matters"},
+    {id:"emergency",label:"Emergency decisions",detail:"Either parent may make emergency decisions with prompt notice"},
+    {id:"dispute_process",label:"Dispute resolution process",detail:"Mediation first, then court for unresolved disagreements"}
+  ]},
+  {name:"Communication",provisions:[
+    {id:"parent_comm_method",label:"Parent-to-parent communication method",detail:"Email, text, co-parenting app, or phone"},
+    {id:"parent_comm_freq",label:"Communication response time",detail:"Expected response window (e.g., 24 hours for non-urgent)"},
+    {id:"child_comm",label:"Parent-child communication",detail:"Phone/video calls during the other parent's time"},
+    {id:"coparent_app",label:"Co-parenting app requirement",detail:"Use of OFW, TalkingParents, or similar"},
+    {id:"no_negative",label:"No negative comments",detail:"Neither parent disparages the other in front of children"},
+    {id:"info_sharing",label:"Information sharing",detail:"School records, medical records, activity schedules"}
+  ]},
+  {name:"Transitions",provisions:[
+    {id:"pickup_dropoff",label:"Pick-up/drop-off logistics",detail:"Times, locations, who transports"},
+    {id:"school_transition",label:"School as transition point",detail:"One parent drops off, other picks up from school"},
+    {id:"neutral_location",label:"Neutral exchange location",detail:"Public location for exchanges (safety cases)"},
+    {id:"supervised_exchange",label:"Supervised exchanges",detail:"Third party present during transitions"},
+    {id:"items_travel",label:"Items traveling with child",detail:"Clothing, medications, school materials, comfort items"},
+    {id:"late_protocol",label:"Late pick-up protocol",detail:"Grace period and notification requirements"}
+  ]},
+  {name:"Travel & Relocation",provisions:[
+    {id:"travel_notice",label:"Travel notification",detail:"Advance notice required for domestic travel"},
+    {id:"intl_travel",label:"International travel",detail:"Consent, passport handling, itinerary sharing"},
+    {id:"relocation_notice",label:"Relocation notice",detail:"Days/months notice required before moving"},
+    {id:"geo_restriction",label:"Geographic restriction",detail:"Must reside within specified distance"},
+    {id:"passport",label:"Passport possession",detail:"Who holds the passport"}
+  ]},
+  {name:"Child-Specific",provisions:[
+    {id:"activities",label:"Extracurricular activities",detail:"Enrollment, attendance, cost sharing"},
+    {id:"healthcare",label:"Healthcare providers",detail:"Pediatrician, dentist, specialists"},
+    {id:"insurance",label:"Health insurance",detail:"Who provides, how costs are shared"},
+    {id:"childcare",label:"Childcare arrangements",detail:"Daycare, babysitters, after-school"},
+    {id:"special_needs",label:"Special needs accommodations",detail:"Therapies, IEP, accommodations"},
+    {id:"pets",label:"Pet arrangements",detail:"Where pets reside, visitation"},
+    {id:"rofr",label:"Right of first refusal",detail:"Offer the other parent before using childcare"},
+    {id:"new_partners",label:"Introduction of new partners",detail:"Timeline and process for introducing significant others"},
+    {id:"social_media",label:"Social media and children's images",detail:"Rules about posting children's photos online"}
+  ]},
+  {name:"Review & Modification",provisions:[
+    {id:"review_annual",label:"Annual review",detail:"Review the plan yearly"},
+    {id:"review_milestone",label:"Developmental milestone review",detail:"Review when child starts school, becomes a teen, etc."},
+    {id:"mod_process",label:"Modification process",detail:"Mediation first, then court"},
+    {id:"sunset",label:"Sunset provisions",detail:"Certain provisions expire or change at specified ages"}
+  ]}
+];
+
+const AUDIT_SECTIONS = [
+  {title:"Self-Determination",standard:"2025-I, 2005-I",level:"SHALL",items:["I support parties' voluntary, autonomous decision-making","I never pressure parties toward settlement","I inform parties of their right to withdraw at any time","I inform parties they may agree or decline any proposal","I address dynamics that might undermine meaningful participation"]},
+  {title:"Informed Decision-Making",standard:"2025-II",level:"SHALL",items:["I facilitate safe and accurate disclosure of information","I allow time for parties to consult with experts and support persons","I recommend independent attorney review of agreements","I do not provide legal advice or therapy","When only one party has an attorney, I consider the power disparity"]},
+  {title:"Domestic Abuse Screening",standard:"2025-V",level:"SHALL",items:["I screen every case for domestic abuse, separately and confidentially","I screen before seeking consent to mediate","I monitor for domestic abuse indicators throughout mediation","I have specific training in domestic abuse dynamics including coercive control","I maintain current training on domestic abuse topics"]},
+  {title:"Child Maltreatment",standard:"2025-VI",level:"SHALL",items:["I do not mediate child maltreatment cases without relevant training","I explain mandatory reporting obligations to parties","I provide appropriate referrals when concerns arise","I consider suspension/termination when child maltreatment is alleged"]},
+  {title:"Impartiality & Conflicts",standard:"2025-VII, 2005-II/III",level:"SHALL",items:["I conduct a conflict-of-interest check before accepting every case","I disclose all actual and potential conflicts","I obtain informed, written waivers when proceeding with disclosed conflicts","I withdraw when impartiality is compromised","I guard against bias based on personal characteristics"]},
+  {title:"Confidentiality",standard:"2025-VIII, 2005-V",level:"SHALL",items:["I explain confidentiality and its exceptions before mediation","I include confidentiality provisions in the Agreement to Mediate","I discuss caucus confidentiality before separate sessions","I implement data security measures for digital information","I know my jurisdiction's confidentiality and privilege rules"]},
+  {title:"Technology & ODR",standard:"2025-IX",level:"SHOULD",items:["I assess parties' technology abilities before using ODR","I obtain informed consent for technology use","I maintain training on technology tools I use","I implement end-to-end encryption and data security","I regularly evaluate the tools I use for ethical/legal compliance"]},
+  {title:"Voice of the Child",standard:"2025-X",level:"SHOULD",items:["I help parents consider children's perspectives and needs","I use developmentally appropriate methods for including children's voice","I apply safeguards when children are directly involved","I never place children in a position of choosing between parents"]},
+  {title:"Qualifications & Training",standard:"2025-XI, 2005-IV",level:"SHALL",items:["I am qualified by education and training for the cases I mediate","I maintain a training log with dates, topics, and hours","I engage in peer consultation regularly","I recognize and decline cases beyond my competence"]},
+  {title:"Fees & Advertising",standard:"2025-XIII/XIV, 2005-VII/VIII",level:"SHALL",items:["I disclose fee information before mediation begins","I never charge contingent or outcome-based fees","My advertising is truthful and does not guarantee outcomes","I accurately represent my qualifications in all marketing"]}
+];
+
+const CE_TOPICS = [
+  {id:"dv_dynamics",label:"Domestic abuse dynamics & coercive control",required:true,standard:"2025-V(C)"},
+  {id:"dv_parenting",label:"Impact of domestic abuse on parenting/children",required:true,standard:"2025-V(C)"},
+  {id:"dv_screening",label:"Domestic abuse screening techniques",required:true,standard:"2025-V(A)"},
+  {id:"child_maltreatment",label:"Child maltreatment recognition & response",required:true,standard:"2025-VI(A)"},
+  {id:"mandatory_reporting",label:"Mandatory reporting obligations",required:true,standard:"2025-VI(B)"},
+  {id:"technology_odr",label:"Technology & ODR competence",required:true,standard:"2025-IX(B)"},
+  {id:"data_security",label:"Data security & privacy in mediation",required:true,standard:"2025-IX(C)"},
+  {id:"child_dev",label:"Child development",required:false,standard:"2025-X"},
+  {id:"cultural",label:"Cultural competence & humility",required:false,standard:"2025-Intro"},
+  {id:"high_conflict",label:"High-conflict family dynamics",required:false},
+  {id:"substance",label:"Substance use & families",required:false},
+  {id:"mental_health",label:"Mental health issues in mediation",required:false},
+  {id:"financial",label:"Financial literacy for mediators",required:false},
+  {id:"trauma",label:"Trauma-informed practice",required:false},
+  {id:"lgbtq",label:"LGBTQ+ family issues",required:false},
+  {id:"immigration",label:"Immigration impacts on family law",required:false},
+  {id:"ethics",label:"Mediation ethics",required:false},
+  {id:"bias",label:"Implicit bias awareness",required:false}
+];
+
+const SCENARIOS = [
+  {id:1,title:"Party discloses abuse in joint session",standards:"2025-V, 2025-I, 2025-VIII",protocol:"Remain calm. Move to caucus immediately. Screen using DV protocol. Assess if mediation can continue safely. Do NOT disclose caucus content without permission.",donts:"Don't probe about abuse in joint session. Don't minimize. Don't continue as if nothing happened."},
+  {id:2,title:"One party refuses financial disclosure",standards:"2025-II, 2025-I",protocol:"Explain informed decision-making requires information. Explore reasons in caucus. Suggest attorney consultation. If refusal continues, consider suspension. Screen for economic abuse.",donts:"Don't force disclosure. Don't take sides on what's 'sufficient.' Don't finalize agreement without material information."},
+  {id:3,title:"Child refuses to see a parent",standards:"2025-X, 2025-V, 2025-VI",protocol:"Explore context without blame. Consider abuse, alienation, loyalty conflict, or developmental anxiety. Recommend child specialist assessment. Focus on child's experience, not winning/losing.",donts:"Don't determine if child is 'alienated' or 'coached.' Don't force a schedule. Don't interview the child without training."},
+  {id:4,title:"Attorney dominates the process",standards:"2025-I, 2025-II, 2025-IV",protocol:"Check with party privately. Clarify attorney's role as advisor, not negotiator. Use structured turn-taking. Consider ground rules: parties speak first.",donts:"Don't confront the attorney aggressively. Don't exclude the attorney. Don't assume the party is fine without checking."},
+  {id:5,title:"Party appears intoxicated at session",standards:"2025-IV, 2025-XII, 2005-IV",protocol:"Don't accuse. Check in privately. Reschedule if impairment is apparent. Ensure safe transportation. Address substance use as a barrier before next session.",donts:"Don't diagnose or label. Don't continue if party can't participate meaningfully. Don't use observation against the party."},
+  {id:6,title:"Party brings up child maltreatment allegations",standards:"2025-VI, 2025-VIII",protocol:"Acknowledge seriousness without judging validity. Move to separate sessions. Review mandatory reporting obligations. Provide referrals. Assess whether to suspend.",donts:"Don't investigate the allegation. Don't determine if abuse occurred. Don't promise confidentiality conflicting with reporting duties."},
+  {id:7,title:"One party agrees to everything too quickly",standards:"2025-I, 2025-V, 2025-IV",protocol:"Explore in caucus. Ask if they feel safe and understand implications. Screen for coercive control. Slow the process. Recommend attorney review before signing.",donts:"Don't finalize if coercion is suspected. Don't ignore the pattern."},
+  {id:8,title:"Party threatens the other during session",standards:"2025-V, 2025-XII, 2025-VIII",protocol:"Intervene immediately. Separate parties. Assess severity. Call law enforcement if needed. Threats may be a confidentiality exception. Terminate if safety cannot be ensured.",donts:"Don't ignore veiled threats. Don't continue without safety assessment."},
+  {id:9,title:"Mid-case conflict of interest discovered",standards:"2025-VII, 2005-III",protocol:"Disclose to both parties immediately. Assess if impartiality can be maintained. If yes, obtain written waivers. If no, withdraw regardless of party consent. Provide referrals.",donts:"Don't hide the conflict. Don't continue without disclosure. Don't let parties waive a conflict that undermines process integrity."},
+  {id:10,title:"Party wants to record the session",standards:"2025-VIII, 2025-IX",protocol:"Review Agreement to Mediate confidentiality terms. Check jurisdiction rules. All parties and mediator must consent. Discuss chilling effect on candor. Address covert recording as violation.",donts:"Don't allow recording without all-party consent. Don't ignore covert recording."},
+  {id:11,title:"Party pressures mediator for recommendation",standards:"2025-I, 2025-II, 2025-VII",protocol:"Acknowledge with empathy. Explain mediator facilitates, doesn't recommend. Distinguish from evaluative processes. Recommend consulting an attorney for likely outcomes.",donts:"Don't make outcome recommendations. Don't predict what a judge would do."},
+  {id:12,title:"Cultural/religious values conflict with legal norms",standards:"2025-I, 2025-IV, Introduction",protocol:"Approach with cultural humility. Acknowledge importance of values. Ensure parties understand legal framework without imposing it. Explore coexistence. Consider cultural consultant.",donts:"Don't judge cultural practices. Don't let cultural practices mask coercive control."},
+  {id:13,title:"Party's mental health impairs participation",standards:"2025-IV, 2025-XII",protocol:"Don't diagnose. Assess capacity to participate. Consider shorter sessions, breaks, support persons. Suspend if party cannot understand process or make voluntary decisions.",donts:"Don't diagnose. Don't continue if meaningful participation is impossible."},
+  {id:14,title:"Mediator is subpoenaed to testify",standards:"2025-VIII(E), 2005-V",protocol:"Inform both parties. Review jurisdiction's confidentiality and privilege statutes. Do not testify without court order. Consult own attorney. File motion to quash if appropriate.",donts:"Don't voluntarily testify. Don't produce documents without legal analysis."},
+  {id:15,title:"Party wants child to choose which parent",standards:"2025-X, 2025-I",protocol:"Explain children should never choose between parents. Child's voice can be included through indirect methods. Suggest child specialist interview. Focus on child's needs, not 'choice.'",donts:"Don't put children in position of choosing. Don't treat child's stated preference as determinative."},
+  {id:16,title:"One party has no attorney, the other does",standards:"2025-II(C), 2025-IV",protocol:"Consider power disparity. Options: pause for Party B to get counsel, bring support person, adjust process. Strongly recommend attorney consultation before signing.",donts:"Don't ignore the imbalance. Don't finalize without recommending counsel for unrepresented party."},
+  {id:17,title:"Party discloses plan to relocate with children",standards:"2025-I, 2025-X",protocol:"Acknowledge significance. Explore reasons and implications. Ensure both parties understand legal requirements. Explore modified parenting plans. Recommend independent legal counsel.",donts:"Don't take sides on relocation. Don't ignore the child's perspective."},
+  {id:18,title:"Settlement reached under apparent duress",standards:"2025-I, 2025-II",protocol:"Do NOT finalize. Offer cooling-off period. Check with each party in caucus. Recommend attorney review. If duress is apparent, do not allow agreement to proceed.",donts:"Don't rush to close. Don't ignore signs of emotional pressure or exhaustion."},
+  {id:19,title:"Technology failure during online session",standards:"2025-IX",protocol:"Have backup communication plan established. Wait reasonable time, then try backup. Do not continue with only one party. Assess safety/confidentiality concerns. Consider alternatives for chronic failures.",donts:"Don't continue one-sided. Don't ignore recurring technology barriers."},
+  {id:20,title:"Party uses mediation to delay court proceedings",standards:"2025-XII, 2005-VI",protocol:"Observe patterns: cancellations, new issues, stalling. Address directly in caucus. Set timelines. If bad faith persists, terminate. Inform both parties of right to other processes.",donts:"Don't enable delay tactics. Don't continue indefinitely without progress."}
+];
+
+const REF_GUIDES = [
+  {num:"01",title:"Intake & Screening",desc:"Pre-mediation assessment procedures, initial contact protocols, and appropriateness evaluation."},
+  {num:"02",title:"Domestic Abuse Screening",desc:"Mandatory screening protocols for physical, sexual, economic, psychological abuse and coercive control."},
+  {num:"03",title:"Child Maltreatment",desc:"Recognition, response, mandatory reporting procedures, and referral protocols."},
+  {num:"04",title:"Impartiality & Conflicts of Interest",desc:"Bias awareness, conflict checks, disclosure requirements, and withdrawal protocols."},
+  {num:"05",title:"Agreement to Mediate",desc:"Informed consent, process education, and documentation of parties' agreement to participate."},
+  {num:"06",title:"Technology & ODR",desc:"Online dispute resolution readiness, platform selection, data security, and informed consent."},
+  {num:"07",title:"Session Facilitation",desc:"Session planning, communication techniques, caucus management, and process control."},
+  {num:"08",title:"Voice of the Child",desc:"Child-inclusive methods, developmental considerations, and safeguards for direct involvement."},
+  {num:"09",title:"Parenting Plans",desc:"Comprehensive parenting plan development with standards-based provisions and considerations."},
+  {num:"10",title:"Barriers & Modifications",desc:"Accessibility accommodations, power imbalances, language barriers, and process modifications."},
+  {num:"11",title:"Confidentiality",desc:"Confidentiality obligations, exceptions, caucus rules, data security, and privilege protections."},
+  {num:"12",title:"Agreement Drafting",desc:"Document preparation, party review, attorney consultation, and finalization procedures."},
+  {num:"13",title:"Suspension & Termination",desc:"Decision criteria, neutral termination notices, referrals, and process exit protocols."},
+  {num:"14",title:"Fees",desc:"Fee disclosure requirements, prohibited fee structures, and cost allocation guidance."},
+  {num:"15",title:"Qualifications & Training",desc:"Education requirements, competence standards, training logs, and continuing education."},
+  {num:"16",title:"Advertising & Marketing",desc:"Truthful advertising standards, qualification representation, and prohibited claims."},
+  {num:"17",title:"Ethics & Compliance",desc:"Self-audit procedures, ethical obligations, and compliance monitoring frameworks."}
+];
+
+// ==================== STATE ====================
+let ppSelected = new Set(), ppNotes = {}, ppExpanded = new Set(["Residential Schedule"]), ppView = "builder";
+let cdResponses = {};
+let ceTrainings = [], ceForm = {title:"",provider:"",date:"",hours:"",topics:[]}, ceShowForm = false, ceError = "";
+
+// Load from localStorage
+try { const s = localStorage.getItem("ppb-selected"); if(s) ppSelected = new Set(JSON.parse(s)); } catch{}
+try { const s = localStorage.getItem("ppb-notes"); if(s) ppNotes = JSON.parse(s); } catch{}
+try { const s = localStorage.getItem("cd-responses"); if(s) cdResponses = JSON.parse(s); } catch{}
+try { const s = localStorage.getItem("ce-trainings"); if(s) ceTrainings = JSON.parse(s); } catch{}
+
+function savePP(){ try{localStorage.setItem("ppb-selected",JSON.stringify([...ppSelected]));localStorage.setItem("ppb-notes",JSON.stringify(ppNotes))}catch{} }
+function saveCD(){ try{localStorage.setItem("cd-responses",JSON.stringify(cdResponses))}catch{} }
+function saveCE(){ try{localStorage.setItem("ce-trainings",JSON.stringify(ceTrainings))}catch{} }
+
+// ==================== TAB NAVIGATION ====================
+function showTab(id){
+  document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+  document.querySelectorAll(".topnav button").forEach(b=>b.classList.remove("active"));
+  document.getElementById("sec-"+id).classList.add("active");
+  document.getElementById("tab-"+id).classList.add("active");
+  document.getElementById("hero-section").style.display = id==="home"?"":"none";
+  window.scrollTo(0,0);
+}
+
+// ==================== PARENTING PLAN BUILDER ====================
+function renderPlanner(){
+  const el = document.getElementById("sec-planner");
+  if(ppView==="summary") return renderPlannerSummary(el);
+  let h = `<div class="tool-header"><h2>Parenting Plan Builder</h2></div>`;
+  h += `<p style="font-size:.82rem;color:#64748b;margin-bottom:12px">Select provisions to include. Add notes for each. Based on 2025 AFCC/ABA Model Standards.</p>`;
+  h += `<div class="info-bar"><span>${ppSelected.size} provisions selected</span><button class="btn btn-primary" ${ppSelected.size===0?"disabled":""} onclick="ppView='summary';renderPlanner()">View Summary &rarr;</button></div>`;
+  CATEGORIES.forEach((cat,ci)=>{
+    const cnt = cat.provisions.filter(p=>ppSelected.has(p.id)).length;
+    const open = ppExpanded.has(cat.name);
+    h += `<div class="accordion"><button class="acc-header" onclick="ppToggleCat('${cat.name}')" aria-expanded="${open}">${cat.name}<span style="font-size:.75rem;color:#64748b">${cnt}/${cat.provisions.length} ${open?"\u25B2":"\u25BC"}</span></button>`;
+    h += `<div class="acc-body${open?"":" hidden"}">`;
+    cat.provisions.forEach(p=>{
+      const chk = ppSelected.has(p.id);
+      h += `<div class="prov"><label for="pp-${p.id}"><input type="checkbox" id="pp-${p.id}" ${chk?"checked":""} onchange="ppToggle('${p.id}')"><div><div style="font-weight:500">${p.label}</div><div class="detail">${p.detail}</div></div></label>`;
+      if(chk) h += `<textarea id="note-${p.id}" placeholder="Add notes for this provision..." onchange="ppNote('${p.id}',this.value)">${ppNotes[p.id]||""}</textarea>`;
+      h += `</div>`;
+    });
+    h += `</div></div>`;
+  });
+  h += `<div class="disclaimer">This is a mediation working tool, not a legal document. Any final parenting plan should be reviewed by each party's independent attorney.</div>`;
+  el.innerHTML = h;
+}
+
+function renderPlannerSummary(el){
+  const summary = CATEGORIES.map(c=>{const items=c.provisions.filter(p=>ppSelected.has(p.id));return items.length?{cat:c.name,items:items.map(p=>({label:p.label,note:ppNotes[p.id]||""}))}:null}).filter(Boolean);
+  let h = `<div class="tool-header"><h2>Plan Summary &mdash; ${ppSelected.size} Provisions</h2><div style="display:flex;gap:6px"><button class="btn btn-outline" onclick="ppView='builder';renderPlanner()">&larr; Back</button><button class="btn btn-primary" id="pp-copy-btn" onclick="ppCopy()">Copy to Clipboard</button></div></div>`;
+  if(!summary.length) h += `<p style="color:#64748b">No provisions selected yet.</p>`;
+  summary.forEach(s=>{
+    h += `<div style="margin-bottom:16px;background:#f8fafc;border-radius:8px;padding:14px;border:1px solid #e2e8f0"><h3 style="margin:0 0 8px;font-size:.95rem;color:#0f172a">${s.cat}</h3>`;
+    s.items.forEach(i=>{
+      h += `<div style="margin-bottom:6px;padding-left:10px;border-left:3px solid #3b82f6"><div style="font-weight:600;font-size:.87rem">${i.label}</div>`;
+      if(i.note) h += `<div style="font-size:.8rem;color:#475569;margin-top:1px">${i.note}</div>`;
+      h += `</div>`;
+    });
+    h += `</div>`;
+  });
+  el.innerHTML = h;
+}
+
+function ppToggle(id){ ppSelected.has(id)?ppSelected.delete(id):ppSelected.add(id); savePP(); renderPlanner(); }
+function ppToggleCat(name){ ppExpanded.has(name)?ppExpanded.delete(name):ppExpanded.add(name); renderPlanner(); }
+function ppNote(id,val){ ppNotes[id]=val; savePP(); }
+function ppCopy(){
+  let text="PARENTING PLAN \u2014 SELECTED PROVISIONS\n"+"=".repeat(50)+"\n\n";
+  text+=`Generated: ${new Date().toLocaleDateString()}\nTotal provisions: ${ppSelected.size}\n\n`;
+  CATEGORIES.forEach(c=>{const items=c.provisions.filter(p=>ppSelected.has(p.id));if(!items.length)return;text+=`\n## ${c.name}\n${"\u2014".repeat(40)}\n`;items.forEach(p=>{text+=`\u2713 ${p.label}\n`;if(ppNotes[p.id])text+=`  Notes: ${ppNotes[p.id]}\n`})});
+  text+="\n\nDISCLAIMER: This is a working document for mediation purposes.\nIt does not constitute a legal agreement. Have any final plan reviewed by independent legal counsel.\n";
+  const btn=document.getElementById("pp-copy-btn");
+  navigator.clipboard.writeText(text).then(()=>{btn.textContent="Copied!";setTimeout(()=>{btn.textContent="Copy to Clipboard"},2000)}).catch(()=>{btn.textContent="Copy failed";setTimeout(()=>{btn.textContent="Copy to Clipboard"},2000)});
+}
+
+// ==================== COMPLIANCE DASHBOARD ====================
+function renderCompliance(){
+  const el = document.getElementById("sec-compliance");
+  const totalItems = AUDIT_SECTIONS.reduce((s,sec)=>s+sec.items.length,0);
+  const answered = Object.keys(cdResponses).length;
+  const yesN = Object.values(cdResponses).filter(v=>v==="yes").length;
+  const score = answered>0?Math.round((yesN/answered)*100):0;
+
+  // Check if showing results
+  if(el.dataset.showResults==="1"){
+    const gaps=[];
+    AUDIT_SECTIONS.forEach((sec,si)=>sec.items.forEach((item,ii)=>{const r=cdResponses[`${si}-${ii}`];if(r==="no"||r==="partial")gaps.push({section:sec.title,standard:sec.standard,level:sec.level,item,status:r})}));
+    const scoreColor = s=>s>=90?"#16a34a":s>=70?"#ca8a04":"#dc2626";
+    let h = `<div class="tool-header"><h2>Compliance Results</h2><button class="btn btn-outline" onclick="document.getElementById('sec-compliance').dataset.showResults='0';renderCompliance()">&larr; Back to Audit</button></div>`;
+    h += `<div class="score-grid"><div class="score-card" style="background:#f0fdf4;border-color:#bbf7d0"><div class="val" style="color:${scoreColor(score)}">${score}%</div><div class="slbl" style="color:#166534">Overall Score</div></div>`;
+    h += `<div class="score-card" style="background:#fefce8;border-color:#fde68a"><div class="val" style="color:#ca8a04">${gaps.length}</div><div class="slbl" style="color:#854d0e">Gaps Found</div></div>`;
+    h += `<div class="score-card" style="background:#eff6ff;border-color:#bfdbfe"><div class="val" style="color:#1d4ed8">${answered}/${totalItems}</div><div class="slbl" style="color:#1e40af">Items Assessed</div></div></div>`;
+    h += `<h3 style="font-size:.95rem;color:#0f172a;margin-bottom:8px">Section Scores</h3>`;
+    AUDIT_SECTIONS.forEach((sec,si)=>{let y=0,a=0;sec.items.forEach((_,ii)=>{const r=cdResponses[`${si}-${ii}`];if(r){a++;if(r==="yes")y++}});const ss=a>0?Math.round((y/a)*100):null;
+      h+=`<div style="display:flex;justify-content:space-between;padding:6px 12px;margin-bottom:3px;background:#f8fafc;border-radius:6px"><span style="font-size:.85rem">${sec.title} <span style="font-size:.7rem;color:#94a3b8">(${sec.level})</span></span><span style="font-size:.85rem;font-weight:600;color:${ss!==null?scoreColor(ss):'#94a3b8'}">${ss!==null?ss+'%':'\u2014'}</span></div>`;
+    });
+    if(gaps.length){
+      h+=`<h3 style="font-size:.95rem;color:#dc2626;margin:16px 0 8px">Corrective Actions Needed</h3>`;
+      gaps.forEach(g=>{h+=`<div class="gap-item ${g.status}"><div class="g-text">${g.item}</div><div class="g-meta">${g.section} \u00B7 ${g.standard} \u00B7 ${g.level} \u00B7 ${g.status==="no"?"Not compliant":"Partially compliant"}</div></div>`});
+    }
+    h+=`<div style="margin-top:14px;padding:10px;background:#f1f5f9;border-radius:8px;font-size:.78rem;color:#475569">Recommended frequency: quarterly or after every 10 cases. Date: ${new Date().toLocaleDateString()}</div>`;
+    el.innerHTML=h;return;
+  }
+
+  let h = `<div class="tool-header"><h2>Ethics & Compliance Self-Audit</h2></div>`;
+  h += `<p style="font-size:.82rem;color:#64748b;margin-bottom:12px">Based on 2025 AFCC/ABA Model Standards & 2005 ABA/AAA/ACR Model Standards of Conduct</p>`;
+  h += `<div class="info-bar"><span>${answered}/${totalItems} answered</span><button class="btn btn-primary" ${answered===0?"disabled":""} onclick="document.getElementById('sec-compliance').dataset.showResults='1';renderCompliance()">View Results &rarr;</button></div>`;
+  AUDIT_SECTIONS.forEach((sec,si)=>{
+    h += `<div class="accordion"><div style="padding:10px 14px;background:#f8fafc;border-bottom:1px solid #e2e8f0"><div style="font-size:.93rem;font-weight:600;color:#0f172a">${sec.title}</div><div style="font-size:.75rem;color:#64748b">${sec.standard} \u00B7 Level: ${sec.level}</div></div><div style="padding:8px 14px">`;
+    sec.items.forEach((item,ii)=>{
+      const r=cdResponses[`${si}-${ii}`]||"";
+      h+=`<div class="audit-item"><div class="q">${item}</div><div class="audit-btns">`;
+      [["yes","Yes"],["partial","Partial"],["no","No"]].forEach(([v,l])=>{
+        h+=`<button class="audit-btn${r===v?" sel-"+v:""}" aria-pressed="${r===v}" onclick="cdSet(${si},${ii},'${v}')">${l}</button>`;
+      });
+      h+=`</div></div>`;
+    });
+    h+=`</div></div>`;
+  });
+  el.innerHTML=h;
+}
+
+function cdSet(si,ii,val){ cdResponses[`${si}-${ii}`]=val; saveCD(); renderCompliance(); }
+
+// ==================== CE TRACKER ====================
+function renderCE(){
+  const el = document.getElementById("sec-ce");
+  const totalHours = ceTrainings.reduce((s,t)=>s+t.hours,0);
+  const covered = new Set(ceTrainings.flatMap(t=>t.topics));
+  const reqTopics = CE_TOPICS.filter(t=>t.required);
+  const coveredReq = reqTopics.filter(t=>covered.has(t.id));
+  const missingReq = reqTopics.filter(t=>!covered.has(t.id));
+
+  let h = `<div class="tool-header"><h2>Continuing Education Tracker</h2></div>`;
+  h += `<p style="font-size:.82rem;color:#64748b;margin-bottom:12px">Track training hours against 2025 AFCC/ABA Model Standards requirements</p>`;
+  h += `<div class="score-grid"><div class="score-card" style="background:#f0fdf4;border-color:#bbf7d0"><div class="val" style="color:#16a34a">${totalHours}</div><div class="slbl" style="color:#166534">Total CE Hours</div></div>`;
+  h += `<div class="score-card" style="background:${missingReq.length===0?"#f0fdf4":"#fef2f2"};border-color:${missingReq.length===0?"#bbf7d0":"#fecaca"}"><div class="val" style="color:${missingReq.length===0?"#16a34a":"#dc2626"}">${coveredReq.length}/${reqTopics.length}</div><div class="slbl" style="color:${missingReq.length===0?"#166534":"#991b1b"}">Required Topics</div></div>`;
+  h += `<div class="score-card" style="background:#eff6ff;border-color:#bfdbfe"><div class="val" style="color:#1d4ed8">${covered.size}/${CE_TOPICS.length}</div><div class="slbl" style="color:#1e40af">All Topics Covered</div></div></div>`;
+
+  if(missingReq.length){
+    h += `<div class="gap-alert"><h4>Missing Required Training</h4>`;
+    missingReq.forEach(t=>{h+=`<div class="g-item">\u2022 ${t.label} <span style="color:#9ca3af">(${t.standard})</span></div>`});
+    h += `</div>`;
+  }
+
+  h += `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><h3 style="margin:0;font-size:1rem;color:#0f172a">Training Log (${ceTrainings.length} entries)</h3><button class="btn btn-primary" onclick="ceShowForm=!ceShowForm;renderCE()">${ceShowForm?"Cancel":"+ Add Training"}</button></div>`;
+
+  if(ceShowForm){
+    h += `<div class="ce-form"><div class="row"><input id="ce-title" placeholder="Training title *" value="${ceForm.title}"><input id="ce-provider" placeholder="Provider" value="${ceForm.provider}"></div>`;
+    h += `<div class="row"><input type="date" id="ce-date" value="${ceForm.date}"><input type="number" step="0.5" id="ce-hours" placeholder="Hours *" value="${ceForm.hours}"></div>`;
+    h += `<div style="font-size:.82rem;font-weight:600;margin-bottom:5px">Topics covered:</div><div class="topics">`;
+    CE_TOPICS.forEach(t=>{
+      const on = ceForm.topics.includes(t.id);
+      h += `<button class="topic-btn${on?" on":""}${t.required?" req":""}" aria-pressed="${on}" onclick="ceToggleTopic('${t.id}')">${t.required?"\u2605 ":""}${t.label}</button>`;
+    });
+    h += `</div>`;
+    if(ceError) h += `<div class="err-msg" role="alert">${ceError}</div>`;
+    h += `<button class="btn btn-success" onclick="ceAdd()">Save Training</button></div>`;
+  }
+
+  if(!ceTrainings.length && !ceShowForm){
+    h += `<div style="padding:20px;text-align:center;color:#94a3b8;font-size:.87rem">No trainings logged yet. Click "+ Add Training" to start tracking.</div>`;
+  }
+
+  ceTrainings.forEach((t,i)=>{
+    h += `<div class="ce-entry"><div><div style="font-size:.87rem;font-weight:600;color:#1e293b">${t.title}</div><div style="font-size:.78rem;color:#64748b">${t.provider||""}${t.date?" \u00B7 "+t.date:""} \u00B7 ${t.hours} hrs</div>`;
+    if(t.topics.length){
+      h += `<div class="tags">`;
+      t.topics.forEach(tid=>{const tp=CE_TOPICS.find(x=>x.id===tid);if(tp)h+=`<span class="tag${tp.required?" req":""}">${tp.label}</span>`});
+      h += `</div>`;
+    }
+    h += `</div><button class="btn btn-danger" style="padding:2px 8px;font-size:1rem;border:none" onclick="ceRemove(${i})">\u00D7</button></div>`;
+  });
+
+  el.innerHTML = h;
+}
+
+function ceToggleTopic(id){
+  const idx = ceForm.topics.indexOf(id);
+  idx>=0?ceForm.topics.splice(idx,1):ceForm.topics.push(id);
+  renderCE();
+}
+
+function ceAdd(){
+  ceForm.title = document.getElementById("ce-title").value;
+  ceForm.provider = document.getElementById("ce-provider").value;
+  ceForm.date = document.getElementById("ce-date").value;
+  ceForm.hours = document.getElementById("ce-hours").value;
+  if(!ceForm.title||!ceForm.hours){ceError="Title and hours are required.";renderCE();return}
+  const hrs = parseFloat(ceForm.hours);
+  if(isNaN(hrs)||hrs<=0){ceError="Hours must be a positive number.";renderCE();return}
+  ceError="";
+  ceTrainings.push({...ceForm,id:Date.now(),hours:hrs});
+  ceForm={title:"",provider:"",date:"",hours:"",topics:[]};
+  ceShowForm=false;
+  saveCE();renderCE();
+}
+
+function ceRemove(i){ ceTrainings.splice(i,1); saveCE(); renderCE(); }
+
+// ==================== SCENARIOS ====================
+let scenarioSearch = "";
+function renderScenarios(){
+  const el = document.getElementById("sec-scenarios");
+  const q = scenarioSearch.toLowerCase();
+  const filtered = q ? SCENARIOS.filter(s=>s.title.toLowerCase().includes(q)||s.standards.toLowerCase().includes(q)||s.protocol.toLowerCase().includes(q)) : SCENARIOS;
+
+  let h = `<h2 class="sec-title">Scenario Library &mdash; &ldquo;What Do I Do When&hellip;&rdquo;</h2>`;
+  h += `<input class="search-box" type="search" placeholder="Search scenarios by keyword, standard, or topic..." value="${scenarioSearch}" oninput="scenarioSearch=this.value;renderScenarios()" aria-label="Search scenarios">`;
+  h += `<p style="font-size:.82rem;color:#64748b;margin-bottom:14px">Showing ${filtered.length} of ${SCENARIOS.length} scenarios. Click to expand.</p>`;
+
+  filtered.forEach(s=>{
+    const bodyId = "scn-body-"+s.id;
+    h += `<div class="scenario"><button class="s-header" onclick="document.getElementById('${bodyId}').classList.toggle('hidden')" aria-expanded="false"><div><div class="s-title">${s.id}. ${s.title}</div><div class="s-std">Standards: ${s.standards}</div></div><span style="color:#94a3b8;font-size:.8rem">\u25BC</span></button>`;
+    h += `<div class="s-body hidden" id="${bodyId}"><strong>Protocol:</strong><br>${s.protocol}<br><br><strong>What NOT to do:</strong><br>${s.donts}</div></div>`;
+  });
+
+  if(!filtered.length) h += `<div style="padding:20px;text-align:center;color:#94a3b8">No scenarios match your search.</div>`;
+  el.innerHTML = h;
+}
+
+// ==================== REFERENCE GUIDES ====================
+function renderGuides(){
+  const el = document.getElementById("sec-guides");
+  let h = `<h2 class="sec-title">Reference Guides</h2>`;
+  h += `<p style="font-size:.87rem;color:#475569;margin-bottom:16px">19 standards-based guides covering every phase of family mediation practice. Each guide includes applicable standards language, implementation checklists, and decision trees.</p>`;
+  REF_GUIDES.forEach(g=>{
+    h += `<div class="ref-card"><div class="r-num">Reference ${g.num}</div><div class="r-title">${g.title}</div><div class="r-desc">${g.desc}</div></div>`;
+  });
+  h += `<div class="ref-card"><div class="r-num">Additional</div><div class="r-title">Workflow Diagrams</div><div class="r-desc">6 Mermaid decision-flow diagrams for intake, DV screening, child maltreatment, conflict checks, termination, and full process.</div></div>`;
+  h += `<div class="ref-card"><div class="r-num">Additional</div><div class="r-title">Related Professional Guidelines</div><div class="r-desc">Cross-references to AFCC practice guidelines, international standards, and key research.</div></div>`;
+  el.innerHTML = h;
+}
+
+// ==================== INIT ====================
+document.addEventListener("DOMContentLoaded", function(){
+  renderPlanner();
+  renderCompliance();
+  renderCE();
+  renderScenarios();
+  renderGuides();
+});
+</script>
 </body>
 </html>

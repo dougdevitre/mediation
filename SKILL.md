@@ -203,11 +203,15 @@ Abuse disclosed in joint session, financial disclosure refusal, child refusing a
 
 ## Jurisdiction Modules
 
-→ See the `jurisdictions/` directory:
+→ See the `jurisdictions/` directory for state-specific statutes, confidentiality rules, mandatory reporting, DV provisions, and mediator qualifications:
 
 | State | File |
 |---|---|
+| California | `jurisdictions/california/jurisdiction.md` |
+| Florida | `jurisdictions/florida/jurisdiction.md` |
 | Missouri | `jurisdictions/missouri/jurisdiction.md` |
+| New York | `jurisdictions/new-york/jurisdiction.md` |
+| Texas | `jurisdictions/texas/jurisdiction.md` |
 | Template | `jurisdictions/TEMPLATE.md` |
 
 ---

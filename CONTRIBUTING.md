@@ -49,11 +49,18 @@ All contributions must:
 
 ## Code of Conduct
 
+This project follows the [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md). By contributing, you agree to abide by its terms.
+
+Core expectations:
 - Be respectful and constructive
 - Center the wellbeing of families and children in all contributions
 - Acknowledge that mediation practices vary across jurisdictions and cultures
 - Do not include content that favors one party type over another
 - Do not include content that constitutes legal advice
+
+## Security
+
+If you discover a security vulnerability, please report it privately following the process in [SECURITY.md](SECURITY.md). Do not open a public issue for security vulnerabilities.
 
 ---
 
