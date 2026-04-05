@@ -41,7 +41,7 @@ Every resource in this repository is grounded in these standards, with the appli
 | **Reference Guides** | 20 | Standards-based guides for every phase of mediation practice |
 | **Practice Templates** | 14 | Customizable Markdown templates (+ 2 Word .docx versions) |
 | **Practice Scenarios** | 25 | "What do I do when..." real-world situation guidance |
-| **Interactive Tools** | 13 | 2 dashboards + 6 mediator tools + 5 party tools |
+| **Interactive Tools** | 16 | 2 dashboards + 9 mediator tools + 5 party tools |
 | **Workflow Diagrams** | 6 | Mermaid decision-flow diagrams for key processes |
 | **Jurisdiction Modules** | 5 | State-specific statutes, reporting, and qualifications |
 | **CLE Presentation** | 1 | 10-slide PowerPoint deck ready for conferences |
@@ -70,6 +70,9 @@ All tools feature **localStorage persistence** (data survives page refresh), **f
 | **Agreement Clause Library** | `app/clause-library.jsx` | 40+ searchable pre-written clause templates across 8 categories, copy-to-clipboard, "My Clauses" collection, downloadable clause set for agreement drafting |
 | **Intake Workflow** | `app/intake-workflow.jsx` | 8-step guided intake process (conflict check through case-ready), substep tracking, template links, progress bar, notes per step, exportable checklist |
 | **Session Timer & Billing** | `app/session-timer.jsx` | Start/stop/pause timer, running cost display, session log with case labels, per-case billing summaries, downloadable invoice |
+| **Agreement Generator** | `app/agreement-generator.jsx` | Build complete draft agreements from selected clauses with auto-filled party names, customizable variables, preview, and download |
+| **Risk Assessment** | `app/risk-assessment.jsx` | Scored DV/safety screening across 6 domains (30+ indicators), weighted risk calculation, process modification recommendations, confidential export |
+| **Case Analytics** | `app/case-analytics.jsx` | Practice-wide metrics: agreement rates, case types, referral sources, revenue, DV screening compliance, children served, time-filtered reports |
 
 ### For Parties (5 tools)
 
@@ -216,7 +219,7 @@ access-to-mediation/
 │
 ├── scenarios/                        # 20 "What do I do when..." practice scenarios
 │
-├── app/                              # 13 interactive React components + print CSS
+├── app/                              # 16 interactive React components + print CSS
 │   ├── mediator-dashboard.jsx        # Dashboard: mediator practice hub
 │   ├── party-welcome.jsx             # Dashboard: guided party onboarding
 │   ├── parenting-plan-builder.jsx    # Mediator: 50+ provisions builder
@@ -225,6 +228,9 @@ access-to-mediation/
 │   ├── clause-library.jsx            # Mediator: searchable clause templates
 │   ├── intake-workflow.jsx           # Mediator: guided intake process
 │   ├── session-timer.jsx             # Mediator: time tracking & billing
+│   ├── agreement-generator.jsx       # Mediator: assemble draft agreements
+│   ├── risk-assessment.jsx           # Mediator: DV/safety risk scoring
+│   ├── case-analytics.jsx            # Mediator: practice-wide metrics
 │   ├── mediation-prep.jsx            # Party: 7-step preparation wizard
 │   ├── financial-disclosure.jsx      # Party: income/expenses/assets/debts
 │   ├── schedule-visualizer.jsx       # Party: custody calendar visualizer

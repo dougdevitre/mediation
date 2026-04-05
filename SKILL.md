@@ -187,7 +187,7 @@ Abuse disclosed in joint session, financial disclosure refusal, child refusing a
 
 ## Interactive Tools (React)
 
-→ See the `app/` directory for 13 interactive React components:
+→ See the `app/` directory for 16 interactive React components:
 
 ### Dashboards
 | Tool | File | Description |
@@ -204,6 +204,9 @@ Abuse disclosed in joint session, financial disclosure refusal, child refusing a
 | Agreement Clause Library | `app/clause-library.jsx` | 40+ searchable, copyable clause templates for agreement drafting |
 | Intake Workflow | `app/intake-workflow.jsx` | Step-by-step intake process with compliance tracking and template links |
 | Session Timer & Billing | `app/session-timer.jsx` | Time tracking, per-case billing, and invoice export |
+| Agreement Generator | `app/agreement-generator.jsx` | Assemble complete draft agreements from clauses with auto-filled variables |
+| Risk Assessment | `app/risk-assessment.jsx` | Scored DV/safety screening with 30+ indicators, risk levels, and process recommendations |
+| Case Analytics | `app/case-analytics.jsx` | Practice metrics: agreement rates, case types, revenue, DV compliance, filtered reports |
 
 ### For Parties (Save Time & Money)
 | Tool | File | Description |
