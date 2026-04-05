@@ -103,6 +103,10 @@ Based on the mediator's current task, read the relevant reference file(s):
 | Conflict-of-Interest Disclosure | `templates/conflict-of-interest-disclosure.md` | — |
 | Parenting Plan Worksheet | `templates/parenting-plan-worksheet.md` | — |
 | Mediation Summary (court-neutral) | `templates/mediation-summary.md` | — |
+| Settlement Agreement | `templates/mediation-settlement-agreement.md` | — |
+| Session Notes | `templates/session-notes.md` | — |
+| Safety Plan (DV/High-Conflict) | `templates/safety-plan.md` | — |
+| Post-Mediation Checklist | `templates/post-mediation-checklist.md` | — |
 | Termination Notice | `templates/termination-notice.md` | — |
 | Mediator Training Log | `templates/mediator-training-log.md` | — |
 | Technology Consent Form | `templates/technology-consent.md` | — |
@@ -178,13 +182,20 @@ Abuse disclosed in joint session, financial disclosure refusal, child refusing a
 
 ## Interactive Tools (React)
 
-→ See the `app/` directory for 3 interactive React components:
+→ See the `app/` directory for 5 interactive React components:
 
+### For Mediators
 | Tool | File | Description |
 |---|---|---|
 | Parenting Plan Builder | `app/parenting-plan-builder.jsx` | 50+ provisions across 8 categories with notes and export |
 | Compliance Dashboard | `app/compliance-dashboard.jsx` | Self-audit with scoring, gap analysis, and corrective actions |
 | CE Training Tracker | `app/ce-tracker.jsx` | Track hours against 2025 required topics with gap alerts |
+
+### For Parties (Save Time & Money)
+| Tool | File | Description |
+|---|---|---|
+| Mediation Readiness | `app/mediation-prep.jsx` | Step-by-step preparation: issues, priorities, children's needs, document checklist, questions |
+| Financial Disclosure | `app/financial-disclosure.jsx` | Income, expenses, assets, and debts worksheet with summary and download |
 
 ---
 
