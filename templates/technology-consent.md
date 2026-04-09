@@ -1,6 +1,6 @@
 # Technology & Online Mediation Consent Form
 
-> **Per 2025 Standard IX**: The mediator should assess participants' abilities to use technology and obtain informed consent before using it.
+> **Per 2025 Standard IX and NCTDR/ICODR ODR Standards (2022) / AI Guidance (2026)**: The mediator should assess participants' abilities to use technology, disclose AI use, and obtain informed consent before using technology or AI tools.
 
 ---
 
@@ -21,6 +21,13 @@
 - **Scheduling**: _______________
 - **E-Signature**: _______________
 - **Other**: _______________
+
+### AI Tools (if applicable)
+- **AI Platform(s)**: _______________
+- **Purpose of AI Use**: _______________
+- **Data Handling**: _______________
+
+> For a comprehensive AI use assessment covering all nine NCTDR/ICODR ODR Standards, see `templates/ai-use-disclosure.md`.
 
 ---
 
@@ -46,6 +53,15 @@ By signing below, I acknowledge and consent to the following:
 - [ ] I have access to a device with camera and microphone (if video sessions)
 - [ ] I am able to use the selected platform(s) or have received training
 - [ ] I know how to contact the mediator if I experience technical difficulties
+
+### Artificial Intelligence (if AI tools are used)
+- [ ] I have been informed of the specific AI tools used in this mediation and their purposes
+- [ ] I understand how AI influences the mediation process and at what stages it is used
+- [ ] I understand the level of human oversight the mediator maintains over AI use
+- [ ] I understand how my data is handled by AI systems, including storage and deletion
+- [ ] I understand my data will not be used to train AI models without my separate consent
+- [ ] I understand the limitations and potential biases of AI-generated information
+- [ ] I understand I may request that AI tools not be used, and alternatives will be provided
 
 ### Safety (for cases with domestic abuse concerns)
 - [ ] I confirm that I will participate from a safe, private location

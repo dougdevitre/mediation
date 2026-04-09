@@ -578,3 +578,61 @@ flowchart TB
     style P1 fill:#0D9488,stroke:#0D9488,color:#fff
     style M1 fill:#1E3A5F,stroke:#1E3A5F,color:#fff
 ```
+
+---
+
+## 17. AI Use Assessment Workflow (NCTDR/ICODR ODR Standards)
+
+```mermaid
+flowchart TD
+    A[Consider Using AI Tool] --> B[Identify Purpose & Phase of Use]
+    B --> C[Assess Against 9 ODR Standards]
+
+    C --> D{Accessible?}
+    D -->|Yes| E{Accountable?}
+    D -->|No| X[Do Not Use / Find Alternative]
+
+    E -->|Yes| F{Competent?}
+    E -->|No| X
+
+    F -->|Yes| G{Confidential?}
+    F -->|No| X
+
+    G -->|Yes| H{Equal & Fair?}
+    G -->|No| X
+
+    H -->|Yes| I{Legal & Secure?}
+    H -->|No| X
+
+    I -->|Yes| J{Transparent?}
+    I -->|No| X
+
+    J -->|Yes| K[Complete AI Use Disclosure Form]
+    J -->|No| X
+
+    K --> L[Disclose AI Use to All Parties]
+    L --> M[Obtain Informed Consent]
+    M --> N{Consent Given?}
+
+    N -->|Yes| O[Deploy AI with Human Oversight]
+    N -->|No| P[Proceed Without AI]
+
+    O --> Q[Monitor Throughout Process]
+    Q --> R[Verify AI Outputs Before Use]
+    R --> S[Monitor for Bias & Accuracy]
+    S --> T{Issues Found?}
+
+    T -->|Yes| U[Adjust, Disclose, or Discontinue]
+    T -->|No| V[Continue with Oversight]
+    U --> Q
+    V --> Q
+
+    X --> W[Document Decision & Rationale]
+
+    style A fill:#1E3A5F,stroke:#1E3A5F,color:#fff
+    style K fill:#2563EB,stroke:#1D4ED8,color:#fff
+    style O fill:#10B981,stroke:#059669,color:#fff
+    style X fill:#EF4444,stroke:#DC2626,color:#fff
+    style P fill:#F59E0B,stroke:#D97706,color:#000
+    style N fill:#F59E0B,stroke:#D97706,color:#000
+```

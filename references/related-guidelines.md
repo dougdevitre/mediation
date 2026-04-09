@@ -54,10 +54,24 @@ Source: [AFCC Practice Guidelines](https://www.afccnet.org/Resource-Center/Pract
 
 ---
 
+## ODR & Technology Standards
+
+| Year | Title | Organizations | Notes |
+|---|---|---|---|
+| 2022 | Online Dispute Resolution Standards | NCTDR / ICODR | 9 interdependent standards: Accessible, Accountable, Competent, Confidential, Equal, Fair and Impartial, Legal, Secure, Transparent. Adopted as ISO 32122 (2025). Available at https://odr.info/standards/ and https://icodr.org/standards/ |
+| 2026 | Guidance for Third Parties Using AI in Dispute Resolution | NCTDR / ICODR | Applies the ODR Standards to AI use by practitioners; includes practitioner self-assessment checklist |
+| 2016 | Ethical Principles for Online Dispute Resolution | NCTDR | Foundational values for ODR standards development; living document for guidance when standards lag behind technological innovation |
+| 2009 | ODR Standards (first edition) | NCTDR | Original ODR standards; superseded by the 2022 edition |
+
+→ See `references/19-odr-standards.md` for full standards text, AI guidance, and practice checklists.
+
+---
+
 ## International Standards
 
 | Organization | Standard | Notes |
 |---|---|---|
+| ISO (International Organization for Standardization) | ISO 32122 — Online Dispute Resolution Standards | Adopted March 2025; based on NCTDR/ICODR ODR Standards; 175 member countries |
 | IMI (International Mediation Institute) | Mediator competency standards | International certification |
 | UNCITRAL | Model Law on International Commercial Mediation | Commercial context |
 | Singapore Convention | Convention on Mediation | Cross-border enforcement of mediated settlements |
