@@ -44,7 +44,7 @@ Every resource in this repository is grounded in these standards, with the appli
 | **Practice Templates** | 15 | Customizable Markdown templates (+ 2 Word .docx versions) |
 | **Practice Scenarios** | 25 | "What do I do when..." real-world situation guidance |
 | **Interactive Tools** | 20 | 2 dashboards + 12 mediator tools + 6 party tools |
-| **Workflow Diagrams** | 16 | Mermaid decision-flow diagrams for every major feature |
+| **Workflow Diagrams** | 17 | Mermaid decision-flow diagrams for every major feature |
 | **Jurisdiction Modules** | 5 | State-specific statutes, reporting, and qualifications |
 | **CLE Presentation** | 1 | 10-slide PowerPoint deck ready for conferences |
 | **Case Management Schema** | 1 | Airtable/CSV schema for practice management |

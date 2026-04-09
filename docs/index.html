@@ -192,7 +192,7 @@ footer a{color:#93bbfc;text-decoration:none}
 
 <div class="hero" id="hero-section">
   <h1>Access to Mediation</h1>
-  <p>Free, open-source practice tools for family mediators. Grounded in the 2025 AFCC/ABA Model Standards and 2005 ABA/AAA/ACR Model Standards of Conduct.</p>
+  <p>Free, open-source practice tools for family mediators. Grounded in the 2025 AFCC/ABA Model Standards, 2005 ABA/AAA/ACR Model Standards of Conduct, and NCTDR/ICODR ODR Standards (ISO 32122).</p>
   <div class="btn-row">
     <a href="https://github.com/dougdevitre/mediation">View on GitHub</a>
     <a href="https://github.com/dougdevitre/mediation/archive/refs/heads/main.zip">Download</a>
@@ -203,17 +203,17 @@ footer a{color:#93bbfc;text-decoration:none}
 <!-- HOME -->
 <div class="section active" id="sec-home">
   <div class="stats">
-    <div class="stat-card"><div class="num">20</div><div class="lbl">Reference Guides</div></div>
-    <div class="stat-card"><div class="num">14</div><div class="lbl">Practice Templates</div></div>
+    <div class="stat-card"><div class="num">21</div><div class="lbl">Reference Guides</div></div>
+    <div class="stat-card"><div class="num">15</div><div class="lbl">Practice Templates</div></div>
     <div class="stat-card"><div class="num">25</div><div class="lbl">Practice Scenarios</div></div>
     <div class="stat-card"><div class="num">20</div><div class="lbl">Interactive Tools</div></div>
     <div class="stat-card"><div class="num">5</div><div class="lbl">State Jurisdictions</div></div>
-    <div class="stat-card"><div class="num">6</div><div class="lbl">Workflow Diagrams</div></div>
+    <div class="stat-card"><div class="num">17</div><div class="lbl">Workflow Diagrams</div></div>
   </div>
   <h2 class="sec-title">Interactive Practice Tools</h2>
   <div class="cards">
     <div class="card" style="cursor:pointer" onclick="showTab('planner')"><h3>Parenting Plan Builder</h3><p>Select from 50+ provisions across 8 categories, add notes, and export a formatted plan. Saves your progress automatically.</p></div>
-    <div class="card" style="cursor:pointer" onclick="showTab('compliance')"><h3>Compliance Dashboard</h3><p>Self-audit your practice against 46 compliance items across 10 standards areas. Get scores, gap analysis, and corrective actions.</p></div>
+    <div class="card" style="cursor:pointer" onclick="showTab('compliance')"><h3>Compliance Dashboard</h3><p>Self-audit your practice against 59 compliance items across 12 standards areas (incl. NCTDR/ICODR ODR Standards &amp; AI Use). Get scores, gap analysis, and corrective actions.</p></div>
     <div class="card" style="cursor:pointer" onclick="showTab('ce')"><h3>CE Training Tracker</h3><p>Log training hours, tag topics, and track coverage against the 7 required training areas in the 2025 standards.</p></div>
   </div>
   <h2 class="sec-title">For Parties &mdash; Save Time &amp; Money</h2>
@@ -224,9 +224,9 @@ footer a{color:#93bbfc;text-decoration:none}
   <h2 class="sec-title">What Else Is Inside</h2>
   <div class="cards">
     <div class="card" style="cursor:pointer" onclick="showTab('scenarios')"><h3>Scenario Library</h3><p>20 &ldquo;What do I do when&hellip;&rdquo; scenarios with standards-based protocols for challenging situations.</p></div>
-    <div class="card" style="cursor:pointer" onclick="showTab('guides')"><h3>Reference Guides</h3><p>19 standards-based guides covering every phase of mediation practice from intake through ethics compliance.</p></div>
-    <div class="card"><h3>Practice Templates</h3><p>12 customizable templates in Markdown and Word: intake forms, screening checklists, agreements, fee disclosures, and more.</p></div>
-    <div class="card"><h3>Workflow Diagrams</h3><p>6 Mermaid decision-flow diagrams for intake, DV screening, child maltreatment, conflict checks, termination, and full process overview.</p></div>
+    <div class="card" style="cursor:pointer" onclick="showTab('guides')"><h3>Reference Guides</h3><p>21 standards-based guides covering every phase of mediation practice from intake through ODR standards and AI compliance.</p></div>
+    <div class="card"><h3>Practice Templates</h3><p>15 customizable templates in Markdown and Word: intake forms, screening checklists, agreements, AI use disclosure, fee disclosures, and more.</p></div>
+    <div class="card"><h3>Workflow Diagrams</h3><p>17 Mermaid decision-flow diagrams for intake, DV screening, child maltreatment, conflict checks, termination, AI use assessment, and more.</p></div>
     <div class="card"><h3>CLE Presentation</h3><p>10-slide PowerPoint deck ready to deliver at AFCC, state bar, NASW, or EAPA conferences.</p></div>
     <div class="card"><h3>5 State Jurisdictions</h3><p>State-specific modules for CA, FL, MO, NY, and TX mapping model standards to local statutes, reporting, and qualifications.</p></div>
   </div>
@@ -235,7 +235,7 @@ footer a{color:#93bbfc;text-decoration:none}
     <p style="margin-bottom:12px;font-size:.9rem">Every resource is mapped to the applicable Model Standard with the correct obligation level:</p>
     <span class="badge badge-shall">SHALL &mdash; No discretion to depart</span>
     <span class="badge badge-should">SHOULD &mdash; Depart only with strong reason</span>
-    <p style="margin-top:12px;font-size:.85rem;color:#475569">14 standards from the 2025 AFCC/ABA Family Standards + 9 from the 2005 ABA/AAA/ACR General Standards = comprehensive coverage.</p>
+    <p style="margin-top:12px;font-size:.85rem;color:#475569">14 standards from the 2025 AFCC/ABA Family Standards + 9 from the 2005 ABA/AAA/ACR General Standards + 9 NCTDR/ICODR ODR Standards (ISO 32122) with AI Guidance = comprehensive coverage.</p>
   </div>
 </div>
 
@@ -346,7 +346,9 @@ const AUDIT_SECTIONS = [
   {title:"Technology & ODR",standard:"2025-IX",level:"SHOULD",items:["I assess parties' technology abilities before using ODR","I obtain informed consent for technology use","I maintain training on technology tools I use","I implement end-to-end encryption and data security","I regularly evaluate the tools I use for ethical/legal compliance"]},
   {title:"Voice of the Child",standard:"2025-X",level:"SHOULD",items:["I help parents consider children's perspectives and needs","I use developmentally appropriate methods for including children's voice","I apply safeguards when children are directly involved","I never place children in a position of choosing between parents"]},
   {title:"Qualifications & Training",standard:"2025-XI, 2005-IV",level:"SHALL",items:["I am qualified by education and training for the cases I mediate","I maintain a training log with dates, topics, and hours","I engage in peer consultation regularly","I recognize and decline cases beyond my competence"]},
-  {title:"Fees & Advertising",standard:"2025-XIII/XIV, 2005-VII/VIII",level:"SHALL",items:["I disclose fee information before mediation begins","I never charge contingent or outcome-based fees","My advertising is truthful and does not guarantee outcomes","I accurately represent my qualifications in all marketing"]}
+  {title:"Fees & Advertising",standard:"2025-XIII/XIV, 2005-VII/VIII",level:"SHALL",items:["I disclose fee information before mediation begins","I never charge contingent or outcome-based fees","My advertising is truthful and does not guarantee outcomes","I accurately represent my qualifications in all marketing"]},
+  {title:"ODR Standards Compliance",standard:"NCTDR/ICODR 2022, ISO 32122",level:"SHALL",items:["My ODR platforms are accessible to parties with varying abilities and language needs","My ODR systems are auditable with human oversight of document origins and outcomes","I have the competence to use, explain, and evaluate technology and AI tools in my practice","I maintain clear confidentiality and data handling policies for all ODR and AI tools","I ensure no party gains a technological or informational advantage; I monitor for bias","My ODR platforms provide strong data security with breach notification protocols","I disclose the role and magnitude of technology's influence on options and outcomes"]},
+  {title:"AI Use in Practice",standard:"NCTDR/ICODR AI Guidance 2026",level:"SHOULD",items:["I disclose to all parties how and when AI influences the mediation process","I obtain informed consent from all parties before using AI tools","I independently verify AI-generated information before it influences decisions","I maintain human oversight over all AI-based interventions throughout the process","I evaluate AI tools for known biases, accuracy, and reliability before adoption","I ensure AI data sets are relevant to the cultural and legal jurisdictions of my cases"]}
 ];
 
 const CE_TOPICS = [
@@ -410,7 +412,9 @@ const REF_GUIDES = [
   {num:"14",title:"Fees",desc:"Fee disclosure requirements, prohibited fee structures, and cost allocation guidance."},
   {num:"15",title:"Qualifications & Training",desc:"Education requirements, competence standards, training logs, and continuing education."},
   {num:"16",title:"Advertising & Marketing",desc:"Truthful advertising standards, qualification representation, and prohibited claims."},
-  {num:"17",title:"Ethics & Compliance",desc:"Self-audit procedures, ethical obligations, and compliance monitoring frameworks."}
+  {num:"17",title:"Ethics & Compliance",desc:"Self-audit procedures, ethical obligations, and compliance monitoring frameworks."},
+  {num:"18",title:"Agreement Plain Language",desc:"Plain-language guide explaining common mediation agreement terms for parties."},
+  {num:"19",title:"ODR Standards & AI Guidance",desc:"NCTDR/ICODR Online Dispute Resolution Standards (2022, ISO 32122) and AI Guidance for Third Parties (2026). Nine interdependent standards with AI-specific practice checklists."}
 ];
 
 // ==================== STATE ====================
@@ -520,7 +524,7 @@ function renderCompliance(){
   }
 
   let h = `<div class="tool-header"><h2>Ethics & Compliance Self-Audit</h2></div>`;
-  h += `<p style="font-size:.82rem;color:#64748b;margin-bottom:12px">Based on 2025 AFCC/ABA Model Standards & 2005 ABA/AAA/ACR Model Standards of Conduct</p>`;
+  h += `<p style="font-size:.82rem;color:#64748b;margin-bottom:12px">Based on 2025 AFCC/ABA Model Standards, 2005 ABA/AAA/ACR Model Standards of Conduct, & NCTDR/ICODR ODR Standards</p>`;
   h += `<div class="info-bar"><span>${answered}/${totalItems} answered</span><button class="btn btn-primary" ${answered===0?"disabled":""} onclick="document.getElementById('sec-compliance').dataset.showResults='1';renderCompliance()">View Results &rarr;</button></div>`;
   AUDIT_SECTIONS.forEach((sec,si)=>{
     h += `<div class="accordion"><div style="padding:10px 14px;background:#f8fafc;border-bottom:1px solid #e2e8f0"><div style="font-size:.93rem;font-weight:600;color:#0f172a">${sec.title}</div><div style="font-size:.75rem;color:#64748b">${sec.standard} \u00B7 Level: ${sec.level}</div></div><div style="padding:8px 14px">`;
@@ -640,11 +644,11 @@ function renderScenarios(){
 function renderGuides(){
   const el = document.getElementById("sec-guides");
   let h = `<h2 class="sec-title">Reference Guides</h2>`;
-  h += `<p style="font-size:.87rem;color:#475569;margin-bottom:16px">19 standards-based guides covering every phase of family mediation practice. Each guide includes applicable standards language, implementation checklists, and decision trees.</p>`;
+  h += `<p style="font-size:.87rem;color:#475569;margin-bottom:16px">21 standards-based guides covering every phase of family mediation practice. Each guide includes applicable standards language, implementation checklists, and decision trees.</p>`;
   REF_GUIDES.forEach(g=>{
     h += `<div class="ref-card"><div class="r-num">Reference ${g.num}</div><div class="r-title">${g.title}</div><div class="r-desc">${g.desc}</div></div>`;
   });
-  h += `<div class="ref-card"><div class="r-num">Additional</div><div class="r-title">Workflow Diagrams</div><div class="r-desc">6 Mermaid decision-flow diagrams for intake, DV screening, child maltreatment, conflict checks, termination, and full process.</div></div>`;
+  h += `<div class="ref-card"><div class="r-num">Additional</div><div class="r-title">Workflow Diagrams</div><div class="r-desc">17 Mermaid decision-flow diagrams for intake, DV screening, child maltreatment, conflict checks, termination, AI use assessment, and more.</div></div>`;
   h += `<div class="ref-card"><div class="r-num">Additional</div><div class="r-title">Related Professional Guidelines</div><div class="r-desc">Cross-references to AFCC practice guidelines, international standards, and key research.</div></div>`;
   el.innerHTML = h;
 }
