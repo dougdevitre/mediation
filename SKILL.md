@@ -2,22 +2,25 @@
 name: access-to-mediation
 description: >
   Open-source family mediation practice assistant grounded in the 2025 AFCC/ABA
-  Model Standards for Family and Divorce Mediation and the 2005 ABA/AAA/ACR Model
-  Standards of Conduct for Mediators. Covers intake screening, domestic abuse
-  screening, child maltreatment protocols, confidentiality, conflict-of-interest
-  checks, agreement drafting, parenting plan facilitation, technology/ODR
-  compliance, mediator competence tracking, fee disclosures, case management,
-  termination protocols, and ethics compliance. Use for ANY family mediation task:
-  intake, screening, session planning, agreement drafting, parenting plans,
-  domestic abuse assessment, child voice inclusion, confidentiality management,
-  conflict checks, fee structures, ODR/technology compliance, mediator training
-  logs, termination decisions, ethics questions, court-connected program
-  administration, or self-represented litigant support. Trigger for "mediation",
-  "mediator", "family dispute", "divorce mediation", "parenting plan",
-  "co-parenting agreement", "custody mediation", "mediation intake",
-  "mediation screening", "domestic abuse screening mediation",
+  Model Standards for Family and Divorce Mediation, the 2005 ABA/AAA/ACR Model
+  Standards of Conduct for Mediators, and the NCTDR/ICODR Online Dispute
+  Resolution Standards (2022, ISO 32122) with AI Guidance (2026). Covers intake
+  screening, domestic abuse screening, child maltreatment protocols,
+  confidentiality, conflict-of-interest checks, agreement drafting, parenting
+  plan facilitation, technology/ODR compliance, AI use assessment and disclosure,
+  mediator competence tracking, fee disclosures, case management, termination
+  protocols, and ethics compliance. Use for ANY family mediation task: intake,
+  screening, session planning, agreement drafting, parenting plans, domestic
+  abuse assessment, child voice inclusion, confidentiality management, conflict
+  checks, fee structures, ODR/technology compliance, AI ethics and disclosure,
+  mediator training logs, termination decisions, ethics questions,
+  court-connected program administration, or self-represented litigant support.
+  Trigger for "mediation", "mediator", "family dispute", "divorce mediation",
+  "parenting plan", "co-parenting agreement", "custody mediation",
+  "mediation intake", "mediation screening", "domestic abuse screening mediation",
   "child maltreatment mediation", "mediation confidentiality",
-  "agreement to mediate", "mediation ethics", "ODR mediation",
+  "agreement to mediate", "mediation ethics", "ODR mediation", "ODR standards",
+  "AI in mediation", "AI disclosure", "NCTDR", "ICODR", "ISO 32122",
   "shuttle mediation", "caucus", "mediator training", "AFCC standards",
   "ACR standards", "Model Standards", or any family mediation workflow.
 ---
@@ -26,10 +29,11 @@ description: >
 
 **An open-source, standards-compliant practice assistant for family mediators.**
 
-Built on two authoritative frameworks:
+Built on three authoritative frameworks:
 
 1. **2025 AFCC/ABA Model Standards for Family and Divorce Mediation** — the ethical cornerstone for family/divorce mediation, developed by the AFCC, ABA Family Law Section, ABA Dispute Resolution Section, ACR, and APFM (unanimously approved May 2025).
 2. **2005 ABA/AAA/ACR Model Standards of Conduct for Mediators** — the nine general ethical standards applicable to all mediation practice contexts.
+3. **NCTDR/ICODR Online Dispute Resolution Standards (2022)** — nine interdependent standards for technology-assisted dispute resolution (Accessible, Accountable, Competent, Confidential, Equal, Fair and Impartial, Legal, Secure, Transparent), adopted as ISO 32122 (March 2025), with companion **AI Guidance for Third Parties (2026)** extending these standards to artificial intelligence use.
 
 > **Disclaimer**: This tool provides educational information and practice support templates grounded in published model standards. It does not constitute legal advice, therapy, or a substitute for professional judgment. Mediators must comply with applicable state law, court rules, and their own professional licensing requirements, which may differ from or supersede these model standards.
 
@@ -37,22 +41,22 @@ Built on two authoritative frameworks:
 
 ## Quick Reference: Standards Map
 
-| # | 2025 Family Standards (AFCC/ABA) | 2005 General Standards (ABA/AAA/ACR) |
-|---|---|---|
-| I | Self-Determination | Self-Determination |
-| II | Informed Decision-Making | Impartiality |
-| III | Education of Parties | Conflicts of Interest |
-| IV | Barriers to Participation & Process Modification | Competence |
-| V | Domestic Abuse | Confidentiality |
-| VI | Child Maltreatment | Quality of the Process |
-| VII | Impartiality & Conflict of Interest | Advertising & Solicitation |
-| VIII | Confidentiality | Fees & Other Charges |
-| IX | Technology | Advancement of Mediation Practice |
-| X | Voice of the Child | — |
-| XI | Mediator Qualifications & Ongoing Education | — |
-| XII | Suspension & Termination | — |
-| XIII | Fees | — |
-| XIV | Advertising & Marketing | — |
+| # | 2025 Family Standards (AFCC/ABA) | 2005 General Standards (ABA/AAA/ACR) | NCTDR/ICODR ODR Standards (2022) |
+|---|---|---|---|
+| I | Self-Determination | Self-Determination | Equal |
+| II | Informed Decision-Making | Impartiality | Fair and Impartial |
+| III | Education of Parties | Conflicts of Interest | Transparent |
+| IV | Barriers to Participation & Process Modification | Competence | Accessible, Competent |
+| V | Domestic Abuse | Confidentiality | Confidential, Secure |
+| VI | Child Maltreatment | Quality of the Process | Accountable |
+| VII | Impartiality & Conflict of Interest | Advertising & Solicitation | Fair and Impartial, Transparent |
+| VIII | Confidentiality | Fees & Other Charges | Confidential, Secure |
+| IX | Technology | Advancement of Mediation Practice | All 9 ODR Standards |
+| X | Voice of the Child | — | Equal |
+| XI | Mediator Qualifications & Ongoing Education | — | Competent |
+| XII | Suspension & Termination | — | Accountable |
+| XIII | Fees | — | Transparent |
+| XIV | Advertising & Marketing | — | Transparent, Legal |
 
 ---
 
@@ -69,6 +73,7 @@ Based on the mediator's current task, read the relevant reference file(s):
 | Conflict-of-interest / bias check | `references/04-impartiality-conflicts.md` |
 | Prepare Agreement to Mediate | `references/05-agreement-to-mediate.md` |
 | Technology / ODR readiness assessment | `references/06-technology-odr.md` |
+| ODR standards compliance / AI use assessment | `references/19-odr-standards.md` |
 
 ### During Mediation
 | Task | Reference File |
@@ -115,6 +120,7 @@ Based on the mediator's current task, read the relevant reference file(s):
 | Termination Notice | `templates/termination-notice.md` | — |
 | Mediator Training Log | `templates/mediator-training-log.md` | — |
 | Technology Consent Form | `templates/technology-consent.md` | — |
+| AI Use Disclosure & Assessment | `templates/ai-use-disclosure.md` | — |
 | Fee Disclosure Statement | `templates/fee-disclosure.md` | — |
 
 ---
@@ -131,8 +137,8 @@ Every output from this skill must reflect these non-negotiable principles drawn 
 6. **Confidentiality**: Maintain confidentiality of all information acquired in mediation unless permitted or required by law, rule, or party agreement to reveal it.
 7. **Competence**: Mediators must be qualified by education, training, and experience. Maintain ongoing professional development.
 8. **Cultural Humility**: Respect diversity in culture, religion, immigration status, language, and socio-economic status.
-9. **Technology Competence**: Use technology competently; obtain informed consent; implement robust data security.
-10. **Transparency**: Truthful advertising, clear fee disclosures, and honest representation of qualifications.
+9. **Technology Competence**: Use technology competently; obtain informed consent; implement robust data security. When using AI, comply with NCTDR/ICODR ODR Standards and AI Guidance — maintain human oversight, verify AI outputs, monitor for bias, and disclose AI's role to parties.
+10. **Transparency**: Truthful advertising, clear fee disclosures, honest representation of qualifications, and full disclosure of AI use including its influence on options, decisions, and outcomes.
 
 ---
 
@@ -161,6 +167,8 @@ Every output from this skill must reflect these non-negotiable principles drawn 
 
 - **2025 Model Standards for Family and Divorce Mediation** — AFCC & ABA Family Law Section Task Force (Chair: Stacy Heard, JD; Nancy Ver Steegh, JD, MSW; Reporter: Donna Erez-Navot, JD, BSW). Endorsed by AFCC, ACR, APFM, ABA Section of Family Law, ABA Section of Dispute Resolution. Source: [AFCC](https://www.afccnet.org) / [ACR](https://acrnet.org)
 - **2005 Model Standards of Conduct for Mediators** — Joint project of ABA Section of Dispute Resolution, AAA, and ACR. Approved August–September 2005. Source: [ABA](https://www.americanbar.org) / [ACR](https://acrnet.org) / [AAA/ICDR](https://icdr.org)
+- **NCTDR/ICODR Online Dispute Resolution Standards** — Approved April 2022 by the National Center for Technology and Dispute Resolution (NCTDR) and International Council for Online Dispute Resolution (ICODR). Adopted as ISO 32122 (March 2025). Source: [ICODR](https://icodr.org/standards/) / [NCTDR](https://odr.info/standards/)
+- **NCTDR/ICODR AI Guidance for Third Parties (2026)** — Guidance for applying ODR Standards to artificial intelligence use in dispute resolution. Source: NCTDR / ICODR
 
 ---
 
@@ -174,7 +182,7 @@ Abuse disclosed in joint session, financial disclosure refusal, child refusing a
 
 ## Workflow Diagrams
 
-→ See `references/workflow-diagrams.md` for 6 Mermaid decision-flow diagrams:
+→ See `references/workflow-diagrams.md` for 17 Mermaid decision-flow diagrams:
 
 1. Intake & Screening Flow
 2. Domestic Abuse Screening Decision Tree
@@ -182,6 +190,8 @@ Abuse disclosed in joint session, financial disclosure refusal, child refusing a
 4. Conflict of Interest Decision Flow
 5. Suspension & Termination Decision
 6. Full Mediation Process Overview
+7–16. Tool-specific workflows (Party Preparation, Case Lifecycle, Risk Assessment, Agreement Generation, Ethical Decision Engine, Conflict Check, Child Support, Training Simulator, Practice Analytics, Complete Tool Ecosystem)
+17. AI Use Assessment Workflow (NCTDR/ICODR ODR Standards)
 
 ---
 

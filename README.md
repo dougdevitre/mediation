@@ -5,6 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Standards: 2025 AFCC/ABA](https://img.shields.io/badge/Standards-2025%20AFCC%2FABA-green.svg)](https://www.afccnet.org)
 [![Standards: 2005 ABA/AAA/ACR](https://img.shields.io/badge/Standards-2005%20ABA%2FAAA%2FACR-green.svg)](https://acrnet.org)
+[![Standards: NCTDR/ICODR ODR](https://img.shields.io/badge/Standards-NCTDR%2FICODR%20ODR%202022-green.svg)](https://icodr.org/standards/)
 [![Jurisdictions: 5 States](https://img.shields.io/badge/Jurisdictions-5%20States-orange.svg)](#jurisdiction-modules)
 [![Templates: 14](https://img.shields.io/badge/Templates-14-blueviolet.svg)](#practice-templates)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
@@ -19,6 +20,7 @@ Family mediators navigate some of the most consequential decisions in people's l
 
 1. **2025 Model Standards for Family and Divorce Mediation** (AFCC/ABA/ACR/APFM — approved May 2025)
 2. **2005 Model Standards of Conduct for Mediators** (ABA/AAA/ACR — approved August–September 2005)
+3. **NCTDR/ICODR Online Dispute Resolution Standards** (approved April 2022; adopted as ISO 32122, March 2025) — with companion **AI Guidance for Third Parties** (2026)
 
 Every resource in this repository is grounded in these standards, with the applicable standard cited, the level of obligation identified (SHALL vs. SHOULD), and practical implementation guidance provided.
 
@@ -38,11 +40,11 @@ Every resource in this repository is grounded in these standards, with the appli
 
 | Resource | Count | Description |
 |----------|------:|-------------|
-| **Reference Guides** | 20 | Standards-based guides for every phase of mediation practice |
-| **Practice Templates** | 14 | Customizable Markdown templates (+ 2 Word .docx versions) |
+| **Reference Guides** | 21 | Standards-based guides for every phase of mediation practice |
+| **Practice Templates** | 15 | Customizable Markdown templates (+ 2 Word .docx versions) |
 | **Practice Scenarios** | 25 | "What do I do when..." real-world situation guidance |
 | **Interactive Tools** | 20 | 2 dashboards + 12 mediator tools + 6 party tools |
-| **Workflow Diagrams** | 16 | Mermaid decision-flow diagrams for every major feature |
+| **Workflow Diagrams** | 17 | Mermaid decision-flow diagrams for every major feature |
 | **Jurisdiction Modules** | 5 | State-specific statutes, reporting, and qualifications |
 | **CLE Presentation** | 1 | 10-slide PowerPoint deck ready for conferences |
 | **Case Management Schema** | 1 | Airtable/CSV schema for practice management |
@@ -65,7 +67,7 @@ All tools feature **localStorage persistence** (data survives page refresh), **f
 | Tool | File | Key Features |
 |------|------|-------------|
 | **Parenting Plan Builder** | `app/parenting-plan-builder.jsx` | 50+ provisions across 8 categories, per-provision notes, copy-to-clipboard and file download, completeness hints for recommended categories |
-| **Ethics & Compliance Dashboard** | `app/compliance-dashboard.jsx` | 46 audit items across 10 standards areas, progress bar, overall and per-section scoring, separate non-compliant vs. partial gap analysis, downloadable audit report |
+| **Ethics & Compliance Dashboard** | `app/compliance-dashboard.jsx` | 59 audit items across 12 standards areas (incl. ODR Standards & AI Use), progress bar, overall and per-section scoring, separate non-compliant vs. partial gap analysis, downloadable audit report |
 | **CE Training Tracker** | `app/ce-tracker.jsx` | Log and edit training entries, 18 topics mapped to 2025 standards, required vs. optional distinction, gap alerts, downloadable training log |
 | **Agreement Clause Library** | `app/clause-library.jsx` | 40+ searchable pre-written clause templates across 8 categories, copy-to-clipboard, "My Clauses" collection, downloadable clause set for agreement drafting |
 | **Intake Workflow** | `app/intake-workflow.jsx` | 8-step guided intake process (conflict check through case-ready), substep tracking, template links, progress bar, notes per step, exportable checklist |
@@ -116,7 +118,8 @@ All templates include **standards citations** in the header, consistent formatti
 | Post-Mediation Checklist | `templates/post-mediation-checklist.md` | 2025-VIII/XII/XIII, 2005-V/VIII |
 | Termination Notice | `templates/termination-notice.md` | 2025-XII, 2005-I |
 | Mediator Training Log | `templates/mediator-training-log.md` | 2025-XI, 2005-IV |
-| Technology Consent Form | `templates/technology-consent.md` | 2025-IX |
+| Technology Consent Form | `templates/technology-consent.md` | 2025-IX, NCTDR/ICODR |
+| AI Use Disclosure & Assessment | `templates/ai-use-disclosure.md` | NCTDR/ICODR 2022, AI Guidance 2026 |
 | Fee Disclosure Statement | `templates/fee-disclosure.md` | 2025-XIII, 2005-VIII |
 
 Word format versions: `docs/intake-questionnaire.docx`, `docs/agreement-to-mediate.docx`
@@ -183,12 +186,13 @@ Every resource is mapped to the applicable standard with the correct obligation 
 | Fees | XIII | VIII | 14 | fee-disclosure |
 | Advertising | XIV | VII | 16 | — |
 | Advancement of Practice | — | IX | 17 | — |
+| ODR Standards & AI Use | IX | IV | 19 | ai-use-disclosure |
 
 ---
 
 ## Workflow Diagrams
 
-16 Mermaid decision-flow diagrams in `references/workflow-diagrams.md`, covering every major feature:
+17 Mermaid decision-flow diagrams in `references/workflow-diagrams.md`, covering every major feature:
 
 ### Core Mediation Process
 | # | Diagram | What It Shows |
@@ -213,6 +217,7 @@ Every resource is mapped to the applicable standard with the correct obligation 
 | 14 | Training Simulator | Scenario → response → graded feedback → score |
 | 15 | Practice Analytics | Data collection → metrics → analysis → reports |
 | 16 | Complete Tool Ecosystem | All 20 tools with data flow connections between party and mediator tools |
+| 17 | AI Use Assessment | NCTDR/ICODR ODR Standards assessment, disclosure, consent, and monitoring workflow |
 
 All diagrams use [Mermaid](https://mermaid.js.org/) syntax and render in GitHub, VS Code, Obsidian, and any Mermaid-compatible viewer.
 
@@ -245,12 +250,12 @@ access-to-mediation/
 ├── CODE_OF_CONDUCT.md                # Contributor Covenant
 ├── SECURITY.md                       # Security policy
 │
-├── references/                       # 20 standards-based reference guides
-│   ├── 01–17                         # One guide per standards area
+├── references/                       # 21 standards-based reference guides
+│   ├── 01–19                         # One guide per standards area
 │   ├── workflow-diagrams.md          # 6 Mermaid decision-flow diagrams
 │   └── related-guidelines.md         # Cross-references to other standards
 │
-├── templates/                        # 14 ready-to-customize Markdown templates
+├── templates/                        # 15 ready-to-customize Markdown templates
 │   ├── intake-questionnaire.md       # Pre-mediation screening
 │   ├── domestic-abuse-screening-checklist.md
 │   ├── agreement-to-mediate.md       # Initial consent document
@@ -345,6 +350,8 @@ We welcome contributions from mediators, attorneys, researchers, and technologis
 
 - **2025 Model Standards for Family and Divorce Mediation**: [AFCC](https://www.afccnet.org) | [ACR](https://acrnet.org) | [Mediate.com](https://mediate.com/model-standards-for-family-and-divorce-mediation-2025-update/)
 - **2005 Model Standards of Conduct for Mediators**: [ACR](https://acrnet.org/page/ModelS) | [ICDR/AAA](https://icdr.org) | [Mediate.com](https://mediate.com/model-standards-of-conduct/)
+- **NCTDR/ICODR Online Dispute Resolution Standards (2022)**: [ICODR](https://icodr.org/standards/) | [NCTDR](https://odr.info/standards/) — Adopted as ISO 32122 (March 2025)
+- **NCTDR/ICODR AI Guidance for Third Parties (2026)**: Guidance for applying ODR Standards to AI use in dispute resolution
 
 ---
 

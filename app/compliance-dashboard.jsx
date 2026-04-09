@@ -119,6 +119,33 @@ const AUDIT_SECTIONS = [
       "I accurately represent my qualifications in all marketing",
     ],
   },
+  {
+    title: "ODR Standards Compliance",
+    standard: "NCTDR/ICODR 2022, ISO 32122",
+    level: "SHALL",
+    items: [
+      "My ODR platforms are accessible to parties with varying abilities and language needs",
+      "My ODR systems are auditable with human oversight of document origins and outcomes",
+      "I have the competence to use, explain, and evaluate technology and AI tools in my practice",
+      "I maintain clear confidentiality and data handling policies for all ODR and AI tools",
+      "I ensure no party gains a technological or informational advantage; I monitor for bias",
+      "My ODR platforms provide strong data security with breach notification protocols",
+      "I disclose the role and magnitude of technology's influence on options and outcomes",
+    ],
+  },
+  {
+    title: "AI Use in Practice",
+    standard: "NCTDR/ICODR AI Guidance 2026",
+    level: "SHOULD",
+    items: [
+      "I disclose to all parties how and when AI influences the mediation process",
+      "I obtain informed consent from all parties before using AI tools",
+      "I independently verify AI-generated information before it influences decisions",
+      "I maintain human oversight over all AI-based interventions throughout the process",
+      "I evaluate AI tools for known biases, accuracy, and reliability before adoption",
+      "I ensure AI data sets are relevant to the cultural and legal jurisdictions of my cases",
+    ],
+  },
 ];
 
 function loadFromStorage() {
@@ -247,7 +274,7 @@ export default function ComplianceDashboard() {
 
     lines.push("");
     lines.push("Recommended audit frequency: quarterly or after every 10 cases.");
-    lines.push("Based on 2025 AFCC/ABA Model Standards & 2005 ABA/AAA/ACR Model Standards of Conduct.");
+    lines.push("Based on 2025 AFCC/ABA Model Standards, 2005 ABA/AAA/ACR Model Standards of Conduct, & NCTDR/ICODR ODR Standards (2022) / AI Guidance (2026).");
 
     const date = new Date().toISOString().slice(0, 10);
     downloadFile(lines.join("\n"), `compliance-audit-${date}.txt`);
@@ -340,7 +367,7 @@ export default function ComplianceDashboard() {
     <div style={{ fontFamily: "system-ui, sans-serif", maxWidth: 700, margin: "0 auto", padding: 16 }}>
       <div style={{ marginBottom: 16 }}>
         <h2 style={{ margin: "0 0 4px", fontSize: 20, color: "#1e293b" }}>Ethics & Compliance Self-Audit</h2>
-        <p style={{ margin: 0, fontSize: 13, color: "#64748b" }}>Based on 2025 AFCC/ABA Model Standards & 2005 ABA/AAA/ACR Model Standards of Conduct</p>
+        <p style={{ margin: 0, fontSize: 13, color: "#64748b" }}>Based on 2025 AFCC/ABA Model Standards, 2005 ABA/AAA/ACR Model Standards of Conduct, & NCTDR/ICODR ODR Standards</p>
       </div>
 
       {/* Progress bar */}

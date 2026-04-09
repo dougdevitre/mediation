@@ -112,6 +112,26 @@ Recommended: Quarterly, or after every 10 mediation cases, whichever comes first
 - [ ] I assist newer mediators through training and mentoring
 - [ ] I contribute to the public understanding of mediation
 
+### ODR Standards Compliance (NCTDR/ICODR 2022, ISO 32122)
+- [ ] My ODR platforms and processes are accessible to parties with varying abilities and language needs
+- [ ] My ODR systems are auditable with human oversight of AI-generated documents and outcomes
+- [ ] I have the competence to use, explain, and evaluate the technology and AI tools in my practice
+- [ ] I maintain clear confidentiality and data handling policies for all technology and AI tools
+- [ ] I ensure no party gains a technological or informational advantage; I monitor for AI bias
+- [ ] I disclose conflicts of interest related to technology providers or AI algorithms
+- [ ] I comply with relevant data privacy, AI governance, and dispute resolution laws
+- [ ] My ODR platforms provide strong data security with breach notification protocols
+
+### AI Use in Practice (NCTDR/ICODR AI Guidance 2026)
+- [ ] I disclose to all parties how and when AI influences the mediation process and outcomes
+- [ ] I obtain informed consent from all parties before using AI tools
+- [ ] I independently verify AI-generated information before it influences decisions
+- [ ] I maintain human oversight over all AI-based interventions throughout the process
+- [ ] I evaluate AI tools for known biases, accuracy, and reliability before adoption
+- [ ] I ensure AI data sets are relevant to the cultural and legal jurisdictions of my cases
+- [ ] I manage authority bias from AI-generated outputs for both myself and parties
+- [ ] I have completed an AI Use Disclosure & Assessment for each AI tool in my practice
+
 ---
 
 ## Scoring
@@ -133,3 +153,5 @@ Document your self-audit results and corrective actions. Retain for at least 3 y
 → See `app/compliance-dashboard.jsx` for an interactive self-audit tool with scoring and gap analysis.
 → See `templates/mediator-training-log.md` for documenting ongoing training that supports compliance.
 → See `references/15-qualifications-training.md` for training requirements referenced in the audit.
+→ See `references/19-odr-standards.md` for the full NCTDR/ICODR ODR Standards and AI Guidance.
+→ See `templates/ai-use-disclosure.md` for an AI use assessment and disclosure form.
